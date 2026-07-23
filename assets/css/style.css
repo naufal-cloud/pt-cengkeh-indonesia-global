@@ -84,3 +84,8 @@
     background-position: 58% center;
   }
 }
+
+/* Sembunyikan keterangan di samping logo hero */
+.hero-badge {
+  display: none;
+}
