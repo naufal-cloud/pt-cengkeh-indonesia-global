@@ -4,6 +4,14 @@
   const stored = (() => { try { return JSON.parse(localStorage.getItem('cig_demo_data') || 'null'); } catch { return null; } })();
   window.CIG = stored ? {...base, ...stored} : base;
 
+  const premiumProduct = (window.CIG.products || []).find(
+  product => product.slug === 'cengkeh-kering-premium'
+);
+
+if (premiumProduct) {
+  premiumProduct.image = 'assets/images/produk-cengkeh-premium.webp';
+}
+
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   window.CIG_ESC = esc;
 
