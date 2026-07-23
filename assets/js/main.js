@@ -12,6 +12,23 @@ if (premiumProduct) {
   premiumProduct.image = 'assets/images/produk-cengkeh-premium.webp';
 }
 
+  const articleImageUpdates = {
+  'mengenal-rantai-pasok-cengkeh-indonesia':
+    'assets/images/stok-cengkeh-curah.webp',
+
+  'pentingnya-sortasi-dalam-perdagangan-komoditas':
+    'assets/images/sampel-kualitas-cengkeh.webp',
+
+  'kemitraan-supplier-yang-bertanggung-jawab':
+    'assets/images/cengkeh-dengan-daun.webp'
+};
+
+(window.CIG.articles || []).forEach(article => {
+  if (articleImageUpdates[article.slug]) {
+    article.image = articleImageUpdates[article.slug];
+  }
+});
+
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   window.CIG_ESC = esc;
 
