@@ -12,7 +12,7 @@ window.CIG_DATA = {
   products: [
     {
       id: 'prd-001', slug: 'cengkeh-kering-premium', name: 'Cengkeh Kering Premium',
-      category: 'Cengkeh Kering', image: 'assets/images/clove-dry.svg',
+      category: 'Cengkeh Kering', image: 'assets/images/produk-cengkeh-premium.webp',
       summary: 'Cengkeh kering pilihan dengan proses sortasi bertahap untuk kebutuhan industri dan perdagangan.',
       description: 'Produk demonstrasi yang menampilkan struktur informasi katalog sesuai SRS. Spesifikasi final, standar mutu, sertifikasi, harga, dan kapasitas pasokan harus diverifikasi oleh perusahaan sebelum publikasi produksi.',
       specs: [['Asal', 'Indonesia'], ['Kondisi', 'Kering dan tersortir'], ['Kemasan', 'Menyesuaikan kebutuhan B2B'], ['Status', 'Konten demo — perlu verifikasi']],
