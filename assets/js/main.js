@@ -29,6 +29,18 @@ if (premiumProduct) {
   }
 });
 
+  const portfolioImageUpdates = {
+  'por-001': 'assets/images/stok-cengkeh-curah.webp',
+  'por-002': 'assets/images/detail-cengkeh-makro.webp',
+  'por-003': 'assets/images/kemasan-cengkeh-toples.webp'
+};
+
+(window.CIG.portfolios || []).forEach(portfolio => {
+  if (portfolioImageUpdates[portfolio.id]) {
+    portfolio.image = portfolioImageUpdates[portfolio.id];
+  }
+});
+
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   window.CIG_ESC = esc;
 
