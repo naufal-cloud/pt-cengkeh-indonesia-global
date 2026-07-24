@@ -89,3 +89,76 @@
 .hero-badge {
   display: none;
 }
+
+
+/* Pemilih bahasa */
+.language-switcher {
+  flex: 0 0 auto;
+}
+
+.language-switcher select {
+  min-height: 44px;
+  max-width: 155px;
+  padding: 9px 34px 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background-color: #fff;
+  color: var(--green-900);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+.language-switcher select:hover {
+  border-color: var(--green-700);
+  background-color: var(--green-50);
+}
+
+.language-switcher select:focus-visible {
+  border-color: var(--green-700);
+  box-shadow: 0 0 0 4px rgba(47, 107, 79, 0.14);
+}
+
+/* Penyesuaian layar tablet dan ponsel */
+@media (max-width: 980px) {
+  .header-inner {
+    gap: 10px;
+  }
+
+  .language-switcher {
+    order: 1;
+    margin-left: auto;
+  }
+
+  .menu-toggle {
+    order: 2;
+  }
+
+  .site-nav {
+    order: 3;
+  }
+
+  .language-switcher select {
+    max-width: 125px;
+    min-height: 42px;
+    padding-left: 10px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .language-switcher select {
+    width: 58px;
+    padding: 8px 6px;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Dukungan tampilan bahasa Arab */
+html[dir="rtl"] .language-switcher select {
+  direction: rtl;
+  padding-right: 12px;
+  padding-left: 34px;
+}
+
