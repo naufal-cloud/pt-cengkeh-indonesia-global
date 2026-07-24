@@ -244,6 +244,147 @@
     }
   };
 
+    function normalizeText(value = '') {
+    return String(value)
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function findTranslationKey(value) {
+    const normalizedValue = normalizeText(value);
+
+    if (!normalizedValue) return null;
+
+    const translationKeys = Object.keys(
+      translations[DEFAULT_LANGUAGE] || {}
+    );
+
+    for (const key of translationKeys) {
+      for (const language of Object.keys(languages)) {
+        const translatedValue = translations[language]?.[key];
+
+        if (
+          translatedValue &&
+          normalizeText(translatedValue) === normalizedValue
+        ) {
+          return key;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  function translateTextNodes(root = document.body) {
+    if (!root) return;
+
+    const walker = document.createTreeWalker(
+      root,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          const parent = node.parentElement;
+
+          if (!parent || !normalizeText(node.nodeValue)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          if (
+            ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'OPTION']
+              .includes(parent.tagName)
+          ) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+
+    const textNodes = [];
+
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach(node => {
+      const originalValue = node.nodeValue;
+      const trimmedValue = originalValue.trim();
+      const translationKey = findTranslationKey(trimmedValue);
+
+      if (!translationKey) return;
+
+      node.nodeValue = originalValue.replace(
+        trimmedValue,
+        translate(translationKey)
+      );
+    });
+  }
+
+  function translateElementAttributes(root = document) {
+    const selector =
+      '[placeholder], [title], [aria-label], [data-i18n-placeholder]';
+
+    const elements = [];
+
+    if (
+      root.nodeType === Node.ELEMENT_NODE &&
+      root.matches(selector)
+    ) {
+      elements.push(root);
+    }
+
+    root.querySelectorAll?.(selector).forEach(element => {
+      elements.push(element);
+    });
+
+    elements.forEach(element => {
+      ['placeholder', 'title', 'aria-label'].forEach(attribute => {
+        const value = element.getAttribute(attribute);
+
+        if (!value) return;
+
+        const translationKey = findTranslationKey(value);
+
+        if (translationKey) {
+          element.setAttribute(
+            attribute,
+            translate(translationKey)
+          );
+        }
+      });
+    });
+  }
+
+  function initAutomaticTranslation() {
+    if (!document.body) return;
+
+    translateTextNodes(document.body);
+    translateElementAttributes(document);
+
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            translateTextNodes(node);
+            translateElementAttributes(node);
+          }
+
+          if (node.nodeType === Node.TEXT_NODE) {
+            translateTextNodes(
+              node.parentElement || document.body
+            );
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
   function getLanguage() {
     const savedLanguage = localStorage.getItem(STORAGE_KEY);
 
@@ -319,6 +460,8 @@
 
     localStorage.setItem(STORAGE_KEY, language);
     applyTranslations();
+    translateTextNodes(document.body);
+    translateElementAttributes(document);
 
     document.dispatchEvent(
       new CustomEvent('cig:languagechange', {
@@ -361,6 +504,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     initLanguageSelector();
     applyTranslations();
+    initAutomaticTranslation();
   });
 
   window.CIG_I18N = {
