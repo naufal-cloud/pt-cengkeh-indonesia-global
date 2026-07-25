@@ -1445,6 +1445,147 @@
     );
   });
 
+
+    const contactPageTranslations = {
+    id: {
+      'contact.eyebrow': 'Lead Capture',
+      'contact.pageTitle': 'Hubungi Kami',
+      'contact.pageDescription':
+        'Kirim pertanyaan produk, kemitraan, atau informasi perusahaan melalui formulir berikut.',
+      'contact.infoTitle': 'Informasi Kontak Demo',
+      'contact.infoDescription':
+        'Ganti alamat, nomor WhatsApp, email penerima, dan media sosial melalui pengaturan CMS produksi.',
+      'contact.email': 'Email',
+      'contact.whatsapp': 'WhatsApp',
+      'contact.whatsappButton': 'Hubungi WhatsApp',
+      'contact.address': 'Alamat',
+      'contact.addressValue':
+        'Indonesia — alamat resmi belum dikonfigurasi',
+      'contact.honeypot': 'Jangan isi:',
+      'contact.name': 'Nama *',
+      'contact.company': 'Perusahaan',
+      'contact.phone': 'Telepon/WhatsApp',
+      'contact.subject': 'Subjek *',
+      'contact.message': 'Pesan *',
+      'contact.consent':
+        'Saya menyetujui pemrosesan data untuk menanggapi pesan ini sesuai',
+      'contact.privacy': 'kebijakan privasi',
+      'contact.send': 'Kirim Pesan'
+    },
+
+    en: {
+      'contact.eyebrow': 'Lead Capture',
+      'contact.pageTitle': 'Contact Us',
+      'contact.pageDescription':
+        'Send product, partnership, or company information inquiries through the following form.',
+      'contact.infoTitle': 'Demonstration Contact Information',
+      'contact.infoDescription':
+        'Replace the address, WhatsApp number, recipient email, and social media through the production CMS settings.',
+      'contact.email': 'Email',
+      'contact.whatsapp': 'WhatsApp',
+      'contact.whatsappButton': 'Contact via WhatsApp',
+      'contact.address': 'Address',
+      'contact.addressValue':
+        'Indonesia — official address has not been configured',
+      'contact.honeypot': 'Do not fill in:',
+      'contact.name': 'Name *',
+      'contact.company': 'Company',
+      'contact.phone': 'Phone/WhatsApp',
+      'contact.subject': 'Subject *',
+      'contact.message': 'Message *',
+      'contact.consent':
+        'I consent to the processing of my data to respond to this message in accordance with the',
+      'contact.privacy': 'privacy policy',
+      'contact.send': 'Send Message'
+    },
+
+    hi: {
+      'contact.eyebrow': 'संपर्क अनुरोध',
+      'contact.pageTitle': 'हमसे संपर्क करें',
+      'contact.pageDescription':
+        'निम्नलिखित फ़ॉर्म के माध्यम से उत्पाद, साझेदारी या कंपनी संबंधी प्रश्न भेजें।',
+      'contact.infoTitle': 'प्रदर्शन संपर्क जानकारी',
+      'contact.infoDescription':
+        'उत्पादन CMS की सेटिंग में पता, WhatsApp नंबर, प्राप्तकर्ता ईमेल और सोशल मीडिया बदलें।',
+      'contact.email': 'ईमेल',
+      'contact.whatsapp': 'व्हाट्सऐप',
+      'contact.whatsappButton': 'व्हाट्सऐप से संपर्क करें',
+      'contact.address': 'पता',
+      'contact.addressValue':
+        'इंडोनेशिया — आधिकारिक पता अभी कॉन्फ़िगर नहीं किया गया है',
+      'contact.honeypot': 'इसे न भरें:',
+      'contact.name': 'नाम *',
+      'contact.company': 'कंपनी',
+      'contact.phone': 'फ़ोन/व्हाट्सऐप',
+      'contact.subject': 'विषय *',
+      'contact.message': 'संदेश *',
+      'contact.consent':
+        'मैं इस संदेश का उत्तर देने के लिए अपने डेटा के प्रसंस्करण से सहमत हूँ, जो',
+      'contact.privacy': 'गोपनीयता नीति',
+      'contact.send': 'संदेश भेजें'
+    },
+
+    zh: {
+      'contact.eyebrow': '客户咨询',
+      'contact.pageTitle': '联系我们',
+      'contact.pageDescription':
+        '请通过以下表单发送产品、合作伙伴关系或公司信息方面的咨询。',
+      'contact.infoTitle': '演示联系信息',
+      'contact.infoDescription':
+        '请通过正式版 CMS 设置更改地址、WhatsApp 号码、收件邮箱和社交媒体信息。',
+      'contact.email': '电子邮箱',
+      'contact.whatsapp': 'WhatsApp',
+      'contact.whatsappButton': '通过 WhatsApp 联系',
+      'contact.address': '地址',
+      'contact.addressValue':
+        '印度尼西亚 — 官方地址尚未配置',
+      'contact.honeypot': '请勿填写：',
+      'contact.name': '姓名 *',
+      'contact.company': '公司',
+      'contact.phone': '电话/WhatsApp',
+      'contact.subject': '主题 *',
+      'contact.message': '留言 *',
+      'contact.consent':
+        '我同意根据以下政策处理我的数据，以便回复此留言：',
+      'contact.privacy': '隐私政策',
+      'contact.send': '发送留言'
+    },
+
+    ar: {
+      'contact.eyebrow': 'استقبال الاستفسارات',
+      'contact.pageTitle': 'اتصل بنا',
+      'contact.pageDescription':
+        'أرسل استفسارات المنتجات أو الشراكات أو معلومات الشركة من خلال النموذج التالي.',
+      'contact.infoTitle': 'معلومات الاتصال التجريبية',
+      'contact.infoDescription':
+        'استبدل العنوان ورقم واتساب والبريد الإلكتروني للمستلم ووسائل التواصل الاجتماعي من إعدادات نظام إدارة المحتوى للإنتاج.',
+      'contact.email': 'البريد الإلكتروني',
+      'contact.whatsapp': 'واتساب',
+      'contact.whatsappButton': 'تواصل عبر واتساب',
+      'contact.address': 'العنوان',
+      'contact.addressValue':
+        'إندونيسيا — لم تتم تهيئة العنوان الرسمي بعد',
+      'contact.honeypot': 'لا تملأ هذا الحقل:',
+      'contact.name': 'الاسم *',
+      'contact.company': 'الشركة',
+      'contact.phone': 'الهاتف/واتساب',
+      'contact.subject': 'الموضوع *',
+      'contact.message': 'الرسالة *',
+      'contact.consent':
+        'أوافق على معالجة بياناتي للرد على هذه الرسالة وفقاً لـ',
+      'contact.privacy': 'سياسة الخصوصية',
+      'contact.send': 'إرسال الرسالة'
+    }
+  };
+
+  Object.keys(contactPageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      contactPageTranslations[language]
+    );
+  });
+
+  
     function normalizeText(value = '') {
     return String(value)
       .replace(/\s+/g, ' ')
