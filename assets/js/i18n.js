@@ -1974,6 +1974,154 @@
     );
   });
 
+    const privacyPageTranslations = {
+    id: {
+      'privacy.eyebrow': 'Privasi',
+      'privacy.pageTitle': 'Kebijakan Privasi Demo',
+      'privacy.pageDescription':
+        'Ringkasan pengelolaan data formulir kontak dan publikasi informasi supplier.',
+
+      'privacy.collectedDataTitle':
+        'Data yang dikumpulkan',
+      'privacy.collectedDataText':
+        'Formulir kontak dapat mengumpulkan nama, email, perusahaan, nomor telepon opsional, subjek, pesan, persetujuan, dan waktu pengiriman.',
+
+      'privacy.processingPurposeTitle':
+        'Tujuan pemrosesan',
+      'privacy.processingPurposeText':
+        'Data digunakan untuk menanggapi pertanyaan, mendokumentasikan komunikasi, dan menindaklanjuti kebutuhan calon mitra.',
+
+      'privacy.retentionTitle': 'Retensi',
+      'privacy.retentionText':
+        'Sesuai baseline SRS, pesan kontak disimpan maksimal 12 bulan atau mengikuti kebijakan perusahaan, kemudian dihapus atau dianonimkan.',
+
+      'privacy.supplierText':
+        'Lokasi, alamat, dan kontak supplier hanya dipublikasikan setelah memperoleh persetujuan. Situs demo menggunakan lokasi perkiraan tingkat wilayah.',
+
+      'privacy.noteLabel': 'Catatan:',
+      'privacy.noteText':
+        'teks ini adalah contoh dan harus ditinjau secara legal sebelum digunakan pada sistem produksi.'
+    },
+
+    en: {
+      'privacy.eyebrow': 'Privacy',
+      'privacy.pageTitle': 'Demonstration Privacy Policy',
+      'privacy.pageDescription':
+        'A summary of contact-form data management and the publication of supplier information.',
+
+      'privacy.collectedDataTitle':
+        'Data collected',
+      'privacy.collectedDataText':
+        'The contact form may collect names, email addresses, company names, optional telephone numbers, subjects, messages, consent records, and submission times.',
+
+      'privacy.processingPurposeTitle':
+        'Purpose of processing',
+      'privacy.processingPurposeText':
+        'The data is used to respond to inquiries, document communications, and follow up on the requirements of prospective partners.',
+
+      'privacy.retentionTitle': 'Retention',
+      'privacy.retentionText':
+        'Based on the SRS baseline, contact messages are retained for a maximum of 12 months or according to company policy, after which they are deleted or anonymised.',
+
+      'privacy.supplierText':
+        'Supplier locations, addresses, and contact details are only published after consent has been obtained. The demonstration website uses approximate regional locations.',
+
+      'privacy.noteLabel': 'Note:',
+      'privacy.noteText':
+        'this text is an example and must undergo legal review before being used in the production system.'
+    },
+
+    hi: {
+      'privacy.eyebrow': 'गोपनीयता',
+      'privacy.pageTitle': 'प्रदर्शन गोपनीयता नीति',
+      'privacy.pageDescription':
+        'संपर्क फ़ॉर्म के डेटा प्रबंधन और आपूर्तिकर्ता जानकारी के प्रकाशन का सारांश।',
+
+      'privacy.collectedDataTitle':
+        'एकत्र किया जाने वाला डेटा',
+      'privacy.collectedDataText':
+        'संपर्क फ़ॉर्म नाम, ईमेल, कंपनी, वैकल्पिक फ़ोन नंबर, विषय, संदेश, सहमति और भेजने का समय एकत्र कर सकता है।',
+
+      'privacy.processingPurposeTitle':
+        'प्रसंस्करण का उद्देश्य',
+      'privacy.processingPurposeText':
+        'डेटा का उपयोग प्रश्नों का उत्तर देने, संचार का रिकॉर्ड रखने और संभावित साझेदारों की आवश्यकताओं पर आगे की कार्रवाई करने के लिए किया जाता है।',
+
+      'privacy.retentionTitle': 'डेटा प्रतिधारण',
+      'privacy.retentionText':
+        'SRS आधाररेखा के अनुसार संपर्क संदेश अधिकतम 12 महीनों तक या कंपनी की नीति के अनुसार रखे जाते हैं, जिसके बाद उन्हें हटा दिया जाता है या गुमनाम कर दिया जाता है।',
+
+      'privacy.supplierText':
+        'आपूर्तिकर्ताओं के स्थान, पते और संपर्क विवरण सहमति प्राप्त होने के बाद ही प्रकाशित किए जाते हैं। प्रदर्शन वेबसाइट क्षेत्र स्तर के अनुमानित स्थानों का उपयोग करती है।',
+
+      'privacy.noteLabel': 'टिप्पणी:',
+      'privacy.noteText':
+        'यह पाठ केवल एक उदाहरण है और उत्पादन प्रणाली में उपयोग से पहले इसकी कानूनी समीक्षा की जानी चाहिए।'
+    },
+
+    zh: {
+      'privacy.eyebrow': '隐私',
+      'privacy.pageTitle': '演示隐私政策',
+      'privacy.pageDescription':
+        '联系表单数据管理和供应商信息发布的概要。',
+
+      'privacy.collectedDataTitle':
+        '收集的数据',
+      'privacy.collectedDataText':
+        '联系表单可能会收集姓名、电子邮箱、公司名称、可选电话号码、主题、留言、同意记录以及提交时间。',
+
+      'privacy.processingPurposeTitle':
+        '数据处理目的',
+      'privacy.processingPurposeText':
+        '相关数据用于回复咨询、记录沟通内容以及跟进潜在合作伙伴的需求。',
+
+      'privacy.retentionTitle': '数据保留',
+      'privacy.retentionText':
+        '根据 SRS 基准要求，联系留言最多保存 12 个月，或按照公司政策保存，之后将被删除或匿名化处理。',
+
+      'privacy.supplierText':
+        '供应商的位置、地址和联系方式只有在获得同意后才会发布。演示网站仅使用区域级别的大致位置。',
+
+      'privacy.noteLabel': '注意：',
+      'privacy.noteText':
+        '本文仅为示例，正式用于生产系统前必须经过法律审核。'
+    },
+
+    ar: {
+      'privacy.eyebrow': 'الخصوصية',
+      'privacy.pageTitle': 'سياسة الخصوصية التجريبية',
+      'privacy.pageDescription':
+        'ملخص لإدارة بيانات نموذج الاتصال ونشر معلومات الموردين.',
+
+      'privacy.collectedDataTitle':
+        'البيانات التي يتم جمعها',
+      'privacy.collectedDataText':
+        'قد يجمع نموذج الاتصال الاسم والبريد الإلكتروني واسم الشركة ورقم الهاتف الاختياري والموضوع والرسالة والموافقة ووقت الإرسال.',
+
+      'privacy.processingPurposeTitle':
+        'غرض المعالجة',
+      'privacy.processingPurposeText':
+        'تستخدم البيانات للرد على الاستفسارات وتوثيق التواصل ومتابعة احتياجات الشركاء المحتملين.',
+
+      'privacy.retentionTitle': 'الاحتفاظ بالبيانات',
+      'privacy.retentionText':
+        'وفقاً لخط الأساس في وثيقة SRS، يتم الاحتفاظ برسائل الاتصال لمدة أقصاها 12 شهراً أو وفقاً لسياسة الشركة، ثم تحذف أو تزال منها البيانات التعريفية.',
+
+      'privacy.supplierText':
+        'لا تنشر مواقع الموردين وعناوينهم وبيانات الاتصال بهم إلا بعد الحصول على الموافقة. يستخدم الموقع التجريبي مواقع تقريبية على مستوى المناطق.',
+
+      'privacy.noteLabel': 'ملاحظة:',
+      'privacy.noteText':
+        'هذا النص مجرد مثال ويجب مراجعته قانونياً قبل استخدامه في نظام الإنتاج.'
+    }
+  };
+
+  Object.keys(privacyPageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      privacyPageTranslations[language]
+    );
+  });
   
     function normalizeText(value = '') {
     return String(value)
