@@ -1805,6 +1805,175 @@
     );
   });
 
+    const articleDetailTranslations = {
+    id: {
+      'articleDetail.pageDescription':
+        'Halaman detail publikasi dengan metadata, tag, dan tombol bagikan.',
+      'articleDetail.share': 'Bagikan:',
+
+      'articleDetail.supplyParagraphOne':
+        'Rantai pasok cengkeh melibatkan sejumlah tahapan penting, mulai dari budidaya dan panen, pengeringan, sortasi, penyimpanan, hingga distribusi.',
+      'articleDetail.supplyParagraphTwo':
+        'Dalam versi produksi, artikel ini perlu ditinjau oleh pihak yang berwenang agar setiap informasi teknis, wilayah, dan klaim proses sesuai kondisi operasional PT Cengkeh Indonesia Global.',
+      'articleDetail.transparencyTitle':
+        'Transparansi informasi',
+      'articleDetail.supplyParagraphThree':
+        'Website dapat membantu perusahaan menyajikan informasi produk, dokumentasi, wilayah jaringan supplier, dan kanal komunikasi secara konsisten.',
+
+      'articleDetail.sortingParagraphOne':
+        'Sortasi merupakan bagian penting dalam penanganan komoditas karena membantu memisahkan produk berdasarkan kriteria yang disepakati.',
+      'articleDetail.sortingParagraphTwo':
+        'Untuk publikasi produksi, perusahaan perlu menetapkan parameter, metode pemeriksaan, dan dokumen pendukung yang benar-benar digunakan.',
+
+      'articleDetail.partnershipParagraphOne':
+        'Publikasi jaringan supplier harus mempertimbangkan persetujuan, privasi, keamanan, dan ketentuan kontraktual.',
+      'articleDetail.partnershipParagraphTwo':
+        'Karena itu, situs demo ini hanya menampilkan lokasi perkiraan pada tingkat wilayah dan tidak memuat alamat rinci.',
+
+      'articleDetail.tagClove': '#cengkeh',
+      'articleDetail.tagSupplyChain': '#rantai pasok',
+      'articleDetail.tagQuality': '#kualitas',
+      'articleDetail.tagSorting': '#sortasi',
+      'articleDetail.tagSupplier': '#supplier',
+      'articleDetail.tagPrivacy': '#privasi'
+    },
+
+    en: {
+      'articleDetail.pageDescription':
+        'A publication detail page featuring metadata, tags, and sharing buttons.',
+      'articleDetail.share': 'Share:',
+
+      'articleDetail.supplyParagraphOne':
+        'The clove supply chain involves several important stages, including cultivation and harvesting, drying, sorting, storage, and distribution.',
+      'articleDetail.supplyParagraphTwo':
+        'For the production version, this article must be reviewed by an authorised party to ensure that all technical information, regional details, and process claims reflect the operating conditions of PT Cengkeh Indonesia Global.',
+      'articleDetail.transparencyTitle':
+        'Information transparency',
+      'articleDetail.supplyParagraphThree':
+        'The website can help the company present product information, documentation, supplier-network regions, and communication channels consistently.',
+
+      'articleDetail.sortingParagraphOne':
+        'Sorting is an important part of commodity handling because it helps separate products according to agreed criteria.',
+      'articleDetail.sortingParagraphTwo':
+        'Before production publication, the company must establish the parameters, inspection methods, and supporting documents that are actually used.',
+
+      'articleDetail.partnershipParagraphOne':
+        'Publishing supplier-network information must take consent, privacy, security, and contractual requirements into account.',
+      'articleDetail.partnershipParagraphTwo':
+        'Therefore, this demonstration website only displays approximate regional locations and does not provide detailed addresses.',
+
+      'articleDetail.tagClove': '#cloves',
+      'articleDetail.tagSupplyChain': '#supply chain',
+      'articleDetail.tagQuality': '#quality',
+      'articleDetail.tagSorting': '#sorting',
+      'articleDetail.tagSupplier': '#supplier',
+      'articleDetail.tagPrivacy': '#privacy'
+    },
+
+    hi: {
+      'articleDetail.pageDescription':
+        'मेटाडेटा, टैग और साझा करने के बटन वाला विस्तृत प्रकाशन पृष्ठ।',
+      'articleDetail.share': 'साझा करें:',
+
+      'articleDetail.supplyParagraphOne':
+        'लौंग की आपूर्ति श्रृंखला में खेती और कटाई, सुखाने, छंटाई, भंडारण और वितरण सहित कई महत्वपूर्ण चरण शामिल होते हैं।',
+      'articleDetail.supplyParagraphTwo':
+        'उत्पादन संस्करण में इस लेख की अधिकृत पक्ष द्वारा समीक्षा की जानी चाहिए, ताकि सभी तकनीकी जानकारी, क्षेत्रीय विवरण और प्रक्रिया संबंधी दावे PT Cengkeh Indonesia Global की वास्तविक संचालन परिस्थितियों के अनुरूप हों।',
+      'articleDetail.transparencyTitle':
+        'जानकारी में पारदर्शिता',
+      'articleDetail.supplyParagraphThree':
+        'वेबसाइट कंपनी को उत्पाद जानकारी, दस्तावेज़, आपूर्तिकर्ता नेटवर्क के क्षेत्र और संचार माध्यमों को लगातार प्रस्तुत करने में सहायता कर सकती है।',
+
+      'articleDetail.sortingParagraphOne':
+        'छंटाई कमोडिटी प्रबंधन का एक महत्वपूर्ण भाग है, क्योंकि इससे सहमत मानदंडों के अनुसार उत्पादों को अलग करने में सहायता मिलती है।',
+      'articleDetail.sortingParagraphTwo':
+        'आधिकारिक प्रकाशन से पहले कंपनी को वास्तव में उपयोग किए जाने वाले मापदंड, निरीक्षण विधियाँ और सहायक दस्तावेज़ निर्धारित करने चाहिए।',
+
+      'articleDetail.partnershipParagraphOne':
+        'आपूर्तिकर्ता नेटवर्क की जानकारी प्रकाशित करते समय सहमति, गोपनीयता, सुरक्षा और अनुबंध संबंधी शर्तों पर विचार किया जाना चाहिए।',
+      'articleDetail.partnershipParagraphTwo':
+        'इसलिए यह प्रदर्शन वेबसाइट केवल क्षेत्र स्तर के अनुमानित स्थान दिखाती है और विस्तृत पते प्रकाशित नहीं करती।',
+
+      'articleDetail.tagClove': '#लौंग',
+      'articleDetail.tagSupplyChain': '#आपूर्ति श्रृंखला',
+      'articleDetail.tagQuality': '#गुणवत्ता',
+      'articleDetail.tagSorting': '#छंटाई',
+      'articleDetail.tagSupplier': '#आपूर्तिकर्ता',
+      'articleDetail.tagPrivacy': '#गोपनीयता'
+    },
+
+    zh: {
+      'articleDetail.pageDescription':
+        '包含元数据、标签和分享按钮的文章详情页面。',
+      'articleDetail.share': '分享：',
+
+      'articleDetail.supplyParagraphOne':
+        '丁香供应链包含多个重要阶段，包括种植与采收、干燥、分选、储存以及配送。',
+      'articleDetail.supplyParagraphTwo':
+        '在正式上线前，本文必须由授权人员审核，以确保所有技术信息、区域资料和流程说明符合 PT Cengkeh Indonesia Global 的实际运营情况。',
+      'articleDetail.transparencyTitle':
+        '信息透明度',
+      'articleDetail.supplyParagraphThree':
+        '网站可以帮助公司持续、统一地展示产品信息、相关文件、供应商网络区域以及沟通渠道。',
+
+      'articleDetail.sortingParagraphOne':
+        '分选是商品处理的重要环节，因为它有助于按照约定标准对产品进行分类。',
+      'articleDetail.sortingParagraphTwo':
+        '正式发布前，公司必须确定实际采用的参数、检验方法和配套文件。',
+
+      'articleDetail.partnershipParagraphOne':
+        '发布供应商网络信息时，必须考虑授权、隐私、安全以及合同条款。',
+      'articleDetail.partnershipParagraphTwo':
+        '因此，该演示网站仅显示区域级别的大致位置，不公开详细地址。',
+
+      'articleDetail.tagClove': '#丁香',
+      'articleDetail.tagSupplyChain': '#供应链',
+      'articleDetail.tagQuality': '#质量',
+      'articleDetail.tagSorting': '#分选',
+      'articleDetail.tagSupplier': '#供应商',
+      'articleDetail.tagPrivacy': '#隐私'
+    },
+
+    ar: {
+      'articleDetail.pageDescription':
+        'صفحة تفصيلية للمنشور تتضمن البيانات الوصفية والوسوم وأزرار المشاركة.',
+      'articleDetail.share': 'مشاركة:',
+
+      'articleDetail.supplyParagraphOne':
+        'تتضمن سلسلة توريد القرنفل عدة مراحل مهمة، منها الزراعة والحصاد والتجفيف والفرز والتخزين والتوزيع.',
+      'articleDetail.supplyParagraphTwo':
+        'في النسخة الرسمية، يجب مراجعة هذا المقال من جهة مخولة لضمان توافق المعلومات الفنية والتفاصيل الإقليمية وادعاءات العمليات مع ظروف تشغيل PT Cengkeh Indonesia Global.',
+      'articleDetail.transparencyTitle':
+        'شفافية المعلومات',
+      'articleDetail.supplyParagraphThree':
+        'يمكن للموقع مساعدة الشركة على عرض معلومات المنتجات والوثائق ومناطق شبكة الموردين وقنوات التواصل بصورة متسقة.',
+
+      'articleDetail.sortingParagraphOne':
+        'يعد الفرز جزءاً مهماً من التعامل مع السلع، لأنه يساعد على فصل المنتجات وفق المعايير المتفق عليها.',
+      'articleDetail.sortingParagraphTwo':
+        'قبل النشر الرسمي، يجب على الشركة تحديد المعايير وطرق الفحص والوثائق الداعمة المستخدمة فعلياً.',
+
+      'articleDetail.partnershipParagraphOne':
+        'يجب أن يراعي نشر معلومات شبكة الموردين الموافقة والخصوصية والأمان والشروط التعاقدية.',
+      'articleDetail.partnershipParagraphTwo':
+        'لذلك، يعرض هذا الموقع التجريبي مواقع تقريبية على مستوى المناطق فقط، ولا ينشر العناوين التفصيلية.',
+
+      'articleDetail.tagClove': '#القرنفل',
+      'articleDetail.tagSupplyChain': '#سلسلة التوريد',
+      'articleDetail.tagQuality': '#الجودة',
+      'articleDetail.tagSorting': '#الفرز',
+      'articleDetail.tagSupplier': '#الموردون',
+      'articleDetail.tagPrivacy': '#الخصوصية'
+    }
+  };
+
+  Object.keys(articleDetailTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      articleDetailTranslations[language]
+    );
+  });
+
   
     function normalizeText(value = '') {
     return String(value)
