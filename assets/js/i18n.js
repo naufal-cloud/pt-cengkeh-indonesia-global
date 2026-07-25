@@ -1282,7 +1282,7 @@
           }
 
           if (
-            ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'OPTION']
+            ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA']
               .includes(parent.tagName)
           ) {
             return NodeFilter.FILTER_REJECT;
