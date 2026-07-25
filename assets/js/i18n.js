@@ -1234,6 +1234,91 @@
       productPageTranslations[language]
     );
   });
+
+
+    const articlePageTranslations = {
+    id: {
+      'article.publication': 'Publikasi',
+      'article.pageTitle': 'Artikel dan Edukasi',
+      'article.pageDescription':
+        'Konten demonstrasi tentang cengkeh, kualitas, kemitraan, dan pengelolaan informasi supplier.',
+      'article.searchLabel': 'Cari artikel',
+      'article.searchPlaceholder':
+        'Cari judul, ringkasan, atau tag',
+      'article.category': 'Kategori',
+      'article.allCategories': 'Semua kategori',
+      'article.notFound': 'Artikel tidak ditemukan',
+      'article.changeSearch':
+        'Coba kata kunci atau kategori lain.'
+    },
+
+    en: {
+      'article.publication': 'Publications',
+      'article.pageTitle': 'Articles and Education',
+      'article.pageDescription':
+        'Demonstration content about cloves, quality, partnerships, and supplier information management.',
+      'article.searchLabel': 'Search articles',
+      'article.searchPlaceholder':
+        'Search by title, summary, or tag',
+      'article.category': 'Category',
+      'article.allCategories': 'All categories',
+      'article.notFound': 'No articles found',
+      'article.changeSearch':
+        'Try another keyword or category.'
+    },
+
+    hi: {
+      'article.publication': 'प्रकाशन',
+      'article.pageTitle': 'लेख और शिक्षा',
+      'article.pageDescription':
+        'लौंग, गुणवत्ता, साझेदारी और आपूर्तिकर्ता सूचना प्रबंधन से संबंधित प्रदर्शन सामग्री।',
+      'article.searchLabel': 'लेख खोजें',
+      'article.searchPlaceholder':
+        'शीर्षक, सारांश या टैग से खोजें',
+      'article.category': 'श्रेणी',
+      'article.allCategories': 'सभी श्रेणियाँ',
+      'article.notFound': 'कोई लेख नहीं मिला',
+      'article.changeSearch':
+        'किसी अन्य शब्द या श्रेणी का प्रयास करें।'
+    },
+
+    zh: {
+      'article.publication': '出版内容',
+      'article.pageTitle': '文章与知识',
+      'article.pageDescription':
+        '有关丁香、质量、合作伙伴关系和供应商信息管理的演示内容。',
+      'article.searchLabel': '搜索文章',
+      'article.searchPlaceholder':
+        '按标题、摘要或标签搜索',
+      'article.category': '分类',
+      'article.allCategories': '所有分类',
+      'article.notFound': '未找到文章',
+      'article.changeSearch':
+        '请尝试其他关键词或分类。'
+    },
+
+    ar: {
+      'article.publication': 'المنشورات',
+      'article.pageTitle': 'المقالات والمحتوى التعليمي',
+      'article.pageDescription':
+        'محتوى تجريبي عن القرنفل والجودة والشراكات وإدارة معلومات الموردين.',
+      'article.searchLabel': 'البحث في المقالات',
+      'article.searchPlaceholder':
+        'ابحث بالعنوان أو الملخص أو الوسم',
+      'article.category': 'الفئة',
+      'article.allCategories': 'جميع الفئات',
+      'article.notFound': 'لم يتم العثور على مقالات',
+      'article.changeSearch':
+        'جرّب كلمة بحث أو فئة أخرى.'
+    }
+  };
+
+  Object.keys(articlePageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      articlePageTranslations[language]
+    );
+  });
   
 
     function normalizeText(value = '') {
