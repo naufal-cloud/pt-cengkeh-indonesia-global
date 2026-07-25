@@ -906,6 +906,251 @@
     );
   });
 
+    const aboutPageTranslations = {
+    id: {
+      'about.companyProfile': 'Profil Perusahaan',
+      'about.pageTitle':
+        'Tentang PT Cengkeh Indonesia Global',
+      'about.pageDescription':
+        'Halaman profil yang menampung sejarah, visi, misi, nilai, legalitas, manajemen, serta informasi kontak sesuai kebutuhan SRS.',
+
+      'about.demoProfile': 'Profil Demonstrasi',
+      'about.professionalChannel':
+        'Membangun kanal informasi komoditas yang profesional.',
+      'about.introduction':
+        'PT Cengkeh Indonesia Global diperkenalkan melalui narasi demo yang menekankan kualitas informasi, kemitraan, dan komunikasi bisnis.',
+      'about.unverifiedInformation':
+        'Riwayat pendirian, struktur perusahaan, dokumen legalitas, sertifikasi, kapasitas pasokan, serta klaim operasional belum tercantum karena harus disediakan dan disetujui oleh pihak perusahaan.',
+
+      'about.checkCms':
+        'Konten profil dapat diperbarui tanpa mengubah kode pada implementasi CMS produksi.',
+      'about.checkLegal':
+        'Informasi legalitas dan sertifikasi hanya dipublikasikan setelah diverifikasi.',
+      'about.checkPrivacy':
+        'Data sensitif mitra dan transaksi tidak ditampilkan tanpa persetujuan tertulis.',
+
+      'about.corporateIdentity': 'Identitas korporat',
+      'about.corporateIdentityText':
+        'Palet hijau, emas, dan bronze diturunkan dari logo resmi dan diterapkan secara konsisten pada antarmuka.',
+
+      'about.companyDirection': 'Arah Perusahaan',
+      'about.visionMissionValues':
+        'Visi, misi, dan nilai',
+      'about.officialStatement':
+        'Isi berikut bersifat contoh dan harus diganti dengan pernyataan resmi.',
+
+      'about.demoVision': 'Visi Demo',
+      'about.demoVisionText':
+        'Menjadi penghubung informasi dan kemitraan komoditas cengkeh Indonesia yang terpercaya di pasar global.',
+
+      'about.demoMission': 'Misi Demo',
+      'about.demoMissionText':
+        'Menyajikan informasi produk yang jelas, membangun komunikasi bisnis yang cepat, dan menjaga tanggung jawab publikasi data.',
+
+      'about.demoValues': 'Nilai Demo',
+      'about.demoValuesText':
+        'Integritas, kualitas informasi, kemitraan, kehati-hatian, dan perbaikan berkelanjutan.',
+
+      'about.demoPortfolio': 'Portofolio demonstrasi'
+    },
+
+    en: {
+      'about.companyProfile': 'Company Profile',
+      'about.pageTitle':
+        'About PT Cengkeh Indonesia Global',
+      'about.pageDescription':
+        'A company profile page containing its history, vision, mission, values, legal information, management, and contact details based on the SRS requirements.',
+
+      'about.demoProfile': 'Demonstration Profile',
+      'about.professionalChannel':
+        'Building a professional commodity information channel.',
+      'about.introduction':
+        'PT Cengkeh Indonesia Global is introduced through demonstration content emphasizing information quality, partnerships, and business communication.',
+      'about.unverifiedInformation':
+        'The company history, organizational structure, legal documents, certifications, supply capacity, and operational claims are not yet presented because they must be provided and approved by the company.',
+
+      'about.checkCms':
+        'Company profile content can be updated through the production CMS without changing the website code.',
+      'about.checkLegal':
+        'Legal and certification information will only be published after verification.',
+      'about.checkPrivacy':
+        'Sensitive partner and transaction data will not be displayed without written consent.',
+
+      'about.corporateIdentity': 'Corporate Identity',
+      'about.corporateIdentityText':
+        'The green, gold, and bronze palette is derived from the official logo and applied consistently throughout the interface.',
+
+      'about.companyDirection': 'Company Direction',
+      'about.visionMissionValues':
+        'Vision, mission, and values',
+      'about.officialStatement':
+        'The following content is an example and must be replaced with official statements.',
+
+      'about.demoVision': 'Demonstration Vision',
+      'about.demoVisionText':
+        'To become a trusted information and partnership link for Indonesian clove commodities in the global market.',
+
+      'about.demoMission': 'Demonstration Mission',
+      'about.demoMissionText':
+        'To provide clear product information, establish fast business communication, and maintain responsible data publication.',
+
+      'about.demoValues': 'Demonstration Values',
+      'about.demoValuesText':
+        'Integrity, information quality, partnership, prudence, and continuous improvement.',
+
+      'about.demoPortfolio': 'Demonstration portfolio'
+    },
+
+    hi: {
+      'about.companyProfile': 'कंपनी प्रोफ़ाइल',
+      'about.pageTitle':
+        'PT Cengkeh Indonesia Global के बारे में',
+      'about.pageDescription':
+        'SRS आवश्यकताओं के अनुसार इतिहास, दृष्टि, मिशन, मूल्य, कानूनी जानकारी, प्रबंधन और संपर्क विवरण वाला कंपनी प्रोफ़ाइल पृष्ठ।',
+
+      'about.demoProfile': 'प्रदर्शन प्रोफ़ाइल',
+      'about.professionalChannel':
+        'एक पेशेवर कमोडिटी सूचना चैनल का निर्माण।',
+      'about.introduction':
+        'PT Cengkeh Indonesia Global को सूचना की गुणवत्ता, साझेदारी और व्यावसायिक संचार पर आधारित प्रदर्शन सामग्री के माध्यम से प्रस्तुत किया गया है।',
+      'about.unverifiedInformation':
+        'कंपनी का इतिहास, संगठनात्मक संरचना, कानूनी दस्तावेज़, प्रमाणन, आपूर्ति क्षमता और परिचालन दावे अभी प्रदर्शित नहीं किए गए हैं क्योंकि उन्हें कंपनी द्वारा उपलब्ध और स्वीकृत किया जाना आवश्यक है।',
+
+      'about.checkCms':
+        'उत्पादन CMS के माध्यम से वेबसाइट कोड बदले बिना कंपनी प्रोफ़ाइल की सामग्री अपडेट की जा सकती है।',
+      'about.checkLegal':
+        'कानूनी और प्रमाणन जानकारी सत्यापन के बाद ही प्रकाशित की जाएगी।',
+      'about.checkPrivacy':
+        'लिखित सहमति के बिना साझेदारों और लेनदेन का संवेदनशील डेटा प्रदर्शित नहीं किया जाएगा।',
+
+      'about.corporateIdentity': 'कॉर्पोरेट पहचान',
+      'about.corporateIdentityText':
+        'हरे, सुनहरे और कांस्य रंगों का संयोजन आधिकारिक लोगो से लिया गया है और पूरे इंटरफ़ेस में समान रूप से लागू किया गया है।',
+
+      'about.companyDirection': 'कंपनी की दिशा',
+      'about.visionMissionValues':
+        'दृष्टि, मिशन और मूल्य',
+      'about.officialStatement':
+        'निम्न सामग्री केवल उदाहरण है और इसे आधिकारिक वक्तव्य से बदला जाना चाहिए।',
+
+      'about.demoVision': 'प्रदर्शन दृष्टि',
+      'about.demoVisionText':
+        'वैश्विक बाज़ार में इंडोनेशियाई लौंग कमोडिटी के लिए एक विश्वसनीय सूचना और साझेदारी संपर्क बनना।',
+
+      'about.demoMission': 'प्रदर्शन मिशन',
+      'about.demoMissionText':
+        'स्पष्ट उत्पाद जानकारी प्रस्तुत करना, तेज़ व्यावसायिक संचार स्थापित करना और डेटा प्रकाशन की जिम्मेदारी बनाए रखना।',
+
+      'about.demoValues': 'प्रदर्शन मूल्य',
+      'about.demoValuesText':
+        'ईमानदारी, सूचना गुणवत्ता, साझेदारी, सावधानी और निरंतर सुधार।',
+
+      'about.demoPortfolio': 'प्रदर्शन पोर्टफोलियो'
+    },
+
+    zh: {
+      'about.companyProfile': '公司简介',
+      'about.pageTitle':
+        '关于 PT Cengkeh Indonesia Global',
+      'about.pageDescription':
+        '根据 SRS 要求展示公司历史、愿景、使命、价值观、法律信息、管理层和联系方式的公司简介页面。',
+
+      'about.demoProfile': '演示公司简介',
+      'about.professionalChannel':
+        '建立专业的商品信息渠道。',
+      'about.introduction':
+        'PT Cengkeh Indonesia Global 通过演示内容进行介绍，重点体现信息质量、合作伙伴关系和商业沟通。',
+      'about.unverifiedInformation':
+        '公司历史、组织结构、法律文件、认证、供应能力和运营声明尚未展示，因为这些信息必须由公司提供并批准。',
+
+      'about.checkCms':
+        '通过正式 CMS，无需修改网站代码即可更新公司简介内容。',
+      'about.checkLegal':
+        '法律和认证信息仅在核实后发布。',
+      'about.checkPrivacy':
+        '未经书面同意，不会展示合作伙伴和交易的敏感数据。',
+
+      'about.corporateIdentity': '企业形象',
+      'about.corporateIdentityText':
+        '绿色、金色和青铜色的配色源自官方标志，并统一应用于整个界面。',
+
+      'about.companyDirection': '公司发展方向',
+      'about.visionMissionValues':
+        '愿景、使命和价值观',
+      'about.officialStatement':
+        '以下内容仅为示例，正式使用时必须替换为官方声明。',
+
+      'about.demoVision': '演示愿景',
+      'about.demoVisionText':
+        '成为印度尼西亚丁香商品进入全球市场时值得信赖的信息和合作桥梁。',
+
+      'about.demoMission': '演示使命',
+      'about.demoMissionText':
+        '提供清晰的产品信息，建立快速的商业沟通，并负责任地发布数据。',
+
+      'about.demoValues': '演示价值观',
+      'about.demoValuesText':
+        '诚信、信息质量、合作伙伴关系、审慎和持续改进。',
+
+      'about.demoPortfolio': '演示项目组合'
+    },
+
+    ar: {
+      'about.companyProfile': 'الملف التعريفي للشركة',
+      'about.pageTitle':
+        'عن PT Cengkeh Indonesia Global',
+      'about.pageDescription':
+        'صفحة تعريفية تعرض تاريخ الشركة ورؤيتها ورسالتها وقيمها ومعلوماتها القانونية وإدارتها وبيانات الاتصال وفق متطلبات وثيقة SRS.',
+
+      'about.demoProfile': 'ملف تعريفي تجريبي',
+      'about.professionalChannel':
+        'بناء قناة احترافية لمعلومات السلع.',
+      'about.introduction':
+        'يتم تقديم PT Cengkeh Indonesia Global من خلال محتوى تجريبي يركز على جودة المعلومات والشراكات والتواصل التجاري.',
+      'about.unverifiedInformation':
+        'لم يتم عرض تاريخ الشركة وهيكلها التنظيمي ووثائقها القانونية وشهاداتها وقدرتها على التوريد وادعاءاتها التشغيلية بعد، لأنها يجب أن تقدم وتعتمد من الشركة.',
+
+      'about.checkCms':
+        'يمكن تحديث محتوى الملف التعريفي للشركة من خلال نظام CMS دون تعديل كود الموقع.',
+      'about.checkLegal':
+        'لن تنشر المعلومات القانونية والشهادات إلا بعد التحقق منها.',
+      'about.checkPrivacy':
+        'لن تعرض بيانات الشركاء والمعاملات الحساسة دون موافقة مكتوبة.',
+
+      'about.corporateIdentity': 'الهوية المؤسسية',
+      'about.corporateIdentityText':
+        'تم اشتقاق الألوان الخضراء والذهبية والبرونزية من الشعار الرسمي وتطبيقها بصورة متناسقة في جميع أجزاء الواجهة.',
+
+      'about.companyDirection': 'اتجاه الشركة',
+      'about.visionMissionValues':
+        'الرؤية والرسالة والقيم',
+      'about.officialStatement':
+        'المحتوى التالي مجرد مثال ويجب استبداله بالبيانات الرسمية.',
+
+      'about.demoVision': 'رؤية تجريبية',
+      'about.demoVisionText':
+        'أن تصبح الشركة حلقة موثوقة للمعلومات والشراكات المتعلقة بسلعة القرنفل الإندونيسي في السوق العالمية.',
+
+      'about.demoMission': 'رسالة تجريبية',
+      'about.demoMissionText':
+        'تقديم معلومات واضحة عن المنتجات، وبناء تواصل تجاري سريع، والمحافظة على مسؤولية نشر البيانات.',
+
+      'about.demoValues': 'قيم تجريبية',
+      'about.demoValuesText':
+        'النزاهة وجودة المعلومات والشراكة والحذر والتحسين المستمر.',
+
+      'about.demoPortfolio': 'محفظة أعمال تجريبية'
+    }
+  };
+
+  Object.keys(aboutPageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      aboutPageTranslations[language]
+    );
+  });
+  
+
     function normalizeText(value = '') {
     return String(value)
       .replace(/\s+/g, ' ')
