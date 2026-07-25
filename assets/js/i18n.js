@@ -1319,7 +1319,131 @@
       articlePageTranslations[language]
     );
   });
-  
+
+
+    const supplierPageTranslations = {
+    id: {
+      'supplier.mapLabel': 'Peta Jaringan',
+      'supplier.pageTitle': 'Wilayah Jaringan Supplier',
+      'supplier.pageDescription':
+        'Peta menggunakan titik perkiraan tingkat wilayah untuk mendemonstrasikan privasi supplier sesuai SRS.',
+      'supplier.regionFilter': 'Filter wilayah',
+      'supplier.allRegions': 'Semua wilayah',
+      'supplier.noRegion': 'Tidak ada wilayah',
+      'supplier.mapUnavailable': 'Peta tidak tersedia',
+      'supplier.mapFallback':
+        'Daftar wilayah tetap dapat dilihat di sebelah peta.',
+      'supplier.noScript':
+        'JavaScript diperlukan untuk peta interaktif. Daftar wilayah: Sulawesi, Maluku, dan Jawa.',
+      'supplier.sulawesi': 'Sulawesi',
+      'supplier.maluku': 'Maluku',
+      'supplier.java': 'Jawa',
+      'supplier.sulawesiNetwork': 'Jaringan Mitra Sulawesi',
+      'supplier.malukuNetwork': 'Jaringan Mitra Maluku',
+      'supplier.javaNetwork': 'Jaringan Mitra Jawa',
+      'supplier.demoLocation':
+        'Lokasi perkiraan tingkat wilayah untuk keperluan demonstrasi.'
+    },
+
+    en: {
+      'supplier.mapLabel': 'Network Map',
+      'supplier.pageTitle': 'Supplier Network Regions',
+      'supplier.pageDescription':
+        'The map uses approximate regional locations to demonstrate supplier privacy in accordance with the SRS.',
+      'supplier.regionFilter': 'Filter by region',
+      'supplier.allRegions': 'All regions',
+      'supplier.noRegion': 'No regions found',
+      'supplier.mapUnavailable': 'Map unavailable',
+      'supplier.mapFallback':
+        'The list of regions can still be viewed beside the map.',
+      'supplier.noScript':
+        'JavaScript is required for the interactive map. Regions listed: Sulawesi, Maluku, and Java.',
+      'supplier.sulawesi': 'Sulawesi',
+      'supplier.maluku': 'Maluku',
+      'supplier.java': 'Java',
+      'supplier.sulawesiNetwork': 'Sulawesi Partner Network',
+      'supplier.malukuNetwork': 'Maluku Partner Network',
+      'supplier.javaNetwork': 'Java Partner Network',
+      'supplier.demoLocation':
+        'Approximate regional location for demonstration purposes.'
+    },
+
+    hi: {
+      'supplier.mapLabel': 'नेटवर्क मानचित्र',
+      'supplier.pageTitle': 'आपूर्तिकर्ता नेटवर्क क्षेत्र',
+      'supplier.pageDescription':
+        'यह मानचित्र SRS के अनुसार आपूर्तिकर्ताओं की गोपनीयता प्रदर्शित करने के लिए अनुमानित क्षेत्रीय स्थानों का उपयोग करता है।',
+      'supplier.regionFilter': 'क्षेत्र के अनुसार फ़िल्टर करें',
+      'supplier.allRegions': 'सभी क्षेत्र',
+      'supplier.noRegion': 'कोई क्षेत्र नहीं मिला',
+      'supplier.mapUnavailable': 'मानचित्र उपलब्ध नहीं है',
+      'supplier.mapFallback':
+        'क्षेत्रों की सूची मानचित्र के पास अभी भी देखी जा सकती है।',
+      'supplier.noScript':
+        'इंटरैक्टिव मानचित्र के लिए JavaScript आवश्यक है। सूचीबद्ध क्षेत्र: सुलावेसी, मालुकु और जावा।',
+      'supplier.sulawesi': 'सुलावेसी',
+      'supplier.maluku': 'मालुकु',
+      'supplier.java': 'जावा',
+      'supplier.sulawesiNetwork': 'सुलावेसी भागीदार नेटवर्क',
+      'supplier.malukuNetwork': 'मालुकु भागीदार नेटवर्क',
+      'supplier.javaNetwork': 'जावा भागीदार नेटवर्क',
+      'supplier.demoLocation':
+        'प्रदर्शन के उद्देश्य से अनुमानित क्षेत्रीय स्थान।'
+    },
+
+    zh: {
+      'supplier.mapLabel': '网络地图',
+      'supplier.pageTitle': '供应商网络区域',
+      'supplier.pageDescription':
+        '该地图使用区域级别的近似位置，以按照 SRS 演示供应商隐私保护。',
+      'supplier.regionFilter': '按区域筛选',
+      'supplier.allRegions': '所有区域',
+      'supplier.noRegion': '未找到区域',
+      'supplier.mapUnavailable': '地图不可用',
+      'supplier.mapFallback':
+        '仍可在地图旁查看区域列表。',
+      'supplier.noScript':
+        '交互式地图需要启用 JavaScript。区域包括：苏拉威西、马鲁古和爪哇。',
+      'supplier.sulawesi': '苏拉威西',
+      'supplier.maluku': '马鲁古',
+      'supplier.java': '爪哇',
+      'supplier.sulawesiNetwork': '苏拉威西合作伙伴网络',
+      'supplier.malukuNetwork': '马鲁古合作伙伴网络',
+      'supplier.javaNetwork': '爪哇合作伙伴网络',
+      'supplier.demoLocation':
+        '用于演示的区域级别近似位置。'
+    },
+
+    ar: {
+      'supplier.mapLabel': 'خريطة الشبكة',
+      'supplier.pageTitle': 'مناطق شبكة الموردين',
+      'supplier.pageDescription':
+        'تستخدم الخريطة مواقع تقريبية على مستوى المناطق لتوضيح خصوصية الموردين وفقاً لوثيقة SRS.',
+      'supplier.regionFilter': 'التصفية حسب المنطقة',
+      'supplier.allRegions': 'جميع المناطق',
+      'supplier.noRegion': 'لم يتم العثور على مناطق',
+      'supplier.mapUnavailable': 'الخريطة غير متاحة',
+      'supplier.mapFallback':
+        'لا يزال من الممكن عرض قائمة المناطق بجانب الخريطة.',
+      'supplier.noScript':
+        'يلزم تفعيل JavaScript للخريطة التفاعلية. المناطق المدرجة: سولاويسي ومالوكو وجاوة.',
+      'supplier.sulawesi': 'سولاويسي',
+      'supplier.maluku': 'مالوكو',
+      'supplier.java': 'جاوة',
+      'supplier.sulawesiNetwork': 'شبكة شركاء سولاويسي',
+      'supplier.malukuNetwork': 'شبكة شركاء مالوكو',
+      'supplier.javaNetwork': 'شبكة شركاء جاوة',
+      'supplier.demoLocation':
+        'موقع تقريبي على مستوى المنطقة لأغراض العرض التجريبي.'
+    }
+  };
+
+  Object.keys(supplierPageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      supplierPageTranslations[language]
+    );
+  });
 
     function normalizeText(value = '') {
     return String(value)
