@@ -1149,6 +1149,91 @@
       aboutPageTranslations[language]
     );
   });
+
+
+    const productPageTranslations = {
+    id: {
+      'product.catalog': 'Katalog',
+      'product.pageTitle': 'Produk Cengkeh',
+      'product.pageDescription':
+        'Katalog demonstrasi dengan filter kategori, pencarian, halaman detail, spesifikasi, dan tombol komunikasi.',
+      'product.searchLabel': 'Cari produk',
+      'product.searchPlaceholder':
+        'Masukkan nama atau deskripsi produk',
+      'product.category': 'Kategori',
+      'product.allCategories': 'Semua kategori',
+      'product.notFound': 'Produk tidak ditemukan',
+      'product.changeSearch':
+        'Ubah kata kunci atau kategori pencarian.'
+    },
+
+    en: {
+      'product.catalog': 'Catalog',
+      'product.pageTitle': 'Clove Products',
+      'product.pageDescription':
+        'A demonstration catalog featuring category filters, search, detail pages, specifications, and communication buttons.',
+      'product.searchLabel': 'Search products',
+      'product.searchPlaceholder':
+        'Enter a product name or description',
+      'product.category': 'Category',
+      'product.allCategories': 'All categories',
+      'product.notFound': 'No products found',
+      'product.changeSearch':
+        'Change the search keyword or category.'
+    },
+
+    hi: {
+      'product.catalog': 'कैटलॉग',
+      'product.pageTitle': 'लौंग उत्पाद',
+      'product.pageDescription':
+        'श्रेणी फ़िल्टर, खोज, विवरण पृष्ठ, विशिष्टताओं और संपर्क बटन वाला प्रदर्शन कैटलॉग।',
+      'product.searchLabel': 'उत्पाद खोजें',
+      'product.searchPlaceholder':
+        'उत्पाद का नाम या विवरण दर्ज करें',
+      'product.category': 'श्रेणी',
+      'product.allCategories': 'सभी श्रेणियाँ',
+      'product.notFound': 'कोई उत्पाद नहीं मिला',
+      'product.changeSearch':
+        'खोज शब्द या श्रेणी बदलें।'
+    },
+
+    zh: {
+      'product.catalog': '产品目录',
+      'product.pageTitle': '丁香产品',
+      'product.pageDescription':
+        '包含分类筛选、搜索、详情页面、产品规格和沟通按钮的演示目录。',
+      'product.searchLabel': '搜索产品',
+      'product.searchPlaceholder':
+        '输入产品名称或说明',
+      'product.category': '分类',
+      'product.allCategories': '所有分类',
+      'product.notFound': '未找到产品',
+      'product.changeSearch':
+        '请更改搜索关键词或产品分类。'
+    },
+
+    ar: {
+      'product.catalog': 'الكتالوج',
+      'product.pageTitle': 'منتجات القرنفل',
+      'product.pageDescription':
+        'كتالوج تجريبي يتضمن تصفية حسب الفئة والبحث وصفحات التفاصيل والمواصفات وأزرار التواصل.',
+      'product.searchLabel': 'البحث عن منتج',
+      'product.searchPlaceholder':
+        'أدخل اسم المنتج أو وصفه',
+      'product.category': 'الفئة',
+      'product.allCategories': 'جميع الفئات',
+      'product.notFound': 'لم يتم العثور على منتجات',
+      'product.changeSearch':
+        'غيّر كلمة البحث أو فئة المنتج.'
+    }
+  };
+
+  Object.keys(productPageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      productPageTranslations[language]
+    );
+  });
   
 
     function normalizeText(value = '') {
