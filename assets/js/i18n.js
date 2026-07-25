@@ -637,6 +637,275 @@
     );
   });
 
+    const dynamicHomepageTranslations = {
+    id: {
+      'category.driedCloves': 'Cengkeh Kering',
+      'category.cloveOil': 'Minyak Cengkeh',
+      'category.cloveStems': 'Tangkai Cengkeh',
+      'category.education': 'Edukasi',
+      'category.quality': 'Kualitas',
+      'category.partnership': 'Kemitraan',
+      'category.trade': 'Perdagangan',
+
+      'product.premium.name': 'Cengkeh Kering Premium',
+      'product.premium.summary':
+        'Cengkeh kering pilihan dengan proses sortasi bertahap untuk kebutuhan industri dan perdagangan.',
+
+      'product.oil.name': 'Minyak Cengkeh',
+      'product.oil.summary':
+        'Produk turunan cengkeh untuk kebutuhan bahan baku industri dengan dokumentasi mutu yang dapat disesuaikan.',
+
+      'product.stem.name': 'Tangkai Cengkeh',
+      'product.stem.summary':
+        'Tangkai cengkeh yang dipersiapkan untuk pemanfaatan lanjutan dan kebutuhan mitra industri.',
+
+      'article.supplyChain.title':
+        'Mengenal Rantai Pasok Cengkeh Indonesia',
+      'article.supplyChain.excerpt':
+        'Gambaran singkat proses komoditas cengkeh dari mitra kebun, sortasi, pengemasan, hingga komunikasi dengan calon pembeli.',
+
+      'article.sorting.title':
+        'Pentingnya Sortasi dalam Perdagangan Komoditas',
+      'article.sorting.excerpt':
+        'Sortasi membantu membangun konsistensi informasi produk dan mengurangi ketidakjelasan spesifikasi pada komunikasi B2B.',
+
+      'article.partnership.title':
+        'Kemitraan Supplier yang Bertanggung Jawab',
+      'article.partnership.excerpt':
+        'Peta supplier sebaiknya memberikan gambaran wilayah tanpa membuka informasi sensitif yang tidak disetujui.',
+
+      'portfolio.network.title':
+        'Pengembangan Jaringan Kemitraan',
+      'portfolio.network.summary':
+        'Contoh portofolio kemitraan yang perlu diganti dengan proyek resmi dan data terverifikasi.',
+
+      'portfolio.quality.title':
+        'Penguatan Informasi Mutu Produk',
+      'portfolio.quality.summary':
+        'Contoh dokumentasi upaya penyajian spesifikasi dan informasi kualitas secara konsisten.',
+
+      'portfolio.global.title':
+        'Persiapan Kanal Pasar Global',
+      'portfolio.global.summary':
+        'Contoh portofolio pengembangan materi dan kanal komunikasi untuk calon mitra global.'
+    },
+
+    en: {
+      'category.driedCloves': 'Dried Cloves',
+      'category.cloveOil': 'Clove Oil',
+      'category.cloveStems': 'Clove Stems',
+      'category.education': 'Education',
+      'category.quality': 'Quality',
+      'category.partnership': 'Partnership',
+      'category.trade': 'Trade',
+
+      'product.premium.name': 'Premium Dried Cloves',
+      'product.premium.summary':
+        'Selected dried cloves processed through staged sorting for industrial and trading requirements.',
+
+      'product.oil.name': 'Clove Oil',
+      'product.oil.summary':
+        'A clove-derived product for industrial raw materials with adaptable quality documentation.',
+
+      'product.stem.name': 'Clove Stems',
+      'product.stem.summary':
+        'Clove stems prepared for further utilization and the requirements of industrial partners.',
+
+      'article.supplyChain.title':
+        'Understanding Indonesia’s Clove Supply Chain',
+      'article.supplyChain.excerpt':
+        'A brief overview of the clove commodity process, from partner farms and sorting to packaging and communication with prospective buyers.',
+
+      'article.sorting.title':
+        'The Importance of Sorting in Commodity Trade',
+      'article.sorting.excerpt':
+        'Sorting helps maintain consistent product information and reduces specification ambiguity in B2B communication.',
+
+      'article.partnership.title':
+        'Responsible Supplier Partnerships',
+      'article.partnership.excerpt':
+        'Supplier maps should provide a regional overview without revealing sensitive information that has not been approved.',
+
+      'portfolio.network.title':
+        'Partnership Network Development',
+      'portfolio.network.summary':
+        'A sample partnership portfolio that must be replaced with official projects and verified data.',
+
+      'portfolio.quality.title':
+        'Strengthening Product Quality Information',
+      'portfolio.quality.summary':
+        'Sample documentation of efforts to present specifications and quality information consistently.',
+
+      'portfolio.global.title':
+        'Preparing Global Market Channels',
+      'portfolio.global.summary':
+        'A sample portfolio for developing materials and communication channels for prospective global partners.'
+    },
+
+    hi: {
+      'category.driedCloves': 'सूखी लौंग',
+      'category.cloveOil': 'लौंग का तेल',
+      'category.cloveStems': 'लौंग की डंठलें',
+      'category.education': 'शिक्षा',
+      'category.quality': 'गुणवत्ता',
+      'category.partnership': 'साझेदारी',
+      'category.trade': 'व्यापार',
+
+      'product.premium.name': 'प्रीमियम सूखी लौंग',
+      'product.premium.summary':
+        'औद्योगिक और व्यापारिक आवश्यकताओं के लिए चरणबद्ध छंटाई से तैयार चुनी हुई सूखी लौंग।',
+
+      'product.oil.name': 'लौंग का तेल',
+      'product.oil.summary':
+        'औद्योगिक कच्चे माल की आवश्यकताओं के लिए अनुकूलित गुणवत्ता दस्तावेज़ों वाला लौंग से बना उत्पाद।',
+
+      'product.stem.name': 'लौंग की डंठलें',
+      'product.stem.summary':
+        'आगे उपयोग और औद्योगिक साझेदारों की आवश्यकताओं के लिए तैयार की गई लौंग की डंठलें।',
+
+      'article.supplyChain.title':
+        'इंडोनेशिया की लौंग आपूर्ति श्रृंखला को समझना',
+      'article.supplyChain.excerpt':
+        'साझेदार बागानों, छंटाई और पैकेजिंग से लेकर संभावित खरीदारों से संपर्क तक लौंग की प्रक्रिया का संक्षिप्त विवरण।',
+
+      'article.sorting.title':
+        'कमोडिटी व्यापार में छंटाई का महत्व',
+      'article.sorting.excerpt':
+        'छंटाई उत्पाद जानकारी की निरंतरता बनाए रखने और B2B संचार में विनिर्देशों की अस्पष्टता कम करने में सहायता करती है।',
+
+      'article.partnership.title':
+        'जिम्मेदार आपूर्तिकर्ता साझेदारी',
+      'article.partnership.excerpt':
+        'आपूर्तिकर्ता मानचित्र को बिना स्वीकृति वाली संवेदनशील जानकारी दिखाए क्षेत्रीय जानकारी प्रदान करनी चाहिए।',
+
+      'portfolio.network.title':
+        'साझेदारी नेटवर्क का विकास',
+      'portfolio.network.summary':
+        'साझेदारी पोर्टफोलियो का नमूना जिसे आधिकारिक परियोजनाओं और सत्यापित डेटा से बदला जाना चाहिए।',
+
+      'portfolio.quality.title':
+        'उत्पाद गुणवत्ता जानकारी को मजबूत करना',
+      'portfolio.quality.summary':
+        'विनिर्देशों और गुणवत्ता जानकारी को लगातार प्रस्तुत करने के प्रयासों का नमूना दस्तावेज़।',
+
+      'portfolio.global.title':
+        'वैश्विक बाज़ार चैनलों की तैयारी',
+      'portfolio.global.summary':
+        'संभावित वैश्विक साझेदारों के लिए सामग्री और संचार चैनल विकसित करने का नमूना पोर्टफोलियो।'
+    },
+
+    zh: {
+      'category.driedCloves': '干丁香',
+      'category.cloveOil': '丁香油',
+      'category.cloveStems': '丁香梗',
+      'category.education': '教育',
+      'category.quality': '质量',
+      'category.partnership': '合作伙伴关系',
+      'category.trade': '贸易',
+
+      'product.premium.name': '优质干丁香',
+      'product.premium.summary':
+        '经过分阶段筛选的精选干丁香，适用于工业和贸易需求。',
+
+      'product.oil.name': '丁香油',
+      'product.oil.summary':
+        '适用于工业原材料需求的丁香衍生产品，并可提供相应的质量文件。',
+
+      'product.stem.name': '丁香梗',
+      'product.stem.summary':
+        '为进一步利用以及工业合作伙伴需求而准备的丁香梗。',
+
+      'article.supplyChain.title':
+        '了解印度尼西亚丁香供应链',
+      'article.supplyChain.excerpt':
+        '简要介绍丁香从合作种植园、筛选和包装，到与潜在买家沟通的整个流程。',
+
+      'article.sorting.title':
+        '筛选在商品贸易中的重要性',
+      'article.sorting.excerpt':
+        '筛选有助于保持产品信息的一致性，并减少 B2B 沟通中规格不明确的问题。',
+
+      'article.partnership.title':
+        '负责任的供应商合作伙伴关系',
+      'article.partnership.excerpt':
+        '供应商地图应提供区域概况，同时避免公开未经批准的敏感信息。',
+
+      'portfolio.network.title':
+        '合作伙伴网络发展',
+      'portfolio.network.summary':
+        '合作伙伴项目组合示例，正式使用前应替换为官方项目和已验证数据。',
+
+      'portfolio.quality.title':
+        '加强产品质量信息',
+      'portfolio.quality.summary':
+        '持续展示产品规格和质量信息相关工作的示例记录。',
+
+      'portfolio.global.title':
+        '全球市场渠道准备',
+      'portfolio.global.summary':
+        '为潜在全球合作伙伴开发资料和沟通渠道的示例项目组合。'
+    },
+
+    ar: {
+      'category.driedCloves': 'القرنفل المجفف',
+      'category.cloveOil': 'زيت القرنفل',
+      'category.cloveStems': 'سيقان القرنفل',
+      'category.education': 'التوعية',
+      'category.quality': 'الجودة',
+      'category.partnership': 'الشراكة',
+      'category.trade': 'التجارة',
+
+      'product.premium.name': 'قرنفل مجفف ممتاز',
+      'product.premium.summary':
+        'قرنفل مجفف مختار يخضع لفرز تدريجي لتلبية احتياجات الصناعة والتجارة.',
+
+      'product.oil.name': 'زيت القرنفل',
+      'product.oil.summary':
+        'منتج مشتق من القرنفل لاستخدامه مادة خام صناعية مع وثائق جودة قابلة للتخصيص.',
+
+      'product.stem.name': 'سيقان القرنفل',
+      'product.stem.summary':
+        'سيقان قرنفل معدة للاستخدام اللاحق ولتلبية احتياجات الشركاء الصناعيين.',
+
+      'article.supplyChain.title':
+        'التعرف على سلسلة توريد القرنفل في إندونيسيا',
+      'article.supplyChain.excerpt':
+        'نظرة موجزة على مراحل القرنفل من المزارع الشريكة والفرز والتعبئة إلى التواصل مع المشترين المحتملين.',
+
+      'article.sorting.title':
+        'أهمية الفرز في تجارة السلع',
+      'article.sorting.excerpt':
+        'يساعد الفرز على توحيد معلومات المنتجات وتقليل غموض المواصفات في التواصل بين الشركات.',
+
+      'article.partnership.title':
+        'شراكات مسؤولة مع الموردين',
+      'article.partnership.excerpt':
+        'ينبغي أن تقدم خريطة الموردين نظرة عامة على المناطق دون كشف معلومات حساسة غير معتمدة.',
+
+      'portfolio.network.title':
+        'تطوير شبكة الشراكات',
+      'portfolio.network.summary':
+        'نموذج لمحفظة شراكات يجب استبداله بمشروعات رسمية وبيانات موثقة.',
+
+      'portfolio.quality.title':
+        'تعزيز معلومات جودة المنتجات',
+      'portfolio.quality.summary':
+        'نموذج لتوثيق جهود عرض المواصفات ومعلومات الجودة بصورة متسقة.',
+
+      'portfolio.global.title':
+        'إعداد قنوات السوق العالمية',
+      'portfolio.global.summary':
+        'نموذج لمحفظة تطوير المواد وقنوات التواصل مع الشركاء العالميين المحتملين.'
+    }
+  };
+
+  Object.keys(dynamicHomepageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      dynamicHomepageTranslations[language]
+    );
+  });
+
     function normalizeText(value = '') {
     return String(value)
       .replace(/\s+/g, ' ')
