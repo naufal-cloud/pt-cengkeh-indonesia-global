@@ -1585,6 +1585,226 @@
     );
   });
 
+
+    const productDetailTranslations = {
+    id: {
+      'productDetail.detail': 'Detail',
+      'productDetail.title': 'Detail Produk',
+      'productDetail.description':
+        'Informasi produk, spesifikasi, brosur, dan kanal pertanyaan.',
+      'productDetail.notPublished':
+        'Produk mungkin belum dipublikasikan.',
+
+      'productDetail.premiumDescription':
+        'Produk demonstrasi yang menampilkan struktur informasi katalog sesuai SRS. Spesifikasi final, standar mutu, sertifikasi, harga, dan kapasitas pasokan harus diverifikasi oleh perusahaan sebelum publikasi produksi.',
+      'productDetail.oilDescription':
+        'Contoh halaman produk minyak cengkeh. Detail kadar eugenol, metode ekstraksi, ukuran kemasan, dan dokumen pengujian harus diisi melalui CMS setelah mendapat persetujuan resmi.',
+      'productDetail.stemDescription':
+        'Contoh katalog tangkai cengkeh yang dapat dikelola dari CMS. Seluruh klaim mutu dan penggunaan akhir harus diverifikasi sebelum ditampilkan sebagai informasi resmi.',
+
+      'productDetail.origin': 'Asal',
+      'productDetail.indonesia': 'Indonesia',
+      'productDetail.condition': 'Kondisi',
+      'productDetail.drySorted': 'Kering dan tersortir',
+      'productDetail.packaging': 'Kemasan',
+      'productDetail.customB2B':
+        'Menyesuaikan kebutuhan B2B',
+      'productDetail.status': 'Status',
+      'productDetail.demoVerification':
+        'Konten demo — perlu verifikasi',
+
+      'productDetail.form': 'Bentuk',
+      'productDetail.liquid': 'Cair',
+      'productDetail.usage': 'Penggunaan',
+      'productDetail.industrialRawMaterial':
+        'Bahan baku industri',
+      'productDetail.documents': 'Dokumen',
+      'productDetail.onRequest':
+        'Sesuai permintaan dan ketersediaan',
+
+      'productDetail.sorting': 'Sortasi',
+      'productDetail.asRequired':
+        'Berdasarkan kebutuhan',
+      'productDetail.sackPackaging':
+        'Karung atau kemasan B2B'
+    },
+
+    en: {
+      'productDetail.detail': 'Detail',
+      'productDetail.title': 'Product Details',
+      'productDetail.description':
+        'Product information, specifications, brochure, and inquiry channels.',
+      'productDetail.notPublished':
+        'The product may not have been published yet.',
+
+      'productDetail.premiumDescription':
+        'This demonstration product presents a catalogue information structure based on the SRS. Final specifications, quality standards, certifications, prices, and supply capacity must be verified by the company before production publication.',
+      'productDetail.oilDescription':
+        'This is a demonstration clove oil product page. Eugenol content, extraction method, packaging size, and testing documents must be entered through the CMS after official approval.',
+      'productDetail.stemDescription':
+        'This is a demonstration clove stem catalogue that can be managed through the CMS. All quality claims and intended uses must be verified before being displayed as official information.',
+
+      'productDetail.origin': 'Origin',
+      'productDetail.indonesia': 'Indonesia',
+      'productDetail.condition': 'Condition',
+      'productDetail.drySorted': 'Dried and sorted',
+      'productDetail.packaging': 'Packaging',
+      'productDetail.customB2B':
+        'Adapted to B2B requirements',
+      'productDetail.status': 'Status',
+      'productDetail.demoVerification':
+        'Demonstration content — verification required',
+
+      'productDetail.form': 'Form',
+      'productDetail.liquid': 'Liquid',
+      'productDetail.usage': 'Usage',
+      'productDetail.industrialRawMaterial':
+        'Industrial raw material',
+      'productDetail.documents': 'Documents',
+      'productDetail.onRequest':
+        'Subject to request and availability',
+
+      'productDetail.sorting': 'Sorting',
+      'productDetail.asRequired':
+        'Based on requirements',
+      'productDetail.sackPackaging':
+        'Sacks or B2B packaging'
+    },
+
+    hi: {
+      'productDetail.detail': 'विवरण',
+      'productDetail.title': 'उत्पाद विवरण',
+      'productDetail.description':
+        'उत्पाद की जानकारी, विनिर्देश, ब्रोशर और पूछताछ के माध्यम।',
+      'productDetail.notPublished':
+        'उत्पाद अभी प्रकाशित नहीं किया गया हो सकता है।',
+
+      'productDetail.premiumDescription':
+        'यह प्रदर्शन उत्पाद SRS के अनुसार कैटलॉग जानकारी की संरचना प्रस्तुत करता है। अंतिम विनिर्देशों, गुणवत्ता मानकों, प्रमाणपत्रों, कीमतों और आपूर्ति क्षमता को आधिकारिक प्रकाशन से पहले कंपनी द्वारा सत्यापित किया जाना चाहिए।',
+      'productDetail.oilDescription':
+        'यह लौंग तेल उत्पाद पृष्ठ का एक उदाहरण है। यूजेनॉल की मात्रा, निष्कर्षण विधि, पैकेजिंग आकार और परीक्षण दस्तावेज आधिकारिक स्वीकृति के बाद CMS के माध्यम से भरे जाने चाहिए।',
+      'productDetail.stemDescription':
+        'यह लौंग के डंठल की एक उदाहरण कैटलॉग सामग्री है जिसे CMS से प्रबंधित किया जा सकता है। सभी गुणवत्ता दावों और अंतिम उपयोगों को आधिकारिक जानकारी के रूप में दिखाने से पहले सत्यापित किया जाना चाहिए।',
+
+      'productDetail.origin': 'उत्पत्ति',
+      'productDetail.indonesia': 'इंडोनेशिया',
+      'productDetail.condition': 'स्थिति',
+      'productDetail.drySorted': 'सूखा और छांटा हुआ',
+      'productDetail.packaging': 'पैकेजिंग',
+      'productDetail.customB2B':
+        'B2B आवश्यकताओं के अनुसार',
+      'productDetail.status': 'स्थिति',
+      'productDetail.demoVerification':
+        'प्रदर्शन सामग्री — सत्यापन आवश्यक',
+
+      'productDetail.form': 'रूप',
+      'productDetail.liquid': 'तरल',
+      'productDetail.usage': 'उपयोग',
+      'productDetail.industrialRawMaterial':
+        'औद्योगिक कच्चा माल',
+      'productDetail.documents': 'दस्तावेज',
+      'productDetail.onRequest':
+        'अनुरोध और उपलब्धता के अनुसार',
+
+      'productDetail.sorting': 'छंटाई',
+      'productDetail.asRequired':
+        'आवश्यकता के अनुसार',
+      'productDetail.sackPackaging':
+        'बोरी या B2B पैकेजिंग'
+    },
+
+    zh: {
+      'productDetail.detail': '详情',
+      'productDetail.title': '产品详情',
+      'productDetail.description':
+        '产品信息、规格、宣传册和咨询渠道。',
+      'productDetail.notPublished':
+        '该产品可能尚未发布。',
+
+      'productDetail.premiumDescription':
+        '该演示产品按照 SRS 展示产品目录信息结构。最终规格、质量标准、认证、价格和供应能力必须在正式发布前由公司核实。',
+      'productDetail.oilDescription':
+        '这是丁香油产品页面的演示示例。丁香酚含量、提取方法、包装规格和检测文件必须在获得正式批准后通过 CMS 填写。',
+      'productDetail.stemDescription':
+        '这是可通过 CMS 管理的丁香梗产品目录示例。所有质量声明和最终用途必须在作为官方信息发布前进行核实。',
+
+      'productDetail.origin': '原产地',
+      'productDetail.indonesia': '印度尼西亚',
+      'productDetail.condition': '状态',
+      'productDetail.drySorted': '干燥并完成分选',
+      'productDetail.packaging': '包装',
+      'productDetail.customB2B':
+        '根据 B2B 需求调整',
+      'productDetail.status': '发布状态',
+      'productDetail.demoVerification':
+        '演示内容 — 需要核实',
+
+      'productDetail.form': '形态',
+      'productDetail.liquid': '液体',
+      'productDetail.usage': '用途',
+      'productDetail.industrialRawMaterial':
+        '工业原料',
+      'productDetail.documents': '文件',
+      'productDetail.onRequest':
+        '根据请求和实际供应情况提供',
+
+      'productDetail.sorting': '分选',
+      'productDetail.asRequired':
+        '根据需求处理',
+      'productDetail.sackPackaging':
+        '麻袋或 B2B 包装'
+    },
+
+    ar: {
+      'productDetail.detail': 'التفاصيل',
+      'productDetail.title': 'تفاصيل المنتج',
+      'productDetail.description':
+        'معلومات المنتج والمواصفات والكتيب وقنوات الاستفسار.',
+      'productDetail.notPublished':
+        'قد لا يكون المنتج منشوراً بعد.',
+
+      'productDetail.premiumDescription':
+        'يعرض هذا المنتج التجريبي هيكل معلومات الكتالوج وفقاً لوثيقة SRS. يجب على الشركة التحقق من المواصفات النهائية ومعايير الجودة والشهادات والأسعار والقدرة على التوريد قبل النشر الرسمي.',
+      'productDetail.oilDescription':
+        'هذه صفحة تجريبية لمنتج زيت القرنفل. يجب إدخال نسبة الأوجينول وطريقة الاستخلاص وحجم العبوة ووثائق الاختبار من خلال نظام إدارة المحتوى بعد الحصول على الموافقة الرسمية.',
+      'productDetail.stemDescription':
+        'هذا نموذج لكتالوج سيقان القرنفل يمكن إدارته من خلال نظام إدارة المحتوى. يجب التحقق من جميع ادعاءات الجودة والاستخدامات النهائية قبل عرضها كمعلومات رسمية.',
+
+      'productDetail.origin': 'المنشأ',
+      'productDetail.indonesia': 'إندونيسيا',
+      'productDetail.condition': 'الحالة',
+      'productDetail.drySorted': 'مجفف ومفرز',
+      'productDetail.packaging': 'التعبئة',
+      'productDetail.customB2B':
+        'حسب متطلبات الأعمال',
+      'productDetail.status': 'الحالة',
+      'productDetail.demoVerification':
+        'محتوى تجريبي — يحتاج إلى التحقق',
+
+      'productDetail.form': 'الشكل',
+      'productDetail.liquid': 'سائل',
+      'productDetail.usage': 'الاستخدام',
+      'productDetail.industrialRawMaterial':
+        'مادة خام صناعية',
+      'productDetail.documents': 'الوثائق',
+      'productDetail.onRequest':
+        'حسب الطلب والتوفر',
+
+      'productDetail.sorting': 'الفرز',
+      'productDetail.asRequired':
+        'حسب المتطلبات',
+      'productDetail.sackPackaging':
+        'أكياس أو عبوات للأعمال'
+    }
+  };
+
+  Object.keys(productDetailTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      productDetailTranslations[language]
+    );
+  });
+
   
     function normalizeText(value = '') {
     return String(value)
