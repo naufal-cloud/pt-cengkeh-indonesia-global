@@ -2122,6 +2122,50 @@
       privacyPageTranslations[language]
     );
   });
+
+    const notFoundPageTranslations = {
+    id: {
+      'notFound.title': 'Halaman tidak ditemukan',
+      'notFound.description':
+        'Alamat yang Anda buka tidak tersedia atau telah dipindahkan.',
+      'notFound.backHome': 'Kembali ke Beranda'
+    },
+
+    en: {
+      'notFound.title': 'Page not found',
+      'notFound.description':
+        'The address you opened is unavailable or has been moved.',
+      'notFound.backHome': 'Back to Home'
+    },
+
+    hi: {
+      'notFound.title': 'पृष्ठ नहीं मिला',
+      'notFound.description':
+        'आपके द्वारा खोला गया पता उपलब्ध नहीं है या स्थानांतरित कर दिया गया है।',
+      'notFound.backHome': 'मुखपृष्ठ पर वापस जाएँ'
+    },
+
+    zh: {
+      'notFound.title': '未找到页面',
+      'notFound.description':
+        '您访问的地址不可用或已被移动。',
+      'notFound.backHome': '返回首页'
+    },
+
+    ar: {
+      'notFound.title': 'لم يتم العثور على الصفحة',
+      'notFound.description':
+        'العنوان الذي فتحته غير متاح أو تم نقله.',
+      'notFound.backHome': 'العودة إلى الرئيسية'
+    }
+  };
+
+  Object.keys(notFoundPageTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      notFoundPageTranslations[language]
+    );
+  });
   
     function normalizeText(value = '') {
     return String(value)
