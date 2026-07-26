@@ -2279,11 +2279,43 @@
     });
   }
 
+    function translateDocumentMetadata() {
+    const titleKey = findTranslationKey(document.title);
+
+    if (titleKey) {
+      document.title = translate(titleKey);
+    }
+
+    const metadataSelectors = [
+      'meta[name="description"]',
+      'meta[property="og:title"]',
+      'meta[property="og:description"]'
+    ];
+
+    document
+      .querySelectorAll(metadataSelectors.join(', '))
+      .forEach(element => {
+        const content = element.getAttribute('content');
+
+        if (!content) return;
+
+        const translationKey = findTranslationKey(content);
+
+        if (translationKey) {
+          element.setAttribute(
+            'content',
+            translate(translationKey)
+          );
+        }
+      });
+  }
+
   function initAutomaticTranslation() {
     if (!document.body) return;
 
     translateTextNodes(document.body);
     translateElementAttributes(document);
+    translateDocumentMetadata();
 
     const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
@@ -2385,6 +2417,7 @@
     applyTranslations();
     translateTextNodes(document.body);
     translateElementAttributes(document);
+    translateDocumentMetadata();
 
     document.dispatchEvent(
       new CustomEvent('cig:languagechange', {
