@@ -209,7 +209,14 @@ document.addEventListener(
     });
     document.addEventListener('click', e => {
       const btn = e.target.closest('[data-brochure]');
-      if (btn) toast('Brosur PDF demo belum tersedia. File dapat diunggah melalui CMS produksi.', 'info');
+      if (btn) {
+  toast(
+    window.CIG_I18N.translate(
+      'toast.brochureUnavailable'
+    ),
+    'info'
+  );
+}
     });
   }
 
