@@ -133,7 +133,20 @@ if (premiumProduct) {
     const slug = new URLSearchParams(location.search).get('slug');
     const p = (window.CIG.products || []).find(x => x.slug === slug && x.status === 'published');
     if (!p) { target.innerHTML = '<div class="empty-state"><h1>Produk tidak ditemukan</h1><p>Produk mungkin belum dipublikasikan.</p><a class="btn btn--primary" href="produk.html">Kembali ke katalog</a></div>'; return; }
-    document.title = `${p.name} | PT Cengkeh Indonesia Global`;
+    const updateProductPageTitle = () => {
+  const productTitle =
+    target.querySelector('h1')?.textContent?.trim() || p.name;
+
+  document.title =
+    `${productTitle} | PT Cengkeh Indonesia Global`;
+};
+
+setTimeout(updateProductPageTitle, 0);
+
+document.addEventListener(
+  'cig:languagechange',
+  updateProductPageTitle
+);
     target.innerHTML = `<div class="detail-grid"><div class="detail-media"><img src="${esc(p.image)}" alt="Ilustrasi ${esc(p.name)}" width="800" height="560"></div><div><span class="eyebrow">${esc(p.category)}</span><h1>${esc(p.name)}</h1><p class="lead">${esc(p.summary)}</p><p>${esc(p.description)}</p><div class="button-row"><button class="btn btn--primary" data-whatsapp data-product-name="${esc(p.name)}">Tanyakan via WhatsApp</button><button class="btn btn--ghost" data-brochure>Unduh brosur</button></div></div></div><section class="section section--compact"><h2>Spesifikasi</h2><div class="table-wrap"><table><tbody>${p.specs.map(([k,v])=>`<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</tbody></table></div></section>`;
   }
 
@@ -160,7 +173,20 @@ if (premiumProduct) {
     const slug = new URLSearchParams(location.search).get('slug');
     const a = (window.CIG.articles || []).find(x => x.slug === slug && x.status === 'published');
     if (!a) { target.innerHTML = '<div class="empty-state"><h1>Artikel tidak ditemukan</h1><a class="btn btn--primary" href="artikel.html">Kembali ke artikel</a></div>'; return; }
-    document.title = `${a.title} | PT Cengkeh Indonesia Global`;
+    const updateArticlePageTitle = () => {
+  const articleTitle =
+    target.querySelector('h1')?.textContent?.trim() || a.title;
+
+  document.title =
+    `${articleTitle} | PT Cengkeh Indonesia Global`;
+};
+
+setTimeout(updateArticlePageTitle, 0);
+
+document.addEventListener(
+  'cig:languagechange',
+  updateArticlePageTitle
+);
     const date = window.CIG_I18N.formatDate(
   `${a.date}T00:00:00`
 );
