@@ -117,7 +117,9 @@ if (premiumProduct) {
     const search = document.querySelector('[data-product-search]');
     const products = (window.CIG.products || []).filter(x => x.status === 'published');
     const categories = [...new Set(products.map(x => x.category))];
-    if (filter) filter.innerHTML = '<option value="">Semua kategori</option>' + categories.map(c=>`<option>${esc(c)}</option>`).join('');
+    if (filter) filter.innerHTML = '<option value="">Semua kategori</option>' + categories.map(c =>
+  `<option value="${esc(c)}">${esc(c)}</option>`
+).join('');
     const draw = () => {
       const q = (search?.value || '').toLowerCase().trim();
       const category = filter?.value || '';
@@ -157,7 +159,9 @@ document.addEventListener(
     const search = document.querySelector('[data-article-search]');
     const articles = (window.CIG.articles || []).filter(x => x.status === 'published').sort((a,b)=>b.date.localeCompare(a.date));
     const categories = [...new Set(articles.map(x => x.category))];
-    if (filter) filter.innerHTML = '<option value="">Semua kategori</option>' + categories.map(c=>`<option>${esc(c)}</option>`).join('');
+    if (filter) filter.innerHTML = '<option value="">Semua kategori</option>' + categories.map(c =>
+  `<option value="${esc(c)}">${esc(c)}</option>`
+).join('');
     const draw = () => {
       const q = (search?.value || '').toLowerCase().trim();
       const category = filter?.value || '';
