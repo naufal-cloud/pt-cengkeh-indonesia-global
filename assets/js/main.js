@@ -92,7 +92,9 @@ if (premiumProduct) {
   }
 
   function articleCard(a) {
-    const date = new Intl.DateTimeFormat('id-ID', {day:'numeric',month:'long',year:'numeric'}).format(new Date(a.date+'T00:00:00'));
+    const date = window.CIG_I18N.formatDate(
+  `${a.date}T00:00:00`
+);
     return `<article class="card article-card">
       <a class="card__media" href="${prefix}artikel-detail.html?slug=${encodeURIComponent(a.slug)}"><img src="${prefix}${esc(a.image)}" alt="Ilustrasi artikel ${esc(a.title)}" loading="lazy" width="800" height="520"></a>
       <div class="card__body"><div class="meta"><span>${esc(a.category)}</span><time datetime="${esc(a.date)}">${date}</time></div><h3><a href="${prefix}artikel-detail.html?slug=${encodeURIComponent(a.slug)}">${esc(a.title)}</a></h3><p>${esc(a.excerpt)}</p><a class="text-link" href="${prefix}artikel-detail.html?slug=${encodeURIComponent(a.slug)}">Baca artikel <span aria-hidden="true">→</span></a></div>
@@ -159,7 +161,9 @@ if (premiumProduct) {
     const a = (window.CIG.articles || []).find(x => x.slug === slug && x.status === 'published');
     if (!a) { target.innerHTML = '<div class="empty-state"><h1>Artikel tidak ditemukan</h1><a class="btn btn--primary" href="artikel.html">Kembali ke artikel</a></div>'; return; }
     document.title = `${a.title} | PT Cengkeh Indonesia Global`;
-    const date = new Intl.DateTimeFormat('id-ID',{day:'numeric',month:'long',year:'numeric'}).format(new Date(a.date+'T00:00:00'));
+    const date = window.CIG_I18N.formatDate(
+  `${a.date}T00:00:00`
+);
     target.innerHTML = `<article class="article-detail"><header><span class="eyebrow">${esc(a.category)}</span><h1>${esc(a.title)}</h1><p class="lead">${esc(a.excerpt)}</p><time datetime="${esc(a.date)}">${date}</time></header><img class="article-hero" src="${esc(a.image)}" alt="Ilustrasi ${esc(a.title)}" width="800" height="520"><div class="prose">${a.content}</div><div class="tag-row">${(a.tags||[]).map(t=>`<span class="tag">#${esc(t)}</span>`).join('')}</div><div class="share-row"><strong>Bagikan:</strong><button class="chip" data-share="linkedin">LinkedIn</button><button class="chip" data-share="facebook">Facebook</button><button class="chip" data-share="whatsapp">WhatsApp</button></div></article>`;
   }
 
@@ -204,6 +208,19 @@ if (premiumProduct) {
       window.open(links[btn.dataset.share], '_blank', 'noopener,noreferrer');
     });
   }
+
+  function refreshArticleDates() {
+  document.querySelectorAll('time[datetime]').forEach(element => {
+    element.textContent = window.CIG_I18N.formatDate(
+      `${element.getAttribute('datetime')}T00:00:00`
+    );
+  });
+}
+
+document.addEventListener(
+  'cig:languagechange',
+  refreshArticleDates
+);
 
   function setFooterYear() { document.querySelectorAll('[data-year]').forEach(n => n.textContent = new Date().getFullYear()); }
 
