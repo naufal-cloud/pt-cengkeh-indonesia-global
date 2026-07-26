@@ -2123,6 +2123,275 @@
     );
   });
 
+    const metadataTranslations = {
+    id: {
+      'meta.homeTitle':
+        'PT Cengkeh Indonesia Global | Profil, Produk, dan Supplier',
+      'meta.homeDescription':
+        'Website demonstrasi PT Cengkeh Indonesia Global untuk profil perusahaan, katalog produk, artikel, jaringan supplier, dan kontak.',
+
+      'meta.aboutTitle':
+        'Tentang Kami | PT Cengkeh Indonesia Global',
+      'meta.aboutDescription':
+        'Profil, visi, misi, nilai, dan portofolio demonstrasi PT Cengkeh Indonesia Global.',
+
+      'meta.productsTitle':
+        'Produk | PT Cengkeh Indonesia Global',
+      'meta.productsDescription':
+        'Katalog produk cengkeh demonstrasi dengan filter dan halaman detail.',
+
+      'meta.articlesTitle':
+        'Artikel | PT Cengkeh Indonesia Global',
+      'meta.articlesDescription':
+        'Artikel dan publikasi demonstrasi mengenai cengkeh, kualitas, dan kemitraan.',
+
+      'meta.suppliersTitle':
+        'Jaringan Supplier | PT Cengkeh Indonesia Global',
+      'meta.suppliersDescription':
+        'Peta interaktif wilayah jaringan supplier dengan lokasi perkiraan untuk menjaga privasi.',
+
+      'meta.contactTitle':
+        'Kontak | PT Cengkeh Indonesia Global',
+      'meta.contactDescription':
+        'Hubungi PT Cengkeh Indonesia Global melalui formulir kontak atau WhatsApp.',
+
+      'meta.productDetailTitle':
+        'Detail Produk | PT Cengkeh Indonesia Global',
+      'meta.productDetailDescription':
+        'Detail produk cengkeh, spesifikasi, brosur, dan kanal komunikasi.',
+
+      'meta.articleDetailTitle':
+        'Detail Artikel | PT Cengkeh Indonesia Global',
+      'meta.articleDetailDescription':
+        'Detail artikel PT Cengkeh Indonesia Global.',
+
+      'meta.privacyTitle':
+        'Kebijakan Privasi | PT Cengkeh Indonesia Global',
+      'meta.privacyDescription':
+        'Kebijakan privasi demonstrasi untuk formulir kontak dan data supplier.',
+
+      'meta.notFoundTitle':
+        '404 | PT Cengkeh Indonesia Global',
+      'meta.notFoundDescription':
+        'Halaman tidak ditemukan.'
+    },
+
+    en: {
+      'meta.homeTitle':
+        'PT Cengkeh Indonesia Global | Profile, Products, and Suppliers',
+      'meta.homeDescription':
+        'Demonstration website for PT Cengkeh Indonesia Global, featuring the company profile, product catalogue, articles, supplier network, and contact information.',
+
+      'meta.aboutTitle':
+        'About Us | PT Cengkeh Indonesia Global',
+      'meta.aboutDescription':
+        'Demonstration company profile, vision, mission, values, and portfolio of PT Cengkeh Indonesia Global.',
+
+      'meta.productsTitle':
+        'Products | PT Cengkeh Indonesia Global',
+      'meta.productsDescription':
+        'Demonstration clove product catalogue with filters and detailed product pages.',
+
+      'meta.articlesTitle':
+        'Articles | PT Cengkeh Indonesia Global',
+      'meta.articlesDescription':
+        'Demonstration articles and publications about cloves, quality, and partnerships.',
+
+      'meta.suppliersTitle':
+        'Supplier Network | PT Cengkeh Indonesia Global',
+      'meta.suppliersDescription':
+        'An interactive map of supplier network regions using approximate locations to protect privacy.',
+
+      'meta.contactTitle':
+        'Contact | PT Cengkeh Indonesia Global',
+      'meta.contactDescription':
+        'Contact PT Cengkeh Indonesia Global through the contact form or WhatsApp.',
+
+      'meta.productDetailTitle':
+        'Product Details | PT Cengkeh Indonesia Global',
+      'meta.productDetailDescription':
+        'Clove product details, specifications, brochures, and communication channels.',
+
+      'meta.articleDetailTitle':
+        'Article Details | PT Cengkeh Indonesia Global',
+      'meta.articleDetailDescription':
+        'Article details from PT Cengkeh Indonesia Global.',
+
+      'meta.privacyTitle':
+        'Privacy Policy | PT Cengkeh Indonesia Global',
+      'meta.privacyDescription':
+        'Demonstration privacy policy for contact forms and supplier data.',
+
+      'meta.notFoundTitle':
+        '404 | PT Cengkeh Indonesia Global',
+      'meta.notFoundDescription':
+        'Page not found.'
+    },
+
+    hi: {
+      'meta.homeTitle':
+        'PT Cengkeh Indonesia Global | प्रोफ़ाइल, उत्पाद और आपूर्तिकर्ता',
+      'meta.homeDescription':
+        'PT Cengkeh Indonesia Global की कंपनी प्रोफ़ाइल, उत्पाद सूची, लेख, आपूर्तिकर्ता नेटवर्क और संपर्क जानकारी के लिए प्रदर्शन वेबसाइट।',
+
+      'meta.aboutTitle':
+        'हमारे बारे में | PT Cengkeh Indonesia Global',
+      'meta.aboutDescription':
+        'PT Cengkeh Indonesia Global की प्रदर्शन प्रोफ़ाइल, दृष्टि, मिशन, मूल्य और पोर्टफोलियो।',
+
+      'meta.productsTitle':
+        'उत्पाद | PT Cengkeh Indonesia Global',
+      'meta.productsDescription':
+        'फ़िल्टर और विस्तृत पृष्ठों के साथ लौंग उत्पादों की प्रदर्शन सूची।',
+
+      'meta.articlesTitle':
+        'लेख | PT Cengkeh Indonesia Global',
+      'meta.articlesDescription':
+        'लौंग, गुणवत्ता और साझेदारी के बारे में प्रदर्शन लेख और प्रकाशन।',
+
+      'meta.suppliersTitle':
+        'आपूर्तिकर्ता नेटवर्क | PT Cengkeh Indonesia Global',
+      'meta.suppliersDescription':
+        'गोपनीयता की रक्षा के लिए अनुमानित स्थानों के साथ आपूर्तिकर्ता क्षेत्रों का इंटरैक्टिव मानचित्र।',
+
+      'meta.contactTitle':
+        'संपर्क | PT Cengkeh Indonesia Global',
+      'meta.contactDescription':
+        'संपर्क फ़ॉर्म या व्हाट्सऐप के माध्यम से PT Cengkeh Indonesia Global से संपर्क करें।',
+
+      'meta.productDetailTitle':
+        'उत्पाद विवरण | PT Cengkeh Indonesia Global',
+      'meta.productDetailDescription':
+        'लौंग उत्पाद का विवरण, विशेषताएँ, ब्रोशर और संपर्क माध्यम।',
+
+      'meta.articleDetailTitle':
+        'लेख विवरण | PT Cengkeh Indonesia Global',
+      'meta.articleDetailDescription':
+        'PT Cengkeh Indonesia Global के लेख का विवरण।',
+
+      'meta.privacyTitle':
+        'गोपनीयता नीति | PT Cengkeh Indonesia Global',
+      'meta.privacyDescription':
+        'संपर्क फ़ॉर्म और आपूर्तिकर्ता डेटा के लिए प्रदर्शन गोपनीयता नीति।',
+
+      'meta.notFoundTitle':
+        '404 | PT Cengkeh Indonesia Global',
+      'meta.notFoundDescription':
+        'पृष्ठ नहीं मिला।'
+    },
+
+    zh: {
+      'meta.homeTitle':
+        'PT Cengkeh Indonesia Global | 公司简介、产品和供应商',
+      'meta.homeDescription':
+        'PT Cengkeh Indonesia Global 演示网站，包含公司简介、产品目录、文章、供应商网络和联系方式。',
+
+      'meta.aboutTitle':
+        '关于我们 | PT Cengkeh Indonesia Global',
+      'meta.aboutDescription':
+        'PT Cengkeh Indonesia Global 的演示公司简介、愿景、使命、价值观和业务组合。',
+
+      'meta.productsTitle':
+        '产品 | PT Cengkeh Indonesia Global',
+      'meta.productsDescription':
+        '带有筛选功能和产品详情页的丁香产品演示目录。',
+
+      'meta.articlesTitle':
+        '文章 | PT Cengkeh Indonesia Global',
+      'meta.articlesDescription':
+        '有关丁香、质量和合作关系的演示文章与出版内容。',
+
+      'meta.suppliersTitle':
+        '供应商网络 | PT Cengkeh Indonesia Global',
+      'meta.suppliersDescription':
+        '采用区域级大致位置以保护隐私的供应商网络交互式地图。',
+
+      'meta.contactTitle':
+        '联系我们 | PT Cengkeh Indonesia Global',
+      'meta.contactDescription':
+        '通过联系表单或 WhatsApp 联系 PT Cengkeh Indonesia Global。',
+
+      'meta.productDetailTitle':
+        '产品详情 | PT Cengkeh Indonesia Global',
+      'meta.productDetailDescription':
+        '丁香产品详情、规格、宣传册和沟通渠道。',
+
+      'meta.articleDetailTitle':
+        '文章详情 | PT Cengkeh Indonesia Global',
+      'meta.articleDetailDescription':
+        'PT Cengkeh Indonesia Global 的文章详情。',
+
+      'meta.privacyTitle':
+        '隐私政策 | PT Cengkeh Indonesia Global',
+      'meta.privacyDescription':
+        '适用于联系表单和供应商数据的演示隐私政策。',
+
+      'meta.notFoundTitle':
+        '404 | PT Cengkeh Indonesia Global',
+      'meta.notFoundDescription':
+        '未找到页面。'
+    },
+
+    ar: {
+      'meta.homeTitle':
+        'PT Cengkeh Indonesia Global | الملف التعريفي والمنتجات والموردون',
+      'meta.homeDescription':
+        'موقع تجريبي لشركة PT Cengkeh Indonesia Global يعرض الملف التعريفي للشركة وكتالوج المنتجات والمقالات وشبكة الموردين ومعلومات الاتصال.',
+
+      'meta.aboutTitle':
+        'من نحن | PT Cengkeh Indonesia Global',
+      'meta.aboutDescription':
+        'ملف تعريفي تجريبي ورؤية ورسالة وقيم ومحفظة أعمال شركة PT Cengkeh Indonesia Global.',
+
+      'meta.productsTitle':
+        'المنتجات | PT Cengkeh Indonesia Global',
+      'meta.productsDescription':
+        'كتالوج تجريبي لمنتجات القرنفل مع خيارات التصفية وصفحات التفاصيل.',
+
+      'meta.articlesTitle':
+        'المقالات | PT Cengkeh Indonesia Global',
+      'meta.articlesDescription':
+        'مقالات ومنشورات تجريبية حول القرنفل والجودة والشراكات.',
+
+      'meta.suppliersTitle':
+        'شبكة الموردين | PT Cengkeh Indonesia Global',
+      'meta.suppliersDescription':
+        'خريطة تفاعلية لمناطق شبكة الموردين باستخدام مواقع تقريبية لحماية الخصوصية.',
+
+      'meta.contactTitle':
+        'اتصل بنا | PT Cengkeh Indonesia Global',
+      'meta.contactDescription':
+        'تواصل مع PT Cengkeh Indonesia Global عبر نموذج الاتصال أو واتساب.',
+
+      'meta.productDetailTitle':
+        'تفاصيل المنتج | PT Cengkeh Indonesia Global',
+      'meta.productDetailDescription':
+        'تفاصيل منتجات القرنفل والمواصفات والكتيبات وقنوات التواصل.',
+
+      'meta.articleDetailTitle':
+        'تفاصيل المقال | PT Cengkeh Indonesia Global',
+      'meta.articleDetailDescription':
+        'تفاصيل مقال من PT Cengkeh Indonesia Global.',
+
+      'meta.privacyTitle':
+        'سياسة الخصوصية | PT Cengkeh Indonesia Global',
+      'meta.privacyDescription':
+        'سياسة خصوصية تجريبية لنماذج الاتصال وبيانات الموردين.',
+
+      'meta.notFoundTitle':
+        '404 | PT Cengkeh Indonesia Global',
+      'meta.notFoundDescription':
+        'لم يتم العثور على الصفحة.'
+    }
+  };
+
+  Object.keys(metadataTranslations).forEach(language => {
+    Object.assign(
+      translations[language],
+      metadataTranslations[language]
+    );
+  });
+
     const notFoundPageTranslations = {
     id: {
       'notFound.title': 'Halaman tidak ditemukan',
