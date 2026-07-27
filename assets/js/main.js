@@ -215,7 +215,17 @@ document.addEventListener(
   return;
 }
       const product = btn.dataset.productName || '';
-      const message = product ? `Halo PT Cengkeh Indonesia Global, saya ingin menanyakan produk ${product}. ${location.href}` : 'Halo PT Cengkeh Indonesia Global, saya ingin memperoleh informasi lebih lanjut.';
+      const message = product
+  ? window.CIG_I18N.translate(
+      'whatsapp.productMessage',
+      {
+        product,
+        url: location.href
+      }
+    )
+  : window.CIG_I18N.translate(
+      'whatsapp.generalMessage'
+    );
       window.open(`https://wa.me/${number.replace(/\D/g,'')}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
     });
     document.addEventListener('click', e => {
