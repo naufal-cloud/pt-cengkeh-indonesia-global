@@ -260,7 +260,7 @@
       'toast.brochureUnavailable':
         'الكتيب بصيغة PDF غير متوفر حاليًا.',
       'toast.messageSaved':
-        'تم حفظ الرسالة في هذا المتصفح.'
+        'تم حفظ الرسالة في هذا المتصفح.',
 
       'whatsapp.productMessage':
   'مرحبًا PT Cengkeh Indonesia Global، أود الاستفسار عن المنتج {product}. {url}',
