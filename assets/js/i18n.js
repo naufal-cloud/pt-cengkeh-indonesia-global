@@ -76,7 +76,12 @@
       'toast.brochureUnavailable':
         'Brosur PDF demo belum tersedia.',
       'toast.messageSaved':
-        'Pesan demo tersimpan di browser dan dapat dilihat pada CMS prototype.'
+        'Pesan demo tersimpan di browser dan dapat dilihat pada CMS prototype.',
+
+      'whatsapp.productMessage':
+  'Halo PT Cengkeh Indonesia Global, saya ingin menanyakan produk {product}. {url}',
+'whatsapp.generalMessage':
+  'Halo PT Cengkeh Indonesia Global, saya ingin memperoleh informasi lebih lanjut.'
     },
 
     en: {
@@ -117,7 +122,12 @@
       'toast.brochureUnavailable':
         'The demonstration PDF brochure is not available yet.',
       'toast.messageSaved':
-        'The demonstration message has been saved in this browser.'
+        'The demonstration message has been saved in this browser.',
+
+      'whatsapp.productMessage':
+  'Hello PT Cengkeh Indonesia Global, I would like to ask about the product {product}. {url}',
+'whatsapp.generalMessage':
+  'Hello PT Cengkeh Indonesia Global, I would like to request further information.'
     },
 
     hi: {
@@ -158,7 +168,12 @@
       'toast.brochureUnavailable':
         'पीडीएफ ब्रोशर अभी उपलब्ध नहीं है।',
       'toast.messageSaved':
-        'संदेश इस ब्राउज़र में सहेजा गया है।'
+        'संदेश इस ब्राउज़र में सहेजा गया है।',
+
+      'whatsapp.productMessage':
+  'नमस्ते PT Cengkeh Indonesia Global, मैं उत्पाद {product} के बारे में जानकारी चाहता हूँ। {url}',
+'whatsapp.generalMessage':
+  'नमस्ते PT Cengkeh Indonesia Global, मैं अधिक जानकारी प्राप्त करना चाहता हूँ।'
     },
 
     zh: {
@@ -199,7 +214,12 @@
       'toast.brochureUnavailable':
         'PDF 宣传册暂未提供。',
       'toast.messageSaved':
-        '留言已保存在此浏览器中。'
+        '留言已保存在此浏览器中。',
+
+      'whatsapp.productMessage':
+  '您好，PT Cengkeh Indonesia Global，我想咨询产品 {product}。{url}',
+'whatsapp.generalMessage':
+  '您好，PT Cengkeh Indonesia Global，我想了解更多信息。'
     },
 
     ar: {
@@ -241,6 +261,11 @@
         'الكتيب بصيغة PDF غير متوفر حاليًا.',
       'toast.messageSaved':
         'تم حفظ الرسالة في هذا المتصفح.'
+
+      'whatsapp.productMessage':
+  'مرحبًا PT Cengkeh Indonesia Global، أود الاستفسار عن المنتج {product}. {url}',
+'whatsapp.generalMessage':
+  'مرحبًا PT Cengkeh Indonesia Global، أود الحصول على مزيد من المعلومات.'
     }
   };
 
