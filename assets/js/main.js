@@ -202,7 +202,18 @@ document.addEventListener(
       const btn = e.target.closest('[data-whatsapp]');
       if (!btn) return;
       const number = window.CIG.settings?.whatsapp || '';
-      if (!number) { e.preventDefault(); toast('Nomor WhatsApp resmi belum dikonfigurasi pada situs demo.', 'info'); return; }
+      if (!number) {
+  e.preventDefault();
+
+  toast(
+    window.CIG_I18N.translate(
+      'toast.whatsappUnavailable'
+    ),
+    'info'
+  );
+
+  return;
+}
       const product = btn.dataset.productName || '';
       const message = product ? `Halo PT Cengkeh Indonesia Global, saya ingin menanyakan produk ${product}. ${location.href}` : 'Halo PT Cengkeh Indonesia Global, saya ingin memperoleh informasi lebih lanjut.';
       window.open(`https://wa.me/${number.replace(/\D/g,'')}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
