@@ -7,4 +7,8 @@
 <section class="view" id="view-settings"><div class="view-head"><div><h2>Pengaturan Situs</h2><p>Hanya ditampilkan untuk akun Administrator.</p></div></div><form class="panel" id="settings-form"><div class="form-grid"><div class="field"><label for="set-email">Email</label><input id="set-email" name="email" type="email"></div><div class="field"><label for="set-phone">Telepon tampilan</label><input id="set-phone" name="phoneDisplay"></div><div class="field"><label for="set-whatsapp">Nomor WhatsApp (format internasional)</label><input id="set-whatsapp" name="whatsapp" placeholder="628123456789"></div><div class="field full"><label for="set-address">Alamat</label><textarea id="set-address" name="address"></textarea></div><div class="full"><button class="btn btn-primary" type="submit">Simpan Pengaturan</button></div></div></form></section>
 </div></main></div>
 <div class="modal" id="entity-modal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><h3 id="modal-title">Form</h3><button class="close-btn" type="button" id="modal-close" aria-label="Tutup">×</button></div><form id="entity-form"><div id="entity-fields"></div><input type="hidden" name="entity"><input type="hidden" name="id"><div class="toolbar" style="margin-top:18px"><button class="btn btn-primary" type="submit">Simpan</button><button class="btn btn-light" type="button" id="modal-cancel">Batal</button></div></form></div></div>
-<script src="../assets/js/data.js"></script><script src="../assets/js/admin.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase-config.js"></script>
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/admin.js"></script></body></html>
