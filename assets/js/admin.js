@@ -338,6 +338,79 @@ try {
 
   data = await loadOnlineData();
 }
+
+  async function runEntityActionOnline(
+  entity,
+  id,
+  action
+) {
+  const tableMap = {
+    product: 'products',
+    article: 'articles',
+    supplier: 'suppliers',
+    message: 'contact_messages'
+  };
+
+  const table = tableMap[entity];
+
+  if (!table) {
+    throw new Error('Jenis data tidak dikenali.');
+  }
+
+  let query;
+
+  if (action === 'delete') {
+    query = supabase
+      .from(table)
+      .delete()
+      .eq('id', id);
+  }
+
+  if (action === 'toggle') {
+    const collection = `${entity}s`;
+    const item = data[collection]?.find(
+      entry => entry.id === id
+    );
+
+    if (!item) {
+      throw new Error('Data tidak ditemukan.');
+    }
+
+    const payload =
+      entity === 'supplier'
+        ? { is_published: !item.public }
+        : {
+            status:
+              item.status === 'published'
+                ? 'draft'
+                : 'published'
+          };
+
+    query = supabase
+      .from(table)
+      .update(payload)
+      .eq('id', id);
+  }
+
+  if (action === 'complete') {
+    query = supabase
+      .from(table)
+      .update({ status: 'Selesai' })
+      .eq('id', id);
+  }
+
+  if (!query) {
+    throw new Error('Aksi tidak dikenali.');
+  }
+
+  const { error } = await query;
+
+  if (error) {
+    throw error;
+  }
+
+  data = await loadOnlineData();
+}
   
   document.querySelectorAll('[data-open-form]').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.openForm)));
   document.getElementById('modal-close').addEventListener('click',closeModal); document.getElementById('modal-cancel').addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
@@ -391,14 +464,61 @@ try {
   function renderAll(){renderProducts();renderArticles();renderSuppliers();renderMessages();renderCounts();fillSettings();}
   renderAll();
 
-  document.addEventListener('click',e=>{
-    const b=e.target.closest('[data-action]'); if(!b)return; const entity=b.dataset.entity,id=b.dataset.id,action=b.dataset.action; const collection=entity+'s';
-    if(action==='edit'){openModal(entity,id);return;}
-    if(action==='delete'){if(!confirm('Hapus data ini dari prototype?'))return; data[collection]=(data[collection]||[]).filter(x=>x.id!==id);saveData(data);renderAll();toast('Data dihapus.');return;}
-    const item=(data[collection]||[]).find(x=>x.id===id); if(!item)return;
-    if(action==='toggle'){ if(entity==='supplier')item.public=!item.public; else item.status=item.status==='published'?'draft':'published'; saveData(data);renderAll();toast('Status diperbarui.'); }
-    if(action==='complete'){item.status='Selesai';saveData(data);renderAll();toast('Pesan ditandai selesai.');}
-  });
+  document.addEventListener('click', async event => {
+  const button =
+    event.target.closest('[data-action]');
+
+  if (!button) {
+    return;
+  }
+
+  const entity = button.dataset.entity;
+  const id = button.dataset.id;
+  const action = button.dataset.action;
+
+  if (action === 'edit') {
+    openModal(entity, id);
+    return;
+  }
+
+  if (
+    action === 'delete' &&
+    !confirm('Hapus data ini secara permanen?')
+  ) {
+    return;
+  }
+
+  button.disabled = true;
+
+  try {
+    await runEntityActionOnline(
+      entity,
+      id,
+      action
+    );
+
+    renderAll();
+
+    const notifications = {
+      delete: 'Data berhasil dihapus.',
+      toggle: 'Status berhasil diperbarui.',
+      complete: 'Pesan ditandai selesai.'
+    };
+
+    toast(
+      notifications[action] ||
+      'Aksi berhasil dijalankan.'
+    );
+  } catch (actionError) {
+    console.error(actionError);
+
+    alert(
+      'Aksi gagal dijalankan. Silakan coba kembali.'
+    );
+  } finally {
+    button.disabled = false;
+  }
+});
 
   document.getElementById('settings-form')?.addEventListener('submit',e=>{e.preventDefault(); if(!isAdmin)return; data.settings={...(data.settings||{}),...Object.fromEntries(new FormData(e.currentTarget).entries())};saveData(data);toast('Pengaturan disimpan. Muat ulang website untuk melihat perubahan.');});
   document.getElementById('export-messages')?.addEventListener('click',()=>{
