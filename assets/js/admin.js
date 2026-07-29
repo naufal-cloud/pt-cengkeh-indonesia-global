@@ -520,7 +520,62 @@ try {
   }
 });
 
-  document.getElementById('settings-form')?.addEventListener('submit',e=>{e.preventDefault(); if(!isAdmin)return; data.settings={...(data.settings||{}),...Object.fromEntries(new FormData(e.currentTarget).entries())};saveData(data);toast('Pengaturan disimpan. Muat ulang website untuk melihat perubahan.');});
+  document
+  .getElementById('settings-form')
+  ?.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    if (!isAdmin) {
+      return;
+    }
+
+    const formElement = event.currentTarget;
+    const submitButton =
+      formElement.querySelector(
+        'button[type="submit"]'
+      );
+
+    const settings =
+      Object.fromEntries(
+        new FormData(formElement).entries()
+      );
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Menyimpan...';
+
+    try {
+      const { error } = await supabase
+        .from('site_contact')
+        .update({
+          email: settings.email,
+          phone_display: settings.phoneDisplay,
+          whatsapp: settings.whatsapp,
+          address: settings.address
+        })
+        .eq('id', 1);
+
+      if (error) {
+        throw error;
+      }
+
+      data = await loadOnlineData();
+      fillSettings();
+
+      toast(
+        'Pengaturan situs berhasil disimpan secara online.'
+      );
+    } catch (settingsError) {
+      console.error(settingsError);
+
+      alert(
+        'Pengaturan gagal disimpan. Silakan coba kembali.'
+      );
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent =
+        'Simpan Pengaturan';
+    }
+  });
   document.getElementById('export-messages')?.addEventListener('click',()=>{
     const rows=data.messages||[]; if(!rows.length){toast('Belum ada pesan untuk diekspor.');return;}
     const cols=['name','email','company','phone','subject','message','status','createdAt']; const csv=[cols.join(','),...rows.map(r=>cols.map(k=>`"${String(r[k]||'').replace(/"/g,'""')}"`).join(','))].join('\n'); const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pesan-kontak-demo.csv';a.click();URL.revokeObjectURL(a.href);
