@@ -266,19 +266,120 @@ try {
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
   }
   function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');form.reset();}
+
+  async function saveEntityOnline(entity, id, formData) {
+  let table;
+  let payload;
+
+  if (entity === 'product') {
+    const existing = id
+      ? data.products.find(item => item.id === id)
+      : null;
+
+    table = 'products';
+    payload = {
+      slug: existing?.slug || slugify(formData.name),
+      name: formData.name,
+      category: formData.category,
+      summary: formData.summary,
+      description:
+        existing?.description ||
+        'Deskripsi produk dapat dilengkapi melalui CMS.',
+      image_url: formData.image,
+      specifications:
+        existing?.specs || [['Status', 'Perlu verifikasi']],
+      featured: existing?.featured ?? true,
+      status: formData.status
+    };
+  }
+
+  if (entity === 'article') {
+    const existing = id
+      ? data.articles.find(item => item.id === id)
+      : null;
+
+    table = 'articles';
+    payload = {
+      slug: existing?.slug || slugify(formData.title),
+      title: formData.title,
+      category: formData.category,
+      excerpt: formData.excerpt,
+      content:
+        existing?.content ||
+        `<p>${esc(formData.excerpt)}</p>`,
+      image_url: formData.image,
+      tags: existing?.tags || [],
+      published_at: formData.date,
+      status: formData.status
+    };
+  }
+
+  if (entity === 'supplier') {
+    table = 'suppliers';
+    payload = {
+      name: formData.name,
+      region: formData.region,
+      latitude: Number(formData.lat),
+      longitude: Number(formData.lng),
+      summary: formData.summary,
+      is_published: formData.public === 'true'
+    };
+  }
+
+  const query = id
+    ? supabase.from(table).update(payload).eq('id', id)
+    : supabase.from(table).insert(payload);
+
+  const { error } = await query;
+
+  if (error) {
+    throw error;
+  }
+
+  data = await loadOnlineData();
+}
+  
   document.querySelectorAll('[data-open-form]').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.openForm)));
   document.getElementById('modal-close').addEventListener('click',closeModal); document.getElementById('modal-cancel').addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 
-  form.addEventListener('submit',e=>{
-    e.preventDefault(); const fd=Object.fromEntries(new FormData(form).entries()); const entity=fd.entity,id=fd.id; delete fd.entity; delete fd.id;
-    const collection=entity+'s'; const arr=[...(data[collection]||[])]; const existing=id?arr.find(x=>x.id===id):null;
-    let item={...existing,...fd};
-    if(entity==='product'){item.id=id||`prd-${Date.now()}`;item.slug=existing?.slug||slugify(fd.name);item.description=existing?.description||'Deskripsi produk demo dapat dilengkapi melalui CMS produksi.';item.specs=existing?.specs||[['Status','Konten demo — perlu verifikasi']];item.brochure='#';item.featured=true;}
-    if(entity==='article'){item.id=id||`art-${Date.now()}`;item.slug=existing?.slug||slugify(fd.title);item.content=existing?.content||`<p>${esc(fd.excerpt)}</p><p>Isi artikel demo dapat dikembangkan melalui editor WYSIWYG pada CMS produksi.</p>`;item.tags=existing?.tags||[];}
-    if(entity==='supplier'){item.id=id||`sup-${Date.now()}`;item.lat=Number(fd.lat);item.lng=Number(fd.lng);item.public=fd.public==='true';}
-    if(id) arr[arr.findIndex(x=>x.id===id)]=item; else arr.unshift(item);
-    data[collection]=arr; saveData(data); closeModal(); renderAll(); toast(`${entity} berhasil disimpan.`);
-  });
+  form.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const submitButton =
+    form.querySelector('button[type="submit"]');
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Menyimpan...';
+
+  const formData =
+    Object.fromEntries(new FormData(form).entries());
+
+  const entity = formData.entity;
+  const id = formData.id;
+
+  delete formData.entity;
+  delete formData.id;
+
+  try {
+    await saveEntityOnline(entity, id, formData);
+
+    closeModal();
+    renderAll();
+
+    toast(
+      `${entity} berhasil disimpan secara online.`
+    );
+  } catch (saveError) {
+    console.error(saveError);
+
+    alert(
+      'Data gagal disimpan. Silakan coba kembali.'
+    );
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Simpan';
+  }
+});
 
   function actionButton(entity,id,label,cls,action){return `<button class="btn btn-sm ${cls}" data-action="${action}" data-entity="${entity}" data-id="${esc(id)}">${label}</button>`}
   function renderProducts(){ const tbody=document.getElementById('product-table'); const rows=data.products||[]; tbody.innerHTML=rows.length?rows.map(p=>`<tr><td><strong>${esc(p.name)}</strong><br><span class="small">${esc(p.slug)}</span></td><td>${esc(p.category)}</td><td><span class="status ${p.status==='draft'?'draft':''}">${esc(p.status)}</span></td><td><div class="actions">${actionButton('product',p.id,'Edit','btn-light','edit')}${actionButton('product',p.id,p.status==='published'?'Jadikan Draft':'Publikasikan','btn-light','toggle')}${actionButton('product',p.id,'Hapus','btn-danger','delete')}</div></td></tr>`).join(''):'<tr><td colspan="4" class="empty">Belum ada produk.</td></tr>'; }
