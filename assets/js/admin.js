@@ -1,30 +1,150 @@
-(() => {
+(async () => {
   'use strict';
-  const ACCOUNTS = {
-    'admin@cig.demo': {password:'DemoAdmin2026!', role:'Administrator'},
-    'editor@cig.demo': {password:'DemoEditor2026!', role:'Editor'}
-  };
+  const supabase = window.CIG_SUPABASE;
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const slugify = (s='') => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
   const clone = x => JSON.parse(JSON.stringify(x));
   function getStored(){ try { return JSON.parse(localStorage.getItem('cig_demo_data')||'{}'); } catch { return {}; } }
   function getData(){ const base=clone(window.CIG_DATA||{}); const stored=getStored(); return {...base,...stored,settings:{...(base.settings||{}),...(stored.settings||{})}}; }
   function saveData(data){ localStorage.setItem('cig_demo_data',JSON.stringify(data)); }
-  function currentUser(){ try{return JSON.parse(sessionStorage.getItem('cig_demo_session')||'null')}catch{return null} }
-  function toast(message){ const n=document.createElement('div'); n.className='toast'; n.textContent=message; document.body.appendChild(n); setTimeout(()=>n.remove(),2800); }
-  function loginPage(){
-    const form=document.getElementById('login-form'); if(!form) return false;
-    if(currentUser()) location.href='dashboard.html';
-    form.addEventListener('submit',e=>{e.preventDefault(); const email=form.email.value.trim().toLowerCase(); const password=form.password.value; const found=ACCOUNTS[email]; const error=document.getElementById('login-error'); if(!found||found.password!==password){error.textContent='Email atau kata sandi demo tidak sesuai.';return;} sessionStorage.setItem('cig_demo_session',JSON.stringify({email,role:found.role,loginAt:new Date().toISOString()})); location.href='dashboard.html';}); return true;
-  }
-  if(loginPage()) return;
+  async function getAuthContext() {
+  const {
+    data: { session },
+    error: sessionError
+  } = await supabase.auth.getSession();
 
-  const user=currentUser();
-  if(!user){ location.href='index.html'; return; }
-  const isAdmin=user.role==='Administrator';
-  document.getElementById('role-badge').textContent=`${user.role} · ${user.email}`;
-  document.querySelectorAll('[data-admin-only]').forEach(n=>{if(!isAdmin)n.remove();});
-  document.getElementById('logout').addEventListener('click',()=>{sessionStorage.removeItem('cig_demo_session');location.href='index.html';});
+  if (sessionError) {
+    throw sessionError;
+  }
+
+  if (!session?.user) {
+    return null;
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('user_profiles')
+    .select('full_name, role')
+    .eq('id', session.user.id)
+    .single();
+
+  if (profileError) {
+    throw profileError;
+  }
+
+  if (!['admin', 'editor'].includes(profile.role)) {
+    await supabase.auth.signOut();
+    throw new Error('Akun ini tidak memiliki akses ke CMS.');
+  }
+
+  return {
+    email: session.user.email,
+    fullName: profile.full_name || session.user.email,
+    role: profile.role
+  };
+}
+  function toast(message){ const n=document.createElement('div'); n.className='toast'; n.textContent=message; document.body.appendChild(n); setTimeout(()=>n.remove(),2800); }
+  async function loginPage() {
+  const form = document.getElementById('login-form');
+
+  if (!form) {
+    return false;
+  }
+
+  const error = document.getElementById('login-error');
+  const submitButton =
+    form.querySelector('button[type="submit"]');
+
+  try {
+    const authContext = await getAuthContext();
+
+    if (authContext) {
+      location.href = 'dashboard.html';
+      return true;
+    }
+  } catch (loginCheckError) {
+    console.error(loginCheckError);
+  }
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    error.textContent = '';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Memproses...';
+
+    const email =
+      form.email.value.trim().toLowerCase();
+    const password = form.password.value;
+
+    const { error: signInError } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+    if (signInError) {
+      error.textContent =
+        'Email atau kata sandi tidak sesuai.';
+      submitButton.disabled = false;
+      submitButton.textContent = 'Masuk';
+      return;
+    }
+
+    try {
+      await getAuthContext();
+      location.href = 'dashboard.html';
+    } catch (accessError) {
+      error.textContent = accessError.message;
+      submitButton.disabled = false;
+      submitButton.textContent = 'Masuk';
+    }
+  });
+
+  return true;
+}
+
+if (await loginPage()) {
+  return;
+}
+
+  let user;
+
+try {
+  user = await getAuthContext();
+} catch (authError) {
+  console.error(authError);
+  await supabase.auth.signOut();
+  location.href = 'index.html';
+  return;
+}
+
+if (!user) {
+  location.href = 'index.html';
+  return;
+}
+
+const isAdmin = user.role === 'admin';
+const roleLabel = isAdmin
+  ? 'Administrator'
+  : 'Editor';
+
+document.getElementById('role-badge').textContent =
+  `${roleLabel} · ${user.email}`;
+
+document
+  .querySelectorAll('[data-admin-only]')
+  .forEach(element => {
+    if (!isAdmin) {
+      element.remove();
+    }
+  });
+
+document
+  .getElementById('logout')
+  .addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    location.href = 'index.html';
+  });
   document.getElementById('sidebar-toggle')?.addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
 
   let data=getData();
