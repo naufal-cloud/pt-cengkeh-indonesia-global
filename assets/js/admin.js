@@ -7,6 +7,93 @@
   function getStored(){ try { return JSON.parse(localStorage.getItem('cig_demo_data')||'{}'); } catch { return {}; } }
   function getData(){ const base=clone(window.CIG_DATA||{}); const stored=getStored(); return {...base,...stored,settings:{...(base.settings||{}),...(stored.settings||{})}}; }
   function saveData(data){ localStorage.setItem('cig_demo_data',JSON.stringify(data)); }
+
+  async function loadOnlineData() {
+  const [
+    productsResult,
+    articlesResult,
+    suppliersResult,
+    messagesResult,
+    contactResult
+  ] = await Promise.all([
+    supabase
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: false }),
+
+    supabase
+      .from('articles')
+      .select('*')
+      .order('published_at', { ascending: false }),
+
+    supabase
+      .from('suppliers')
+      .select('*')
+      .order('created_at', { ascending: false }),
+
+    supabase
+      .from('contact_messages')
+      .select('*')
+      .order('created_at', { ascending: false }),
+
+    supabase
+      .from('site_contact')
+      .select('*')
+      .eq('id', 1)
+      .maybeSingle()
+  ]);
+
+  const firstError = [
+    productsResult.error,
+    articlesResult.error,
+    suppliersResult.error,
+    messagesResult.error,
+    contactResult.error
+  ].find(Boolean);
+
+  if (firstError) {
+    throw firstError;
+  }
+
+  return {
+    products: (productsResult.data || []).map(product => ({
+      ...product,
+      image: product.image_url,
+      specs: product.specifications || [],
+      brochure: '#'
+    })),
+
+    articles: (articlesResult.data || []).map(article => ({
+      ...article,
+      date: article.published_at,
+      image: article.image_url,
+      tags: article.tags || []
+    })),
+
+    suppliers: (suppliersResult.data || []).map(supplier => ({
+      ...supplier,
+      lat: supplier.latitude,
+      lng: supplier.longitude,
+      public: supplier.is_published
+    })),
+
+    messages: (messagesResult.data || []).map(message => ({
+      ...message,
+      createdAt: message.created_at
+    })),
+
+    settings: {
+      email: contactResult.data?.email || '',
+      phoneDisplay:
+        contactResult.data?.phone_display || '',
+      whatsapp: contactResult.data?.whatsapp || '',
+      address: contactResult.data?.address || ''
+    },
+
+    portfolios: window.CIG_DATA?.portfolios || []
+  };
+}
+  
   async function getAuthContext() {
   const {
     data: { session },
@@ -147,7 +234,17 @@ document
   });
   document.getElementById('sidebar-toggle')?.addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
 
-  let data=getData();
+  let data;
+
+try {
+  data = await loadOnlineData();
+} catch (dataError) {
+  console.error(dataError);
+  alert(
+    'Data online gagal dimuat. Silakan muat ulang halaman.'
+  );
+  return;
+}
   const views=document.querySelectorAll('.view');
   document.querySelectorAll('[data-view]').forEach(btn=>btn.addEventListener('click',()=>{
     document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b===btn));
