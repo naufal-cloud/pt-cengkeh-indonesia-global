@@ -44,6 +44,96 @@ if (premiumProduct) {
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   window.CIG_ESC = esc;
 
+  async function loadPublicData() {
+  const client = window.CIG_SUPABASE;
+
+  if (!client) {
+    return;
+  }
+
+  const [
+    productsResult,
+    articlesResult,
+    suppliersResult,
+    contactResult
+  ] = await Promise.all([
+    client
+      .from('products')
+      .select('*')
+      .eq('status', 'published')
+      .order('created_at', { ascending: false }),
+
+    client
+      .from('articles')
+      .select('*')
+      .eq('status', 'published')
+      .order('published_at', { ascending: false }),
+
+    client
+      .from('suppliers')
+      .select('*')
+      .eq('is_published', true)
+      .order('created_at', { ascending: false }),
+
+    client
+      .from('site_contact')
+      .select('*')
+      .eq('id', 1)
+      .maybeSingle()
+  ]);
+
+  const firstError = [
+    productsResult.error,
+    articlesResult.error,
+    suppliersResult.error,
+    contactResult.error
+  ].find(Boolean);
+
+  if (firstError) {
+    throw firstError;
+  }
+
+  window.CIG = {
+    ...window.CIG,
+
+    products: (productsResult.data || []).map(
+      product => ({
+        ...product,
+        image: product.image_url,
+        specs: product.specifications || []
+      })
+    ),
+
+    articles: (articlesResult.data || []).map(
+      article => ({
+        ...article,
+        date: article.published_at,
+        image: article.image_url,
+        tags: article.tags || []
+      })
+    ),
+
+    suppliers: (suppliersResult.data || []).map(
+      supplier => ({
+        ...supplier,
+        lat: supplier.latitude,
+        lng: supplier.longitude,
+        public: supplier.is_published
+      })
+    ),
+
+    settings: {
+      ...(window.CIG.settings || {}),
+      email: contactResult.data?.email || '',
+      phoneDisplay:
+        contactResult.data?.phone_display || '',
+      whatsapp:
+        contactResult.data?.whatsapp || '',
+      address: contactResult.data?.address || ''
+    }
+  };
+}
+
   function pathPrefix() {
     return document.body.dataset.depth === '1' ? '../' : '';
   }
@@ -282,7 +372,29 @@ document.addEventListener(
 
   function setFooterYear() { document.querySelectorAll('[data-year]').forEach(n => n.textContent = new Date().getFullYear()); }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    initHeader(); renderFeatured(); initProducts(); initProductDetail(); initArticles(); initArticleDetail(); initWhatsApp(); initContactForm(); initShare(); setFooterYear();
-  });
+  document.addEventListener(
+  'DOMContentLoaded',
+  async () => {
+    initHeader();
+
+    try {
+      await loadPublicData();
+    } catch (publicDataError) {
+      console.error(
+        'Data Supabase gagal dimuat:',
+        publicDataError
+      );
+    }
+
+    renderFeatured();
+    initProducts();
+    initProductDetail();
+    initArticles();
+    initArticleDetail();
+    initWhatsApp();
+    initContactForm();
+    initShare();
+    setFooterYear();
+  }
+);
 })();
