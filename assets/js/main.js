@@ -96,13 +96,23 @@ if (premiumProduct) {
   window.CIG = {
     ...window.CIG,
 
-    products: (productsResult.data || []).map(
-      product => ({
-        ...product,
-        image: product.image_url,
-        specs: product.specifications || []
-      })
-    ),
+    products: (productsResult.data || [])
+  .map(product => ({
+    ...product,
+    image: product.image_url,
+    specs: product.specifications || []
+  }))
+  .sort((firstProduct, secondProduct) => {
+    const productOrder = {
+      'cengkeh-kering-premium': 1,
+      'tangkai-cengkeh': 2
+    };
+
+    return (
+      (productOrder[firstProduct.slug] ?? 99) -
+      (productOrder[secondProduct.slug] ?? 99)
+    );
+  }),
 
     articles: (articlesResult.data || []).map(
       article => ({
