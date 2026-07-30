@@ -190,3 +190,33 @@ html[dir="rtl"] .language-switcher select {
   white-space: nowrap;
 }
 
+/* Menu hamburger untuk layar laptop dan lebih kecil */
+@media (max-width: 1200px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: 86px;
+    display: none;
+    padding: 12px;
+    align-items: stretch;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 12px 14px;
+  }
+}
+
