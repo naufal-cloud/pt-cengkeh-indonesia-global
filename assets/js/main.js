@@ -222,6 +222,83 @@ if (premiumProduct) {
     if (portfolioTarget) portfolioTarget.innerHTML = (window.CIG.portfolios || []).map(p => `<article class="portfolio-card"><img src="${prefix}${esc(p.image)}" alt="Ilustrasi ${esc(p.title)}" loading="lazy" width="800" height="520"><div><span class="eyebrow">${esc(p.category)} · ${esc(p.year)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p></div></article>`).join('');
   }
 
+  function renderShippingPartners() {
+  const target =
+    document.querySelector('[data-shipping-grid]');
+
+  if (!target) {
+    return;
+  }
+
+  const partners =
+    (window.CIG.shippingPartners || [])
+      .filter(partner =>
+        partner.is_active !== false
+      )
+      .sort(
+        (firstPartner, secondPartner) =>
+          (firstPartner.sort_order ?? 0) -
+          (secondPartner.sort_order ?? 0)
+      );
+
+  if (!partners.length) {
+    target.innerHTML = `
+      <div class="empty-state">
+        <h3>Mitra pengiriman belum tersedia</h3>
+        <p>
+          Daftar mitra akan ditampilkan setelah
+          ditambahkan melalui sistem administrasi.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  target.innerHTML = partners
+    .map(partner => {
+      const name =
+        partner.name ||
+        partner.partner_name ||
+        'Mitra Pengiriman';
+
+      const logo =
+        partner.logo_url ||
+        partner.image_url ||
+        '';
+
+      const description =
+        partner.description ||
+        'Mitra jasa pengiriman perusahaan.';
+
+      return `
+        <article class="card shipping-card">
+          <div class="shipping-card__logo">
+            ${
+              logo
+                ? `
+                  <img
+                    src="${esc(logo)}"
+                    alt="Logo ${esc(name)}"
+                    loading="lazy"
+                  >
+                `
+                : `
+                  <strong>${esc(name)}</strong>
+                `
+            }
+          </div>
+
+          <div class="card__body">
+            <h3>${esc(name)}</h3>
+            <p>${esc(description)}</p>
+          </div>
+        </article>
+      `;
+    })
+    .join('');
+}
+
   function initProducts() {
     const target = document.querySelector('[data-product-grid]');
     if (!target) return;
