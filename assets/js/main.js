@@ -342,21 +342,121 @@ document.addEventListener(
   }
 
   function initContactForm() {
-    const form = document.querySelector('[data-contact-form]');
-    if (!form) return;
-    form.addEventListener('submit', e => {
-      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.protocol === 'file:') {
-        e.preventDefault();
-        if (!form.checkValidity()) { form.reportValidity(); return; }
-        const item = Object.fromEntries(new FormData(form).entries());
-        item.id = `msg-${Date.now()}`; item.status = 'Baru'; item.createdAt = new Date().toISOString();
-        const data = JSON.parse(localStorage.getItem('cig_demo_data') || '{}');
-        data.messages = [...(data.messages || window.CIG.messages || []), item];
-        localStorage.setItem('cig_demo_data', JSON.stringify(data));
-        form.reset(); toast('Pesan demo tersimpan di browser dan dapat dilihat pada CMS prototype.');
-      }
-    });
+  const form =
+    document.querySelector('[data-contact-form]');
+
+  if (!form) {
+    return;
   }
+
+  form.addEventListener(
+    'submit',
+    async event => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const client =
+        window.CIG_SUPABASE;
+
+      if (!client) {
+        toast(
+          'Sistem pengiriman pesan belum tersedia.',
+          'error'
+        );
+
+        return;
+      }
+
+      const formData =
+        new FormData(form);
+
+      if (formData.get('bot-field')) {
+        return;
+      }
+
+      const submitButton =
+        form.querySelector(
+          'button[type="submit"]'
+        );
+
+      const originalButtonText =
+        submitButton.textContent;
+
+      const payload = {
+        name: String(
+          formData.get('name') || ''
+        ).trim(),
+
+        email: String(
+          formData.get('email') || ''
+        )
+          .trim()
+          .toLowerCase(),
+
+        company:
+          String(
+            formData.get('company') || ''
+          ).trim() || null,
+
+        phone:
+          String(
+            formData.get('phone') || ''
+          ).trim() || null,
+
+        subject: String(
+          formData.get('subject') || ''
+        ).trim(),
+
+        message: String(
+          formData.get('message') || ''
+        ).trim(),
+
+        consent:
+          formData.get('consent') === 'yes',
+
+        status: 'Baru'
+      };
+
+      submitButton.disabled = true;
+      submitButton.textContent =
+        'Mengirim...';
+
+      try {
+        const { error } = await client
+          .from('contact_messages')
+          .insert(payload);
+
+        if (error) {
+          throw error;
+        }
+
+        form.reset();
+
+        toast(
+          'Pesan berhasil dikirim. Tim kami akan segera menghubungi Anda.'
+        );
+      } catch (contactError) {
+        console.error(
+          'Pesan gagal dikirim:',
+          contactError
+        );
+
+        toast(
+          'Pesan gagal dikirim. Silakan coba kembali.',
+          'error'
+        );
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent =
+          originalButtonText;
+      }
+    }
+  );
+}
 
   function initShare() {
     document.addEventListener('click', e => {
