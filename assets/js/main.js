@@ -561,6 +561,7 @@ document.addEventListener(
     initArticles();
     initArticleDetail();
     initWhatsApp();
+    initGmail();
     initContactForm();
     initShare();
     setFooterYear();
