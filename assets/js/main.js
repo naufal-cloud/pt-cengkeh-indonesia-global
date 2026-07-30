@@ -52,11 +52,12 @@ if (premiumProduct) {
   }
 
   const [
-    productsResult,
-    articlesResult,
-    suppliersResult,
-    contactResult
-  ] = await Promise.all([
+  productsResult,
+  articlesResult,
+  suppliersResult,
+  shippingResult,
+  contactResult
+] = await Promise.all([
     client
       .from('products')
       .select('*')
@@ -74,6 +75,10 @@ if (premiumProduct) {
       .select('*')
       .eq('is_published', true)
       .order('created_at', { ascending: false }),
+
+    client
+  .from('shipping_partners')
+  .select('*'),
 
     client
       .from('site_contact')
