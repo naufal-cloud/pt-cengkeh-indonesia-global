@@ -91,6 +91,7 @@ if (premiumProduct) {
     productsResult.error,
     articlesResult.error,
     suppliersResult.error,
+    shippingResult.error,
     contactResult.error
   ].find(Boolean);
 
