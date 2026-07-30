@@ -164,6 +164,33 @@ if (premiumProduct) {
   function initHeader() {
     const button = document.querySelector('[data-menu-toggle]');
     const menu = document.querySelector('[data-menu]');
+    if (
+  menu &&
+  !menu.querySelector('a[href$="pengiriman.html"]')
+) {
+  const shippingLink =
+    document.createElement('a');
+
+  shippingLink.href =
+    `${prefix}pengiriman.html`;
+
+  shippingLink.dataset.navLink = '';
+  shippingLink.textContent = 'Pengiriman';
+
+  const articleLink =
+    menu.querySelector(
+      'a[href$="artikel.html"]'
+    );
+
+  if (articleLink) {
+    menu.insertBefore(
+      shippingLink,
+      articleLink
+    );
+  } else {
+    menu.appendChild(shippingLink);
+  }
+}
     if (button && menu) {
       button.addEventListener('click', () => {
         const expanded = button.getAttribute('aria-expanded') === 'true';
