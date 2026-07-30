@@ -344,6 +344,58 @@ document.addEventListener(
     });
   }
 
+  function initGmail() {
+  document.addEventListener(
+    'click',
+    event => {
+      const button =
+        event.target.closest('[data-gmail]');
+
+      if (!button) {
+        return;
+      }
+
+      const email =
+        window.CIG.settings?.email || '';
+
+      const subject =
+        window.CIG.settings?.emailSubject ||
+        'Permintaan Informasi Produk';
+
+      if (!email) {
+        toast(
+          'Alamat email perusahaan belum tersedia.',
+          'error'
+        );
+
+        return;
+      }
+
+      const body = [
+        'Yth. PT Cengkeh Indonesia Global,',
+        '',
+        'Saya ingin mendapatkan informasi lebih lanjut mengenai produk atau kemitraan.',
+        '',
+        `Halaman website: ${location.href}`,
+        '',
+        'Terima kasih.'
+      ].join('\n');
+
+      const gmailUrl =
+        'https://mail.google.com/mail/?view=cm&fs=1' +
+        `&to=${encodeURIComponent(email)}` +
+        `&su=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(body)}`;
+
+      window.open(
+        gmailUrl,
+        '_blank',
+        'noopener,noreferrer'
+      );
+    }
+  );
+}
+
   function initContactForm() {
   const form =
     document.querySelector('[data-contact-form]');
