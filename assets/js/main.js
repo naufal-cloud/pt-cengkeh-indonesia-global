@@ -642,6 +642,7 @@ document.addEventListener(
     }
 
     renderFeatured();
+    renderShippingPartners();
     initProducts();
     initProductDetail();
     initArticles();
