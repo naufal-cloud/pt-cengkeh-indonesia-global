@@ -1,27 +1,171 @@
 (() => {
-  const list = document.getElementById('supplier-list');
-  const filter = document.getElementById('region-filter');
-  const suppliers = (window.CIG?.suppliers || []).filter(s => s.public);
-  const esc = window.CIG_ESC || (x => x);
-  const regions = [...new Set(suppliers.map(s=>s.region))];
-  filter.innerHTML += regions.map(r=>`<option>${esc(r)}</option>`).join('');
-  let map, markers=[];
-  function drawList(rows){
-    list.innerHTML = rows.length ? rows.map(s=>`<article class="supplier-item"><h3>${esc(s.name)}</h3><p><strong>${esc(s.region)}</strong></p><p>${esc(s.summary)}</p></article>`).join('') : '<div class="empty-state"><h3>Tidak ada wilayah</h3></div>';
-  }
-  function drawMap(rows){
-    if (!window.L) { document.getElementById('supplier-map').innerHTML='<div class="empty-state"><h3>Peta tidak tersedia</h3><p>Daftar wilayah tetap dapat dilihat di sebelah peta.</p></div>'; return; }
-    if (!map) {
-      map=L.map('supplier-map',{scrollWheelZoom:false}).setView([-2.5,118],4.5);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  'use strict';
+
+  function initSupplierMap() {
+    const list =
+      document.getElementById('supplier-list');
+
+    const filter =
+      document.getElementById('region-filter');
+
+    if (!list || !filter) {
+      return;
     }
-    markers.forEach(m=>map.removeLayer(m)); markers=[];
-    rows.forEach(s=>{
-      const marker=L.marker([s.lat,s.lng]).addTo(map).bindPopup(`<strong>${esc(s.name)}</strong><br>${esc(s.region)}<br><small>${esc(s.summary)}</small>`);
-      markers.push(marker);
-    });
-    if (markers.length) { const group=L.featureGroup(markers); map.fitBounds(group.getBounds().pad(.7),{maxZoom:6}); }
+
+    const suppliers = (
+      window.CIG?.suppliers || []
+    ).filter(supplier => supplier.public);
+
+    const esc =
+      window.CIG_ESC || (value => value);
+
+    const regions = [
+      ...new Set(
+        suppliers.map(supplier => supplier.region)
+      )
+    ];
+
+    filter.innerHTML += regions
+      .map(region => (
+        `<option value="${esc(region)}">
+          ${esc(region)}
+        </option>`
+      ))
+      .join('');
+
+    let map;
+    let markers = [];
+
+    function drawList(rows) {
+      list.innerHTML = rows.length
+        ? rows
+            .map(supplier => `
+              <article class="supplier-item">
+                <h3>${esc(supplier.name)}</h3>
+                <p>
+                  <strong>
+                    ${esc(supplier.region)}
+                  </strong>
+                </p>
+                <p>${esc(supplier.summary)}</p>
+              </article>
+            `)
+            .join('')
+        : `
+          <div class="empty-state">
+            <h3>Tidak ada wilayah</h3>
+          </div>
+        `;
+    }
+
+    function drawMap(rows) {
+      const mapElement =
+        document.getElementById('supplier-map');
+
+      if (!window.L) {
+        mapElement.innerHTML = `
+          <div class="empty-state">
+            <h3>Peta tidak tersedia</h3>
+            <p>
+              Daftar wilayah tetap dapat dilihat.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+      if (!map) {
+        map = L
+          .map('supplier-map', {
+            scrollWheelZoom: false
+          })
+          .setView([-2.5, 118], 4.5);
+
+        L.tileLayer(
+          'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          {
+            maxZoom: 18,
+            attribution:
+              '&copy; OpenStreetMap contributors'
+          }
+        ).addTo(map);
+      }
+
+      markers.forEach(marker =>
+        map.removeLayer(marker)
+      );
+
+      markers = [];
+
+      rows.forEach(supplier => {
+        const latitude =
+          Number(supplier.lat);
+
+        const longitude =
+          Number(supplier.lng);
+
+        if (
+          !Number.isFinite(latitude) ||
+          !Number.isFinite(longitude)
+        ) {
+          return;
+        }
+
+        const marker = L
+          .marker([latitude, longitude])
+          .addTo(map)
+          .bindPopup(`
+            <strong>
+              ${esc(supplier.name)}
+            </strong>
+            <br>
+            ${esc(supplier.region)}
+            <br>
+            <small>
+              ${esc(supplier.summary)}
+            </small>
+          `);
+
+        markers.push(marker);
+      });
+
+      if (markers.length) {
+        const group =
+          L.featureGroup(markers);
+
+        map.fitBounds(
+          group.getBounds().pad(0.7),
+          { maxZoom: 6 }
+        );
+      }
+    }
+
+    function render() {
+      const selectedRegion =
+        filter.value;
+
+      const rows = suppliers.filter(
+        supplier =>
+          !selectedRegion ||
+          supplier.region === selectedRegion
+      );
+
+      drawList(rows);
+      drawMap(rows);
+    }
+
+    filter.addEventListener(
+      'change',
+      render
+    );
+
+    render();
   }
-  function render(){ const region=filter.value; const rows=suppliers.filter(s=>!region||s.region===region); drawList(rows); drawMap(rows); }
-  filter.addEventListener('change',render); render();
+
+  document.addEventListener(
+    'cig:data-ready',
+    initSupplierMap,
+    { once: true }
+  );
 })();
