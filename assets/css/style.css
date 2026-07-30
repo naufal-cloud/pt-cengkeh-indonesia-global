@@ -220,3 +220,48 @@ html[dir="rtl"] .language-switcher select {
   }
 }
 
+/* Tampilan kartu mitra pengiriman */
+.shipping-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  text-align: center;
+}
+
+.shipping-card__logo {
+  min-height: 180px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-50);
+  border-bottom: 1px solid var(--line);
+}
+
+.shipping-card__logo img {
+  width: 100%;
+  max-width: 180px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.shipping-card__logo strong {
+  color: var(--green-900);
+  font-size: 1.35rem;
+}
+
+.shipping-card .card__body {
+  flex: 1;
+}
+
+.shipping-card .card__body h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 680px) {
+  .shipping-card__logo {
+    min-height: 150px;
+    padding: 24px;
+  }
+}
+
