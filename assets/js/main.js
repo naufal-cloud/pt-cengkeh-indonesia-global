@@ -135,6 +135,9 @@ if (premiumProduct) {
     settings: {
       ...(window.CIG.settings || {}),
       email: contactResult.data?.email || '',
+       emailSubject:
+    contactResult.data?.email_subject ||
+    'Permintaan Informasi Produk',
       phoneDisplay:
         contactResult.data?.phone_display || '',
       whatsapp:
