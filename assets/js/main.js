@@ -389,6 +389,10 @@ document.addEventListener(
 
     try {
       await loadPublicData();
+      
+      document.dispatchEvent(
+  new CustomEvent('cig:data-ready')
+);
     } catch (publicDataError) {
       console.error(
         'Data Supabase gagal dimuat:',
