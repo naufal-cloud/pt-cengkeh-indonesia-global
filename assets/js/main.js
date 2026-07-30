@@ -138,6 +138,9 @@ if (premiumProduct) {
       })
     ),
 
+    shippingPartners:
+  shippingResult.data || [],
+
     settings: {
       ...(window.CIG.settings || {}),
       email: contactResult.data?.email || '',
