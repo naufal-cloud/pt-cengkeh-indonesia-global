@@ -334,6 +334,68 @@ contactResult.error
     .join('');
 }
 
+  function renderTeamMembers() {
+  const target =
+    document.querySelector('[data-team-grid]');
+
+  if (!target) {
+    return;
+  }
+
+  const members =
+    window.CIG.teamMembers || [];
+
+  if (!members.length) {
+    target.innerHTML = `
+      <div class="empty-state">
+        <h3>Struktur organisasi belum tersedia</h3>
+        <p>
+          Data manajemen perusahaan akan ditampilkan
+          setelah ditambahkan melalui sistem administrasi.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  target.innerHTML = members
+    .map(member => {
+      const photo =
+        member.photo_url ||
+        `${prefix}assets/images/logo-pt-cengkeh.png`;
+
+      return `
+        <article class="card team-card">
+          <div class="card__media">
+            <img
+              src="${esc(photo)}"
+              alt="Foto ${esc(member.name)}"
+              loading="lazy"
+              width="600"
+              height="600"
+            >
+          </div>
+
+          <div class="card__body">
+            <span class="eyebrow">
+              ${esc(member.position)}
+            </span>
+
+            <h3>${esc(member.name)}</h3>
+
+            ${
+              member.biography
+                ? `<p>${esc(member.biography)}</p>`
+                : ''
+            }
+          </div>
+        </article>
+      `;
+    })
+    .join('');
+}
+
   function initProducts() {
     const target = document.querySelector('[data-product-grid]');
     if (!target) return;
@@ -678,6 +740,7 @@ document.addEventListener(
 
     renderFeatured();
     renderShippingPartners();
+    renderTeamMembers();
     initProducts();
     initProductDetail();
     initArticles();
