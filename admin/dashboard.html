@@ -5,7 +5,7 @@
 <section class="view" id="view-products"><div class="view-head"><div><h2>Produk</h2><p>Tambah, edit, publikasikan, atau hapus produk perusahaan.</p></div><div class="toolbar"><button class="btn btn-primary" data-open-form="product">Tambah Produk</button></div></div><div class="table-wrap"><table><thead><tr><th>Nama</th><th>Kategori</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="product-table"></tbody></table></div></section>
 <section class="view" id="view-articles"><div class="view-head"><div><h2>Artikel</h2><p>Kelola artikel dan status publikasi.</p></div><div class="toolbar"><button class="btn btn-primary" data-open-form="article">Tambah Artikel</button></div></div><div class="table-wrap"><table><thead><tr><th>Judul</th><th>Kategori</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="article-table"></tbody></table></div></section>
 <section class="view" id="view-suppliers"><div class="view-head"><div><h2>Supplier</h2><p>Kelola titik wilayah dan visibilitas publik.</p></div><div class="toolbar"><button class="btn btn-primary" data-open-form="supplier">Tambah Supplier</button></div></div><div class="table-wrap"><table><thead><tr><th>Nama</th><th>Wilayah</th><th>Koordinat</th><th>Publik</th><th>Aksi</th></tr></thead><tbody id="supplier-table"></tbody></table></div></section>
-<section class="view" id="view-messages"><section class="view" id="view-team">
+<section class="view" id="view-team">
   <div class="view-head">
     <div>
       <h2>Struktur Organisasi</h2>
@@ -41,7 +41,12 @@
       <tbody id="team-table"></tbody>
     </table>
   </div>
-</section><div class="view-head"><div><h2>Pesan Masuk</h2><p>Pesan yang dikirim melalui formulir kontak website.</p></div><div class="toolbar"><button class="btn btn-light" id="export-messages">Ekspor CSV</button></div></div><div class="table-wrap"><table><thead><tr><th>Pengirim</th><th>Subjek</th><th>Waktu</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="message-table"></tbody></table></div></section>
+</section>
+
+<section class="view" id="view-messages">
+  <div class="view-head">
+    <div>
+      <h2>Pesan Masuk</h2><p>Pesan yang dikirim melalui formulir kontak website.</p></div><div class="toolbar"><button class="btn btn-light" id="export-messages">Ekspor CSV</button></div></div><div class="table-wrap"><table><thead><tr><th>Pengirim</th><th>Subjek</th><th>Waktu</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="message-table"></tbody></table></div></section>
 <section class="view" id="view-settings"><div class="view-head"><div><h2>Pengaturan Situs</h2><p>Hanya ditampilkan untuk akun Administrator.</p></div></div><form class="panel" id="settings-form"><div class="form-grid"><div class="field"><label for="set-email">Email</label><input id="set-email" name="email" type="email"></div><div class="field"><label for="set-phone">Telepon tampilan</label><input id="set-phone" name="phoneDisplay"></div><div class="field"><label for="set-whatsapp">Nomor WhatsApp (format internasional)</label><input id="set-whatsapp" name="whatsapp" placeholder="628123456789"></div><div class="field full"><label for="set-address">Alamat</label><textarea id="set-address" name="address"></textarea></div><div class="full"><button class="btn btn-primary" type="submit">Simpan Pengaturan</button></div></div></form></section>
 </div></main></div>
 <div class="modal" id="entity-modal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><h3 id="modal-title">Form</h3><button class="close-btn" type="button" id="modal-close" aria-label="Tutup">×</button></div><form id="entity-form"><div id="entity-fields"></div><input type="hidden" name="entity"><input type="hidden" name="id"><div class="toolbar" style="margin-top:18px"><button class="btn btn-primary" type="submit">Simpan</button><button class="btn btn-light" type="button" id="modal-cancel">Batal</button></div></form></div></div>
