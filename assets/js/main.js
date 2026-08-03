@@ -56,6 +56,7 @@ if (premiumProduct) {
   articlesResult,
   suppliersResult,
   shippingResult,
+  teamResult,
   contactResult
 ] = await Promise.all([
     client
@@ -81,6 +82,12 @@ if (premiumProduct) {
   .select('*'),
 
     client
+  .from('team_members')
+  .select('*')
+  .eq('is_published', true)
+  .order('sort_order', { ascending: true }),
+
+    client
       .from('site_contact')
       .select('*')
       .eq('id', 1)
@@ -92,7 +99,8 @@ if (premiumProduct) {
     articlesResult.error,
     suppliersResult.error,
     shippingResult.error,
-    contactResult.error
+teamResult.error,
+contactResult.error
   ].find(Boolean);
 
   if (firstError) {
@@ -138,8 +146,8 @@ if (premiumProduct) {
       })
     ),
 
-    shippingPartners:
-  shippingResult.data || [],
+    teamMembers:
+  teamResult.data || [],
 
     settings: {
       ...(window.CIG.settings || {}),
