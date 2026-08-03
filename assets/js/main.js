@@ -271,7 +271,7 @@ if (premiumProduct) {
   if (!partners.length) {
     target.innerHTML = `
       <div class="empty-state">
-        <h3>Mitra pengiriman belum tersedia</h3>
+        <h3>Pilihan jasa pengiriman belum tersedia</h3>
         <p>
           Daftar mitra akan ditampilkan setelah
           ditambahkan melalui sistem administrasi.
@@ -287,7 +287,7 @@ if (premiumProduct) {
       const name =
         partner.name ||
         partner.partner_name ||
-        'Mitra Pengiriman';
+        'Jasa Pengiriman';
 
       const logo =
         partner.logo_url ||
@@ -296,7 +296,7 @@ if (premiumProduct) {
 
       const description =
         partner.description ||
-        'Mitra jasa pengiriman perusahaan.';
+        'Pilihan jasa pengiriman yang dapat digunakan sesuai kebutuhan transaksi.';
 
       return `
         <article class="card shipping-card">
