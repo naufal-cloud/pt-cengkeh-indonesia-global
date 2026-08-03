@@ -10,12 +10,13 @@
 
   async function loadOnlineData() {
   const [
-    productsResult,
-    articlesResult,
-    suppliersResult,
-    messagesResult,
-    contactResult
-  ] = await Promise.all([
+  productsResult,
+  articlesResult,
+  suppliersResult,
+  teamResult,
+  messagesResult,
+  contactResult
+] = await Promise.all([
     supabase
       .from('products')
       .select('*')
@@ -30,6 +31,11 @@
       .from('suppliers')
       .select('*')
       .order('created_at', { ascending: false }),
+
+    supabase
+  .from('team_members')
+  .select('*')
+  .order('sort_order', { ascending: true }),
 
     supabase
       .from('contact_messages')
@@ -47,6 +53,7 @@
     productsResult.error,
     articlesResult.error,
     suppliersResult.error,
+    teamResult.error,
     messagesResult.error,
     contactResult.error
   ].find(Boolean);
@@ -76,6 +83,8 @@
       lng: supplier.longitude,
       public: supplier.is_published
     })),
+
+    teams: teamResult.data || [],
 
     messages: (messagesResult.data || []).map(message => ({
       ...message,
