@@ -300,14 +300,31 @@ try {
       </div>
 
       <div class="field full">
-        <label>URL Foto</label>
-        <input
-          name="photo_url"
-          type="url"
-          placeholder="https://..."
-          value="${esc(item?.photo_url || '')}"
-        >
-      </div>
+  <label>Unggah Foto</label>
+
+  <input
+    name="photo_file"
+    type="file"
+    accept="image/jpeg,image/png,image/webp"
+  >
+
+  <input
+    name="photo_url"
+    type="hidden"
+    value="${esc(item?.photo_url || '')}"
+  >
+
+  ${
+    item?.photo_url
+      ? `
+        <p class="small">
+          Foto saat ini sudah tersimpan.
+          Unggah foto baru untuk menggantinya.
+        </p>
+      `
+      : ''
+  }
+</div>
 
       <div class="field full">
         <label>Biografi Singkat</label>
@@ -341,6 +358,65 @@ try {
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
   }
   function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');form.reset();}
+
+  async function uploadTeamPhoto(formElement) {
+  const fileInput =
+    formElement.elements.photo_file;
+
+  const currentPhoto =
+    formElement.elements.photo_url?.value || null;
+
+  const file = fileInput?.files?.[0];
+
+  if (!file) {
+    return currentPhoto;
+  }
+
+  const allowedTypes = [
+    'image/jpeg',
+    'image/png',
+    'image/webp'
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+    throw new Error(
+      'Foto harus berformat JPG, PNG, atau WebP.'
+    );
+  }
+
+  if (file.size > 10 * 1024 * 1024) {
+    throw new Error(
+      'Ukuran foto maksimal 10 MB.'
+    );
+  }
+
+  const extension =
+    file.name.split('.').pop()?.toLowerCase() ||
+    'jpg';
+
+  const filePath =
+    `team-members/${crypto.randomUUID()}.${extension}`;
+
+  const { error: uploadError } =
+    await supabase.storage
+      .from('public-assets')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false,
+        contentType: file.type
+      });
+
+  if (uploadError) {
+    throw uploadError;
+  }
+
+  const { data: publicUrlData } =
+    supabase.storage
+      .from('public-assets')
+      .getPublicUrl(filePath);
+
+  return publicUrlData.publicUrl;
+}
 
   async function saveEntityOnline(entity, id, formData) {
   let table;
@@ -531,6 +607,12 @@ if (entity === 'supplier') {
   delete formData.id;
 
   try {
+    if (entity === 'team') {
+  formData.photo_url =
+    await uploadTeamPhoto(form);
+
+  delete formData.photo_file;
+}
     await saveEntityOnline(entity, id, formData);
 
     closeModal();
