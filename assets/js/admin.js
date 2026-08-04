@@ -11,6 +11,7 @@
   async function loadOnlineData() {
   const [
   productsResult,
+  brochuresResult,
   articlesResult,
   suppliersResult,
   teamResult,
@@ -21,6 +22,11 @@
       .from('products')
       .select('*')
       .order('created_at', { ascending: false }),
+
+    supabase
+  .from('product_brochures')
+  .select('*')
+  .order('created_at', { ascending: false }),
 
     supabase
       .from('articles')
@@ -54,6 +60,7 @@
     articlesResult.error,
     suppliersResult.error,
     teamResult.error,
+    brochuresResult.error,
     messagesResult.error,
     contactResult.error
   ].find(Boolean);
@@ -69,6 +76,8 @@
       specs: product.specifications || [],
       brochure: '#'
     })),
+
+    brochures: brochuresResult.data || [],
 
     articles: (articlesResult.data || []).map(article => ({
       ...article,
@@ -268,12 +277,84 @@ try {
     form.entity.value=entity; form.id.value=id;
     const names = {
   product: 'Produk',
+  brochure: 'Brosur',
   article: 'Artikel',
   supplier: 'Supplier',
   team: 'Pengurus'
 };
     modalTitle.textContent=`${item?'Edit':'Tambah'} ${names[entity]}`;
     if(entity==='product') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Cengkeh Kering')}"></div><div class="field full"><label>Ringkasan *</label><textarea name="summary" required maxlength="400">${esc(item?.summary||'')}</textarea></div><div class="field"><label>Ilustrasi</label><select name="image"><option value="assets/images/clove-dry.svg">Cengkeh kering</option><option value="assets/images/clove-oil.svg">Minyak cengkeh</option><option value="assets/images/clove-stem.svg">Tangkai cengkeh</option></select></div><div class="field"><label>Status</label><select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></div></div>`;
+    if (entity === 'brochure') {
+  const productOptions = (data.products || [])
+    .map(product => `
+      <option value="${esc(product.slug)}">
+        ${esc(product.name)}
+      </option>
+    `)
+    .join('');
+
+  fields.innerHTML = `
+    <div class="form-grid">
+      <div class="field full">
+        <label>Judul Brosur *</label>
+        <input
+          name="title"
+          required
+          maxlength="180"
+          value="${esc(item?.title || '')}"
+        >
+      </div>
+
+      <div class="field full">
+        <label>Produk *</label>
+        <select name="product_slug" required>
+          <option value="">Pilih produk</option>
+          ${productOptions}
+        </select>
+      </div>
+
+      <div class="field full">
+        <label>Unggah File PDF</label>
+
+        <input
+          name="brochure_file"
+          type="file"
+          accept="application/pdf"
+        >
+
+        <input
+          name="file_url"
+          type="hidden"
+          value="${esc(item?.file_url || '')}"
+        >
+
+        <input
+          name="file_name"
+          type="hidden"
+          value="${esc(item?.file_name || '')}"
+        >
+
+        ${
+          item?.file_name
+            ? `
+              <p class="small">
+                File saat ini: ${esc(item.file_name)}
+              </p>
+            `
+            : ''
+        }
+      </div>
+
+      <div class="field">
+        <label>Status Publikasi</label>
+        <select name="is_published">
+          <option value="true">Publik</option>
+          <option value="false">Tidak Publik</option>
+        </select>
+      </div>
+    </div>
+  `;
+}
     if(entity==='article') fields.innerHTML=`<div class="form-grid"><div class="field full"><label>Judul *</label><input name="title" required maxlength="180" value="${esc(item?.title||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Edukasi')}"></div><div class="field"><label>Tanggal</label><input name="date" type="date" value="${esc(item?.date||new Date().toISOString().slice(0,10))}"></div><div class="field full"><label>Ringkasan *</label><textarea name="excerpt" required maxlength="500">${esc(item?.excerpt||'')}</textarea></div><div class="field"><label>Ilustrasi</label><select name="image"><option value="assets/images/farm.svg">Kebun</option><option value="assets/images/quality.svg">Kualitas</option><option value="assets/images/partnership.svg">Kemitraan</option></select></div><div class="field"><label>Status</label><select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></div></div>`;
     if(entity==='supplier') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Wilayah *</label><input name="region" required maxlength="80" value="${esc(item?.region||'')}"></div><div class="field"><label>Latitude *</label><input name="lat" type="number" step="any" min="-90" max="90" required value="${item?.lat??''}"></div><div class="field"><label>Longitude *</label><input name="lng" type="number" step="any" min="-180" max="180" required value="${item?.lng??''}"></div><div class="field full"><label>Ringkasan</label><textarea name="summary" maxlength="300">${esc(item?.summary||'Lokasi perkiraan tingkat wilayah untuk keperluan demonstrasi.')}</textarea></div><label class="field"><span>Publik</span><select name="public"><option value="true">Ya</option><option value="false">Tidak</option></select></label></div>`;
     if (entity === 'team') {
@@ -418,6 +499,64 @@ try {
   return publicUrlData.publicUrl;
 }
 
+  async function uploadBrochureFile(formElement) {
+  const fileInput =
+    formElement.elements.brochure_file;
+
+  const currentUrl =
+    formElement.elements.file_url?.value || null;
+
+  const currentName =
+    formElement.elements.file_name?.value || null;
+
+  const file = fileInput?.files?.[0];
+
+  if (!file) {
+    return {
+      fileUrl: currentUrl,
+      fileName: currentName
+    };
+  }
+
+  if (file.type !== 'application/pdf') {
+    throw new Error(
+      'Brosur harus berformat PDF.'
+    );
+  }
+
+  if (file.size > 10 * 1024 * 1024) {
+    throw new Error(
+      'Ukuran brosur maksimal 10 MB.'
+    );
+  }
+
+  const filePath =
+    `product-brochures/${crypto.randomUUID()}.pdf`;
+
+  const { error: uploadError } =
+    await supabase.storage
+      .from('public-assets')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false,
+        contentType: 'application/pdf'
+      });
+
+  if (uploadError) {
+    throw uploadError;
+  }
+
+  const { data: publicUrlData } =
+    supabase.storage
+      .from('public-assets')
+      .getPublicUrl(filePath);
+
+  return {
+    fileUrl: publicUrlData.publicUrl,
+    fileName: file.name
+  };
+}
+
   async function saveEntityOnline(entity, id, formData) {
   let table;
   let payload;
@@ -443,6 +582,25 @@ try {
       status: formData.status
     };
   }
+
+    if (entity === 'brochure') {
+  if (!formData.file_url || !formData.file_name) {
+    throw new Error(
+      'File brosur PDF wajib diunggah.'
+    );
+  }
+
+  table = 'product_brochures';
+
+  payload = {
+    product_slug: formData.product_slug,
+    title: formData.title,
+    file_name: formData.file_name,
+    file_url: formData.file_url,
+    is_published:
+      formData.is_published === 'true'
+  };
+}
 
   if (entity === 'article') {
     const existing = id
@@ -511,6 +669,7 @@ try {
 ) {
   const tableMap = {
   product: 'products',
+  brochure: 'product_brochures',
   article: 'articles',
   supplier: 'suppliers',
   team: 'team_members',
@@ -547,7 +706,10 @@ if (entity === 'supplier') {
   payload = {
     is_published: !item.public
   };
-} else if (entity === 'team') {
+} else if (
+  entity === 'team' ||
+  entity === 'brochure'
+) {
   payload = {
     is_published: !item.is_published
   };
@@ -613,6 +775,18 @@ if (entity === 'supplier') {
 
   delete formData.photo_file;
 }
+    if (entity === 'brochure') {
+  const uploadedBrochure =
+    await uploadBrochureFile(form);
+
+  formData.file_url =
+    uploadedBrochure.fileUrl;
+
+  formData.file_name =
+    uploadedBrochure.fileName;
+
+  delete formData.brochure_file;
+}
     await saveEntityOnline(entity, id, formData);
 
     closeModal();
@@ -635,6 +809,78 @@ if (entity === 'supplier') {
 
   function actionButton(entity,id,label,cls,action){return `<button class="btn btn-sm ${cls}" data-action="${action}" data-entity="${entity}" data-id="${esc(id)}">${label}</button>`}
   function renderProducts(){ const tbody=document.getElementById('product-table'); const rows=data.products||[]; tbody.innerHTML=rows.length?rows.map(p=>`<tr><td><strong>${esc(p.name)}</strong><br><span class="small">${esc(p.slug)}</span></td><td>${esc(p.category)}</td><td><span class="status ${p.status==='draft'?'draft':''}">${esc(p.status)}</span></td><td><div class="actions">${actionButton('product',p.id,'Edit','btn-light','edit')}${actionButton('product',p.id,p.status==='published'?'Jadikan Draft':'Publikasikan','btn-light','toggle')}${actionButton('product',p.id,'Hapus','btn-danger','delete')}</div></td></tr>`).join(''):'<tr><td colspan="4" class="empty">Belum ada produk.</td></tr>'; }
+  function renderBrochures() {
+  const tbody =
+    document.getElementById('brochure-table');
+
+  const rows = data.brochures || [];
+
+  tbody.innerHTML = rows.length
+    ? rows.map(brochure => `
+        <tr>
+          <td>
+            <strong>${esc(brochure.title)}</strong>
+          </td>
+
+          <td>
+            ${esc(brochure.product_slug)}
+          </td>
+
+          <td>
+            ${esc(brochure.file_name)}
+          </td>
+
+          <td>
+            <span class="status ${
+              !brochure.is_published ? 'draft' : ''
+            }">
+              ${
+                brochure.is_published
+                  ? 'Publik'
+                  : 'Tidak Publik'
+              }
+            </span>
+          </td>
+
+          <td>
+            <div class="actions">
+              ${actionButton(
+                'brochure',
+                brochure.id,
+                'Edit',
+                'btn-light',
+                'edit'
+              )}
+
+              ${actionButton(
+                'brochure',
+                brochure.id,
+                brochure.is_published
+                  ? 'Sembunyikan'
+                  : 'Publikasikan',
+                'btn-light',
+                'toggle'
+              )}
+
+              ${actionButton(
+                'brochure',
+                brochure.id,
+                'Hapus',
+                'btn-danger',
+                'delete'
+              )}
+            </div>
+          </td>
+        </tr>
+      `).join('')
+    : `
+        <tr>
+          <td colspan="5" class="empty">
+            Belum ada brosur produk.
+          </td>
+        </tr>
+      `;
+}
   function renderArticles(){ const tbody=document.getElementById('article-table'); const rows=data.articles||[]; tbody.innerHTML=rows.length?rows.map(a=>`<tr><td><strong>${esc(a.title)}</strong></td><td>${esc(a.category)}</td><td>${esc(a.date)}</td><td><span class="status ${a.status==='draft'?'draft':''}">${esc(a.status)}</span></td><td><div class="actions">${actionButton('article',a.id,'Edit','btn-light','edit')}${actionButton('article',a.id,a.status==='published'?'Jadikan Draft':'Publikasikan','btn-light','toggle')}${actionButton('article',a.id,'Hapus','btn-danger','delete')}</div></td></tr>`).join(''):'<tr><td colspan="5" class="empty">Belum ada artikel.</td></tr>'; }
   function renderSuppliers(){ const tbody=document.getElementById('supplier-table'); const rows=data.suppliers||[]; tbody.innerHTML=rows.length?rows.map(s=>`<tr><td><strong>${esc(s.name)}</strong></td><td>${esc(s.region)}</td><td>${s.lat}, ${s.lng}</td><td><span class="status ${!s.public?'private':''}">${s.public?'Publik':'Privat'}</span></td><td><div class="actions">${actionButton('supplier',s.id,'Edit','btn-light','edit')}${actionButton('supplier',s.id,s.public?'Sembunyikan':'Publikasikan','btn-light','toggle')}${actionButton('supplier',s.id,'Hapus','btn-danger','delete')}</div></td></tr>`).join(''):'<tr><td colspan="5" class="empty">Belum ada supplier.</td></tr>'; }
   function renderTeams() {
@@ -710,7 +956,7 @@ if (entity === 'supplier') {
   function renderMessages(){ const tbody=document.getElementById('message-table'); const rows=data.messages||[]; tbody.innerHTML=rows.length?rows.slice().reverse().map(m=>`<tr><td><strong>${esc(m.name||'-')}</strong><br><span class="small">${esc(m.email||'')}</span></td><td>${esc(m.subject||'-')}</td><td>${m.createdAt?new Date(m.createdAt).toLocaleString('id-ID'):'-'}</td><td><span class="status">${esc(m.status||'Baru')}</span></td><td><div class="actions">${actionButton('message',m.id,'Tandai Selesai','btn-light','complete')}${actionButton('message',m.id,'Hapus','btn-danger','delete')}</div></td></tr>`).join(''):'<tr><td colspan="5" class="empty">Belum ada pesan demo.</td></tr>'; }
   function renderCounts(){document.getElementById('count-products').textContent=(data.products||[]).length;document.getElementById('count-articles').textContent=(data.articles||[]).length;document.getElementById('count-suppliers').textContent=(data.suppliers||[]).filter(x=>x.public).length;document.getElementById('count-messages').textContent=(data.messages||[]).filter(x=>(x.status||'Baru')==='Baru').length;}
   function fillSettings(){ const f=document.getElementById('settings-form'); if(!f)return; for(const [k,v] of Object.entries(data.settings||{})){if(f.elements[k])f.elements[k].value=v||'';} }
-  function renderAll(){renderProducts();renderArticles();renderSuppliers();renderTeams();renderMessages();renderCounts();fillSettings();}
+  function renderAll(){renderProducts();renderBrochures();renderArticles();renderSuppliers();renderTeams();renderMessages();renderCounts();fillSettings();}
   renderAll();
 
   document.addEventListener('click', async event => {
