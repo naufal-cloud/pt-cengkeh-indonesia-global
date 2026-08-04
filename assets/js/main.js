@@ -286,7 +286,7 @@ contactResult.error
       <div class="empty-state">
         <h3>Pilihan jasa pengiriman belum tersedia</h3>
         <p>
-          Daftar mitra akan ditampilkan setelah
+          Daftar jasa pengiriman akan ditampilkan setelah
           ditambahkan melalui sistem administrasi.
         </p>
       </div>
