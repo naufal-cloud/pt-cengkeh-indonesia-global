@@ -79,7 +79,9 @@ if (premiumProduct) {
 
     client
   .from('shipping_partners')
-  .select('*'),
+  .select('*')
+  .eq('is_published', true)
+  .order('sort_order', { ascending: true }),
 
     client
   .from('team_members')
@@ -271,8 +273,8 @@ contactResult.error
   const partners =
     (window.CIG.shippingPartners || [])
       .filter(partner =>
-        partner.is_active !== false
-      )
+  partner.is_published !== false
+)
       .sort(
         (firstPartner, secondPartner) =>
           (firstPartner.sort_order ?? 0) -
