@@ -148,7 +148,7 @@ contactResult.error
 
     shippingPartners:
   shippingResult.data || [],
-
+    
     teamMembers:
   teamResult.data || [],
 
