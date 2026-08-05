@@ -58,6 +58,7 @@ if (premiumProduct) {
   suppliersResult,
   shippingResult,
   teamResult,
+  legalitiesResult,
   contactResult
 ] = await Promise.all([
     client
@@ -97,6 +98,12 @@ if (premiumProduct) {
   .order('sort_order', { ascending: true }),
 
     client
+  .from('legalities')
+  .select('*')
+  .eq('is_published', true)
+  .order('sort_order', { ascending: true }),
+
+    client
       .from('site_contact')
       .select('*')
       .eq('id', 1)
@@ -109,8 +116,9 @@ if (premiumProduct) {
     articlesResult.error,
     suppliersResult.error,
     shippingResult.error,
-teamResult.error,
-contactResult.error
+    teamResult.error,
+    legalitiesResult.error,
+    contactResult.error
   ].find(Boolean);
 
   if (firstError) {
@@ -165,7 +173,10 @@ contactResult.error
     teamMembers:
   teamResult.data || [],
 
-    settings: {
+legalities:
+  legalitiesResult.data || [],
+
+settings: {
       ...(window.CIG.settings || {}),
       email: contactResult.data?.email || '',
        emailSubject:
@@ -403,6 +414,113 @@ contactResult.error
             ${
               member.biography
                 ? `<p>${esc(member.biography)}</p>`
+                : ''
+            }
+          </div>
+        </article>
+      `;
+    })
+    .join('');
+}
+
+  function renderLegalities() {
+  const target =
+    document.querySelector('[data-legalities-grid]');
+
+  if (!target) {
+    return;
+  }
+
+  const legalities =
+    (window.CIG.legalities || [])
+      .filter(item => item.is_published !== false)
+      .sort(
+        (firstItem, secondItem) =>
+          (firstItem.sort_order ?? 0) -
+          (secondItem.sort_order ?? 0)
+      );
+
+  if (!legalities.length) {
+    target.innerHTML = `
+      <div class="empty-state">
+        <h3>Informasi legalitas belum tersedia</h3>
+        <p>
+          Data legalitas perusahaan akan ditampilkan
+          setelah diverifikasi dan dipublikasikan.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  target.innerHTML = legalities
+    .map(item => {
+      const institution =
+        item.institution_name ||
+        'Lembaga Penerbit';
+
+      const officialName =
+        item.official_name ||
+        institution;
+
+      return `
+        <article class="card legality-card">
+          <div class="legality-card__logo">
+            ${
+              item.logo_url
+                ? `
+                  <img
+                    src="${esc(item.logo_url)}"
+                    alt="Logo ${esc(institution)}"
+                    loading="lazy"
+                  >
+                `
+                : `
+                  <strong>
+                    ${esc(institution)}
+                  </strong>
+                `
+            }
+          </div>
+
+          <div class="card__body">
+            <span class="eyebrow">
+              ${esc(institution)}
+            </span>
+
+            <h3>${esc(officialName)}</h3>
+
+            ${
+              item.description
+                ? `<p>${esc(item.description)}</p>`
+                : ''
+            }
+
+            ${
+              item.document_number
+                ? `
+                  <p>
+                    <strong>Nomor dokumen:</strong>
+                    ${esc(item.document_number)}
+                  </p>
+                `
+                : ''
+            }
+
+            ${
+              item.document_url
+                ? `
+                  <a
+                    class="text-link"
+                    href="${esc(item.document_url)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Lihat dokumen
+                    <span aria-hidden="true">→</span>
+                  </a>
+                `
                 : ''
             }
           </div>
@@ -793,6 +911,7 @@ document.addEventListener(
     renderFeatured();
     renderShippingPartners();
     renderTeamMembers();
+    renderLegalities();
     initProducts();
     initProductDetail();
     initArticles();
