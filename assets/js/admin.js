@@ -15,6 +15,7 @@
   articlesResult,
   suppliersResult,
   teamResult,
+  legalitiesResult,
   messagesResult,
   contactResult
 ] = await Promise.all([
@@ -44,6 +45,11 @@
   .order('sort_order', { ascending: true }),
 
     supabase
+  .from('legalities')
+  .select('*')
+  .order('sort_order', { ascending: true }),
+
+    supabase
       .from('contact_messages')
       .select('*')
       .order('created_at', { ascending: false }),
@@ -60,6 +66,7 @@
     articlesResult.error,
     suppliersResult.error,
     teamResult.error,
+    legalitiesResult.error,
     brochuresResult.error,
     messagesResult.error,
     contactResult.error
@@ -94,6 +101,8 @@
     })),
 
     teams: teamResult.data || [],
+
+    legalities: legalitiesResult.data || [],
 
     messages: (messagesResult.data || []).map(message => ({
       ...message,
@@ -273,14 +282,27 @@ try {
 
   const modal=document.getElementById('entity-modal'), modalTitle=document.getElementById('modal-title'), fields=document.getElementById('entity-fields'), form=document.getElementById('entity-form');
   function openModal(entity,id=''){
-    const item=id ? (data[entity+'s']||[]).find(x=>x.id===id) : null;
+    const collectionMap = {
+  product: 'products',
+  brochure: 'brochures',
+  article: 'articles',
+  supplier: 'suppliers',
+  team: 'teams',
+  legality: 'legalities'
+};
+
+const item = id
+  ? (data[collectionMap[entity]] || [])
+      .find(entry => entry.id === id)
+  : null;
     form.entity.value=entity; form.id.value=id;
     const names = {
   product: 'Produk',
   brochure: 'Brosur',
   article: 'Artikel',
   supplier: 'Supplier',
-  team: 'Pengurus'
+  team: 'Pengurus',
+  legality: 'Legalitas'
 };
     modalTitle.textContent=`${item?'Edit':'Tambah'} ${names[entity]}`;
     if(entity==='product') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Cengkeh Kering')}"></div><div class="field full"><label>Ringkasan *</label><textarea name="summary" required maxlength="400">${esc(item?.summary||'')}</textarea></div><div class="field"><label>Ilustrasi</label><select name="image"><option value="assets/images/clove-dry.svg">Cengkeh kering</option><option value="assets/images/clove-oil.svg">Minyak cengkeh</option><option value="assets/images/clove-stem.svg">Tangkai cengkeh</option></select></div><div class="field"><label>Status</label><select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></div></div>`;
@@ -435,6 +457,121 @@ try {
     </div>
   `;
 }
+
+    if (entity === 'legality') {
+  fields.innerHTML = `
+    <div class="form-grid">
+      <div class="field">
+        <label>Lembaga Penerbit *</label>
+        <input
+          name="institution_name"
+          required
+          maxlength="180"
+          value="${esc(item?.institution_name || '')}"
+        >
+      </div>
+
+      <div class="field">
+        <label>Nama Resmi *</label>
+        <input
+          name="official_name"
+          required
+          maxlength="220"
+          value="${esc(item?.official_name || '')}"
+        >
+      </div>
+
+      <div class="field full">
+        <label>Unggah Logo Lembaga</label>
+
+        <input
+          name="logo_file"
+          type="file"
+          accept="image/jpeg,image/png,image/webp,image/svg+xml"
+        >
+
+        <input
+          name="logo_url"
+          type="hidden"
+          value="${esc(item?.logo_url || '')}"
+        >
+
+        ${
+          item?.logo_url
+            ? `
+              <p class="small">
+                Logo saat ini sudah tersimpan.
+                Unggah logo baru untuk menggantinya.
+              </p>
+            `
+            : ''
+        }
+      </div>
+
+      <div class="field">
+        <label>Nomor Dokumen</label>
+        <input
+          name="document_number"
+          maxlength="180"
+          value="${esc(item?.document_number || '')}"
+        >
+      </div>
+
+      <div class="field">
+        <label>Unggah Dokumen PDF</label>
+
+        <input
+          name="document_file"
+          type="file"
+          accept="application/pdf"
+        >
+
+        <input
+          name="document_url"
+          type="hidden"
+          value="${esc(item?.document_url || '')}"
+        >
+
+        ${
+          item?.document_url
+            ? `
+              <p class="small">
+                Dokumen saat ini sudah tersimpan.
+                Unggah PDF baru untuk menggantinya.
+              </p>
+            `
+            : ''
+        }
+      </div>
+
+      <div class="field full">
+        <label>Deskripsi</label>
+        <textarea
+          name="description"
+          maxlength="600"
+        >${esc(item?.description || '')}</textarea>
+      </div>
+
+      <div class="field">
+        <label>Urutan Tampilan</label>
+        <input
+          name="sort_order"
+          type="number"
+          min="0"
+          value="${item?.sort_order ?? 0}"
+        >
+      </div>
+
+      <div class="field">
+        <label>Status Publikasi</label>
+        <select name="is_published">
+          <option value="true">Publik</option>
+          <option value="false">Tidak Publik</option>
+        </select>
+      </div>
+    </div>
+  `;
+}
     if(item){ for(const [k,v] of Object.entries(item)){ const el=form.elements[k]; if(el){ if(el.type==='checkbox')el.checked=Boolean(v); else el.value=String(v); } } }
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
   }
@@ -557,6 +694,119 @@ try {
   };
 }
 
+  async function uploadLegalityFiles(formElement) {
+  const logoInput =
+    formElement.elements.logo_file;
+
+  const documentInput =
+    formElement.elements.document_file;
+
+  const logoFile =
+    logoInput?.files?.[0];
+
+  const documentFile =
+    documentInput?.files?.[0];
+
+  let logoUrl =
+    formElement.elements.logo_url?.value || null;
+
+  let documentUrl =
+    formElement.elements.document_url?.value || null;
+
+  if (logoFile) {
+    const allowedLogoTypes = [
+      'image/jpeg',
+      'image/png',
+      'image/webp',
+      'image/svg+xml'
+    ];
+
+    if (!allowedLogoTypes.includes(logoFile.type)) {
+      throw new Error(
+        'Logo harus berformat JPG, PNG, WebP, atau SVG.'
+      );
+    }
+
+    if (logoFile.size > 10 * 1024 * 1024) {
+      throw new Error(
+        'Ukuran logo maksimal 10 MB.'
+      );
+    }
+
+    const extension =
+      logoFile.name
+        .split('.')
+        .pop()
+        ?.toLowerCase() || 'png';
+
+    const logoPath =
+      `legalities/logos/${crypto.randomUUID()}.${extension}`;
+
+    const { error: logoUploadError } =
+      await supabase.storage
+        .from('public-assets')
+        .upload(logoPath, logoFile, {
+          cacheControl: '3600',
+          upsert: false,
+          contentType: logoFile.type
+        });
+
+    if (logoUploadError) {
+      throw logoUploadError;
+    }
+
+    const { data: logoPublicData } =
+      supabase.storage
+        .from('public-assets')
+        .getPublicUrl(logoPath);
+
+    logoUrl = logoPublicData.publicUrl;
+  }
+
+  if (documentFile) {
+    if (documentFile.type !== 'application/pdf') {
+      throw new Error(
+        'Dokumen legalitas harus berformat PDF.'
+      );
+    }
+
+    if (documentFile.size > 10 * 1024 * 1024) {
+      throw new Error(
+        'Ukuran dokumen maksimal 10 MB.'
+      );
+    }
+
+    const documentPath =
+      `legalities/documents/${crypto.randomUUID()}.pdf`;
+
+    const { error: documentUploadError } =
+      await supabase.storage
+        .from('public-assets')
+        .upload(documentPath, documentFile, {
+          cacheControl: '3600',
+          upsert: false,
+          contentType: 'application/pdf'
+        });
+
+    if (documentUploadError) {
+      throw documentUploadError;
+    }
+
+    const { data: documentPublicData } =
+      supabase.storage
+        .from('public-assets')
+        .getPublicUrl(documentPath);
+
+    documentUrl =
+      documentPublicData.publicUrl;
+  }
+
+  return {
+    logoUrl,
+    documentUrl
+  };
+}
+
   async function saveEntityOnline(entity, id, formData) {
   let table;
   let payload;
@@ -649,6 +899,36 @@ try {
   };
 }
 
+    if (entity === 'legality') {
+  table = 'legalities';
+
+  payload = {
+    institution_name:
+      formData.institution_name,
+
+    official_name:
+      formData.official_name,
+
+    logo_url:
+      formData.logo_url || null,
+
+    document_number:
+      formData.document_number || null,
+
+    document_url:
+      formData.document_url || null,
+
+    description:
+      formData.description || null,
+
+    sort_order:
+      Number(formData.sort_order || 0),
+
+    is_published:
+      formData.is_published === 'true'
+  };
+}
+
   const query = id
     ? supabase.from(table).update(payload).eq('id', id)
     : supabase.from(table).insert(payload);
@@ -673,6 +953,7 @@ try {
   article: 'articles',
   supplier: 'suppliers',
   team: 'team_members',
+  legality: 'legalities',
   message: 'contact_messages'
 };
   const table = tableMap[entity];
@@ -691,10 +972,20 @@ try {
   }
 
   if (action === 'toggle') {
-    const collection = `${entity}s`;
-    const item = data[collection]?.find(
-      entry => entry.id === id
-    );
+    const collectionMap = {
+  product: 'products',
+  brochure: 'brochures',
+  article: 'articles',
+  supplier: 'suppliers',
+  team: 'teams',
+  legality: 'legalities'
+};
+
+const collection = collectionMap[entity];
+
+const item = data[collection]?.find(
+  entry => entry.id === id
+);
 
     if (!item) {
       throw new Error('Data tidak ditemukan.');
@@ -708,7 +999,8 @@ if (entity === 'supplier') {
   };
 } else if (
   entity === 'team' ||
-  entity === 'brochure'
+  entity === 'brochure' ||
+  entity === 'legality'
 ) {
   payload = {
     is_published: !item.is_published
@@ -787,6 +1079,21 @@ if (entity === 'supplier') {
 
   delete formData.brochure_file;
 }
+
+    if (entity === 'legality') {
+  const uploadedFiles =
+    await uploadLegalityFiles(form);
+
+  formData.logo_url =
+    uploadedFiles.logoUrl;
+
+  formData.document_url =
+    uploadedFiles.documentUrl;
+
+  delete formData.logo_file;
+  delete formData.document_file;
+}
+    
     await saveEntityOnline(entity, id, formData);
 
     closeModal();
@@ -953,10 +1260,86 @@ if (entity === 'supplier') {
       </tr>
     `;
 }
+
+  function renderLegalities() {
+  const tbody =
+    document.getElementById('legality-table');
+
+  const rows = data.legalities || [];
+
+  tbody.innerHTML = rows.length
+    ? rows.map(item => `
+        <tr>
+          <td>
+            <strong>
+              ${esc(item.institution_name)}
+            </strong>
+          </td>
+
+          <td>${esc(item.official_name)}</td>
+
+          <td>
+            ${esc(item.document_number || '-')}
+          </td>
+
+          <td>${item.sort_order ?? 0}</td>
+
+          <td>
+            <span class="status ${
+              !item.is_published ? 'private' : ''
+            }">
+              ${
+                item.is_published
+                  ? 'Publik'
+                  : 'Tidak Publik'
+              }
+            </span>
+          </td>
+
+          <td>
+            <div class="actions">
+              ${actionButton(
+                'legality',
+                item.id,
+                'Edit',
+                'btn-light',
+                'edit'
+              )}
+
+              ${actionButton(
+                'legality',
+                item.id,
+                item.is_published
+                  ? 'Sembunyikan'
+                  : 'Publikasikan',
+                'btn-light',
+                'toggle'
+              )}
+
+              ${actionButton(
+                'legality',
+                item.id,
+                'Hapus',
+                'btn-danger',
+                'delete'
+              )}
+            </div>
+          </td>
+        </tr>
+      `).join('')
+    : `
+      <tr>
+        <td colspan="6" class="empty">
+          Belum ada data legalitas perusahaan.
+        </td>
+      </tr>
+    `;
+}
+  
   function renderMessages(){ const tbody=document.getElementById('message-table'); const rows=data.messages||[]; tbody.innerHTML=rows.length?rows.slice().reverse().map(m=>`<tr><td><strong>${esc(m.name||'-')}</strong><br><span class="small">${esc(m.email||'')}</span></td><td>${esc(m.subject||'-')}</td><td>${m.createdAt?new Date(m.createdAt).toLocaleString('id-ID'):'-'}</td><td><span class="status">${esc(m.status||'Baru')}</span></td><td><div class="actions">${actionButton('message',m.id,'Tandai Selesai','btn-light','complete')}${actionButton('message',m.id,'Hapus','btn-danger','delete')}</div></td></tr>`).join(''):'<tr><td colspan="5" class="empty">Belum ada pesan demo.</td></tr>'; }
   function renderCounts(){document.getElementById('count-products').textContent=(data.products||[]).length;document.getElementById('count-articles').textContent=(data.articles||[]).length;document.getElementById('count-suppliers').textContent=(data.suppliers||[]).filter(x=>x.public).length;document.getElementById('count-messages').textContent=(data.messages||[]).filter(x=>(x.status||'Baru')==='Baru').length;}
   function fillSettings(){ const f=document.getElementById('settings-form'); if(!f)return; for(const [k,v] of Object.entries(data.settings||{})){if(f.elements[k])f.elements[k].value=v||'';} }
-  function renderAll(){renderProducts();renderBrochures();renderArticles();renderSuppliers();renderTeams();renderMessages();renderCounts();fillSettings();}
+  function renderAll(){renderProducts();renderBrochures();renderArticles();renderSuppliers();renderTeams();renderLegalities();renderMessages();renderCounts();fillSettings();}
   renderAll();
 
   document.addEventListener('click', async event => {
