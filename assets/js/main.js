@@ -53,6 +53,7 @@ if (premiumProduct) {
 
   const [
   productsResult,
+  brochuresResult,
   articlesResult,
   suppliersResult,
   shippingResult,
@@ -64,6 +65,12 @@ if (premiumProduct) {
       .select('*')
       .eq('status', 'published')
       .order('created_at', { ascending: false }),
+
+    client
+  .from('product_brochures')
+  .select('*')
+  .eq('is_published', true)
+  .order('created_at', { ascending: false }),
 
     client
       .from('articles')
@@ -98,6 +105,7 @@ if (premiumProduct) {
 
   const firstError = [
     productsResult.error,
+    brochuresResult.error,
     articlesResult.error,
     suppliersResult.error,
     shippingResult.error,
@@ -129,6 +137,9 @@ contactResult.error
       (productOrder[secondProduct.slug] ?? 99)
     );
   }),
+
+    brochures:
+  brochuresResult.data || [],
 
     articles: (articlesResult.data || []).map(
       article => ({
@@ -440,7 +451,13 @@ document.addEventListener(
   'cig:languagechange',
   updateProductPageTitle
 );
-    target.innerHTML = `<div class="detail-grid"><div class="detail-media"><img src="${esc(p.image)}" alt="Ilustrasi ${esc(p.name)}" width="800" height="560"></div><div><span class="eyebrow">${esc(p.category)}</span><h1>${esc(p.name)}</h1><p class="lead">${esc(p.summary)}</p><p>${esc(p.description)}</p><div class="button-row"><button class="btn btn--primary" data-whatsapp data-product-name="${esc(p.name)}">Tanyakan via WhatsApp</button><button class="btn btn--ghost" data-brochure>Unduh brosur</button></div></div></div><section class="section section--compact"><h2>Spesifikasi</h2><div class="table-wrap"><table><tbody>${p.specs.map(([k,v])=>`<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</tbody></table></div></section>`;
+    target.innerHTML = `<div class="detail-grid"><div class="detail-media"><img src="${esc(p.image)}" alt="Ilustrasi ${esc(p.name)}" width="800" height="560"></div><div><span class="eyebrow">${esc(p.category)}</span><h1>${esc(p.name)}</h1><p class="lead">${esc(p.summary)}</p><p>${esc(p.description)}</p><div class="button-row"><button class="btn btn--primary" data-whatsapp data-product-name="${esc(p.name)}">Tanyakan via WhatsApp</button><button
+  class="btn btn--ghost"
+  data-brochure
+  data-product-slug="${esc(p.slug)}"
+>
+  Unduh brosur
+</button></div></div></div><section class="section section--compact"><h2>Spesifikasi</h2><div class="table-wrap"><table><tbody>${p.specs.map(([k,v])=>`<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</tbody></table></div></section>`;
   }
 
   function initArticles() {
@@ -519,17 +536,47 @@ document.addEventListener(
     );
       window.open(`https://wa.me/${number.replace(/\D/g,'')}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
     });
-    document.addEventListener('click', e => {
-      const btn = e.target.closest('[data-brochure]');
-      if (btn) {
-  toast(
-    window.CIG_I18N.translate(
-      'toast.brochureUnavailable'
-    ),
-    'info'
-  );
-}
-    });
+    document.addEventListener('click', event => {
+  const button =
+    event.target.closest('[data-brochure]');
+
+  if (!button) {
+    return;
+  }
+
+  const productSlug =
+    button.dataset.productSlug;
+
+  const brochure =
+    (window.CIG.brochures || []).find(item =>
+      item.product_slug === productSlug &&
+      item.is_published
+    );
+
+  if (!brochure?.file_url) {
+    toast(
+      window.CIG_I18N.translate(
+        'toast.brochureUnavailable'
+      ),
+      'info'
+    );
+
+    return;
+  }
+
+  const downloadLink =
+    document.createElement('a');
+
+  downloadLink.href = brochure.file_url;
+  downloadLink.download =
+    brochure.file_name || 'brosur-produk.pdf';
+  downloadLink.target = '_blank';
+  downloadLink.rel = 'noopener';
+
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  downloadLink.remove();
+});
   }
 
   function initGmail() {
