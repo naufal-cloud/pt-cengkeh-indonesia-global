@@ -59,6 +59,7 @@ if (premiumProduct) {
   shippingResult,
   teamResult,
   legalitiesResult,
+  portfoliosResult,
   contactResult
 ] = await Promise.all([
     client
@@ -104,6 +105,12 @@ if (premiumProduct) {
   .order('sort_order', { ascending: true }),
 
     client
+  .from('portfolios')
+  .select('*')
+  .eq('is_published', true)
+  .order('sort_order', { ascending: true }),
+
+    client
       .from('site_contact')
       .select('*')
       .eq('id', 1)
@@ -118,6 +125,7 @@ if (premiumProduct) {
     shippingResult.error,
     teamResult.error,
     legalitiesResult.error,
+    portfoliosResult.error,
     contactResult.error
   ].find(Boolean);
 
@@ -175,6 +183,9 @@ if (premiumProduct) {
 
 legalities:
   legalitiesResult.data || [],
+
+portfolios:
+  portfoliosResult.data || [],
 
 settings: {
       ...(window.CIG.settings || {}),
@@ -529,6 +540,79 @@ settings: {
         </article>
       `;
     })
+    .join('');
+}
+
+  function renderPortfolios() {
+  const target =
+    document.querySelector('[data-portfolio-grid]');
+
+  if (!target) {
+    return;
+  }
+
+  const portfolios =
+    (window.CIG.portfolios || [])
+      .filter(item => item.is_published !== false)
+      .sort(
+        (firstItem, secondItem) =>
+          (firstItem.sort_order ?? 0) -
+          (secondItem.sort_order ?? 0)
+      );
+
+  if (!portfolios.length) {
+    target.innerHTML = `
+      <div class="empty-state">
+        <h3>Portofolio belum tersedia</h3>
+        <p>
+          Dokumentasi kegiatan perusahaan akan
+          ditampilkan setelah dipublikasikan.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  target.innerHTML = portfolios
+    .map(item => `
+      <article class="card portfolio-card">
+        ${
+          item.image_url
+            ? `
+              <div class="card__media">
+                <img
+                  src="${esc(item.image_url)}"
+                  alt="Dokumentasi ${esc(item.title)}"
+                  loading="lazy"
+                  width="800"
+                  height="520"
+                >
+              </div>
+            `
+            : ''
+        }
+
+        <div class="card__body">
+          <span class="eyebrow">
+            ${esc(item.category || 'Portofolio')}
+            ${
+              item.year
+                ? ` · ${esc(item.year)}`
+                : ''
+            }
+          </span>
+
+          <h3>${esc(item.title)}</h3>
+
+          ${
+            item.summary
+              ? `<p>${esc(item.summary)}</p>`
+              : ''
+          }
+        </div>
+      </article>
+    `)
     .join('');
 }
 
@@ -914,6 +998,7 @@ document.addEventListener(
     renderShippingPartners();
     renderTeamMembers();
     renderLegalities();
+    renderPortfolios();
     initProducts();
     initProductDetail();
     initArticles();
