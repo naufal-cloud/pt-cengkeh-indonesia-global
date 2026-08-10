@@ -498,7 +498,8 @@ settings: {
             }
 
             ${
-              item.document_number
+              item.document_number &&
+              String(item.document_number).trim().toLowerCase() !== 'null'
                 ? `
                   <p>
                     <strong>Nomor dokumen:</strong>
@@ -509,7 +510,8 @@ settings: {
             }
 
             ${
-              item.document_url
+              item.document_url &&
+              String(item.document_url).trim().toLowerCase() !== 'null'
                 ? `
                   <a
                     class="text-link"
