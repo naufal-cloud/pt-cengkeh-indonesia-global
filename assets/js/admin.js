@@ -16,6 +16,7 @@
   suppliersResult,
   teamResult,
   legalitiesResult,
+  portfoliosResult,
   messagesResult,
   contactResult
 ] = await Promise.all([
@@ -50,6 +51,11 @@
   .order('sort_order', { ascending: true }),
 
     supabase
+  .from('portfolios')
+  .select('*')
+  .order('sort_order', { ascending: true }),
+
+    supabase
       .from('contact_messages')
       .select('*')
       .order('created_at', { ascending: false }),
@@ -67,6 +73,7 @@
     suppliersResult.error,
     teamResult.error,
     legalitiesResult.error,
+    portfoliosResult.error,
     brochuresResult.error,
     messagesResult.error,
     contactResult.error
@@ -117,7 +124,7 @@
       address: contactResult.data?.address || ''
     },
 
-    portfolios: window.CIG_DATA?.portfolios || []
+    portfolios: portfoliosResult.data || []
   };
 }
   
@@ -288,7 +295,8 @@ try {
   article: 'articles',
   supplier: 'suppliers',
   team: 'teams',
-  legality: 'legalities'
+  legality: 'legalities',
+  portfolio: 'portfolios'
 };
 
 const item = id
@@ -302,7 +310,8 @@ const item = id
   article: 'Artikel',
   supplier: 'Supplier',
   team: 'Pengurus',
-  legality: 'Legalitas'
+  legality: 'Legalitas',
+  portfolio: 'Portofolio'
 };
     modalTitle.textContent=`${item?'Edit':'Tambah'} ${names[entity]}`;
     if(entity==='product') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Cengkeh Kering')}"></div><div class="field full"><label>Ringkasan *</label><textarea name="summary" required maxlength="400">${esc(item?.summary||'')}</textarea></div><div class="field"><label>Ilustrasi</label><select name="image"><option value="assets/images/clove-dry.svg">Cengkeh kering</option><option value="assets/images/clove-oil.svg">Minyak cengkeh</option><option value="assets/images/clove-stem.svg">Tangkai cengkeh</option></select></div><div class="field"><label>Status</label><select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></div></div>`;
@@ -572,6 +581,97 @@ const item = id
     </div>
   `;
 }
+
+    if (entity === 'portfolio') {
+  fields.innerHTML = `
+    <div class="form-grid">
+      <div class="field full">
+        <label>Judul Portofolio *</label>
+        <input
+          name="title"
+          required
+          maxlength="180"
+          value="${esc(item?.title || '')}"
+        >
+      </div>
+
+      <div class="field">
+        <label>Kategori</label>
+        <input
+          name="category"
+          maxlength="100"
+          placeholder="Contoh: Kegiatan, Ekspor, Pameran"
+          value="${esc(item?.category || '')}"
+        >
+      </div>
+
+      <div class="field">
+        <label>Tahun</label>
+        <input
+          name="year"
+          type="number"
+          min="2000"
+          max="2100"
+          value="${item?.year ?? ''}"
+        >
+      </div>
+
+      <div class="field full">
+        <label>Unggah Foto Portofolio</label>
+
+        <input
+          name="image_file"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+        >
+
+        <input
+          name="image_url"
+          type="hidden"
+          value="${esc(item?.image_url || '')}"
+        >
+
+        ${
+          item?.image_url
+            ? `
+              <p class="small">
+                Foto saat ini sudah tersimpan.
+                Unggah foto baru untuk menggantinya.
+              </p>
+            `
+            : ''
+        }
+      </div>
+
+      <div class="field full">
+        <label>Deskripsi</label>
+        <textarea
+          name="summary"
+          maxlength="800"
+        >${esc(item?.summary || '')}</textarea>
+      </div>
+
+      <div class="field">
+        <label>Urutan Tampilan</label>
+        <input
+          name="sort_order"
+          type="number"
+          min="0"
+          value="${item?.sort_order ?? 0}"
+        >
+      </div>
+
+      <div class="field">
+        <label>Status Publikasi</label>
+        <select name="is_published">
+          <option value="true">Publik</option>
+          <option value="false">Tidak Publik</option>
+        </select>
+      </div>
+    </div>
+  `;
+}
+    
     if(item){ for(const [k,v] of Object.entries(item)){ const el=form.elements[k]; if(el){ if(el.type==='checkbox')el.checked=Boolean(v); else el.value=String(v); } } }
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
   }
@@ -807,6 +907,67 @@ const item = id
   };
 }
 
+  async function uploadPortfolioImage(formElement) {
+  const fileInput =
+    formElement.elements.image_file;
+
+  const currentImage =
+    formElement.elements.image_url?.value || null;
+
+  const file = fileInput?.files?.[0];
+
+  if (!file) {
+    return currentImage;
+  }
+
+  const allowedTypes = [
+    'image/jpeg',
+    'image/png',
+    'image/webp'
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+    throw new Error(
+      'Foto portofolio harus berformat JPG, PNG, atau WebP.'
+    );
+  }
+
+  if (file.size > 10 * 1024 * 1024) {
+    throw new Error(
+      'Ukuran foto portofolio maksimal 10 MB.'
+    );
+  }
+
+  const extension =
+    file.name
+      .split('.')
+      .pop()
+      ?.toLowerCase() || 'jpg';
+
+  const filePath =
+    `portfolios/${crypto.randomUUID()}.${extension}`;
+
+  const { error: uploadError } =
+    await supabase.storage
+      .from('public-assets')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false,
+        contentType: file.type
+      });
+
+  if (uploadError) {
+    throw uploadError;
+  }
+
+  const { data: publicUrlData } =
+    supabase.storage
+      .from('public-assets')
+      .getPublicUrl(filePath);
+
+  return publicUrlData.publicUrl;
+}
+
   async function saveEntityOnline(entity, id, formData) {
   let table;
   let payload;
@@ -929,6 +1090,24 @@ const item = id
   };
 }
 
+    if (entity === 'portfolio') {
+  table = 'portfolios';
+
+  payload = {
+    title: formData.title,
+    category: formData.category || null,
+    year: formData.year
+      ? Number(formData.year)
+      : null,
+    summary: formData.summary || null,
+    image_url: formData.image_url || null,
+    sort_order:
+      Number(formData.sort_order || 0),
+    is_published:
+      formData.is_published === 'true'
+  };
+}
+
   const query = id
     ? supabase.from(table).update(payload).eq('id', id)
     : supabase.from(table).insert(payload);
@@ -954,6 +1133,7 @@ const item = id
   supplier: 'suppliers',
   team: 'team_members',
   legality: 'legalities',
+  portfolio: 'portfolios',
   message: 'contact_messages'
 };
   const table = tableMap[entity];
@@ -978,7 +1158,8 @@ const item = id
   article: 'articles',
   supplier: 'suppliers',
   team: 'teams',
-  legality: 'legalities'
+  legality: 'legalities',
+  portfolio: 'portfolios'
 };
 
 const collection = collectionMap[entity];
@@ -1000,7 +1181,8 @@ if (entity === 'supplier') {
 } else if (
   entity === 'team' ||
   entity === 'brochure' ||
-  entity === 'legality'
+  entity === 'legality' ||
+  entity === 'portfolio'
 ) {
   payload = {
     is_published: !item.is_published
@@ -1092,6 +1274,13 @@ if (entity === 'supplier') {
 
   delete formData.logo_file;
   delete formData.document_file;
+}
+
+    if (entity === 'portfolio') {
+  formData.image_url =
+    await uploadPortfolioImage(form);
+
+  delete formData.image_file;
 }
     
     await saveEntityOnline(entity, id, formData);
@@ -1335,11 +1524,90 @@ if (entity === 'supplier') {
       </tr>
     `;
 }
+
+  function renderPortfolios() {
+  const tbody =
+    document.getElementById('portfolio-table');
+
+  const rows = data.portfolios || [];
+
+  tbody.innerHTML = rows.length
+    ? rows.map(item => `
+        <tr>
+          <td>
+            <strong>
+              ${esc(item.title)}
+            </strong>
+          </td>
+
+          <td>
+            ${esc(item.category || '-')}
+          </td>
+
+          <td>
+            ${esc(item.year || '-')}
+          </td>
+
+          <td>
+            ${item.sort_order ?? 0}
+          </td>
+
+          <td>
+            <span class="status ${
+              !item.is_published ? 'private' : ''
+            }">
+              ${
+                item.is_published
+                  ? 'Publik'
+                  : 'Tidak Publik'
+              }
+            </span>
+          </td>
+
+          <td>
+            <div class="actions">
+              ${actionButton(
+                'portfolio',
+                item.id,
+                'Edit',
+                'btn-light',
+                'edit'
+              )}
+
+              ${actionButton(
+                'portfolio',
+                item.id,
+                item.is_published
+                  ? 'Sembunyikan'
+                  : 'Publikasikan',
+                'btn-light',
+                'toggle'
+              )}
+
+              ${actionButton(
+                'portfolio',
+                item.id,
+                'Hapus',
+                'btn-danger',
+                'delete'
+              )}
+            </div>
+          </td>
+        </tr>
+      `).join('')
+    : `
+      <tr>
+        <td colspan="6" class="empty">
+          Belum ada data portofolio.
+        </td>
+      </tr>
+    `;
+}
   
   function renderMessages(){ const tbody=document.getElementById('message-table'); const rows=data.messages||[]; tbody.innerHTML=rows.length?rows.slice().reverse().map(m=>`<tr><td><strong>${esc(m.name||'-')}</strong><br><span class="small">${esc(m.email||'')}</span></td><td>${esc(m.subject||'-')}</td><td>${m.createdAt?new Date(m.createdAt).toLocaleString('id-ID'):'-'}</td><td><span class="status">${esc(m.status||'Baru')}</span></td><td><div class="actions">${actionButton('message',m.id,'Tandai Selesai','btn-light','complete')}${actionButton('message',m.id,'Hapus','btn-danger','delete')}</div></td></tr>`).join(''):'<tr><td colspan="5" class="empty">Belum ada pesan demo.</td></tr>'; }
   function renderCounts(){document.getElementById('count-products').textContent=(data.products||[]).length;document.getElementById('count-articles').textContent=(data.articles||[]).length;document.getElementById('count-suppliers').textContent=(data.suppliers||[]).filter(x=>x.public).length;document.getElementById('count-messages').textContent=(data.messages||[]).filter(x=>(x.status||'Baru')==='Baru').length;}
   function fillSettings(){ const f=document.getElementById('settings-form'); if(!f)return; for(const [k,v] of Object.entries(data.settings||{})){if(f.elements[k])f.elements[k].value=v||'';} }
-  function renderAll(){renderProducts();renderBrochures();renderArticles();renderSuppliers();renderTeams();renderLegalities();renderMessages();renderCounts();fillSettings();}
+  function renderAll(){renderProducts();renderBrochures();renderArticles();renderSuppliers();renderTeams();renderLegalities();renderPortfolios();renderMessages();renderCounts();fillSettings();}
   renderAll();
 
   document.addEventListener('click', async event => {
