@@ -1,4 +1,245 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login CMS Prototype | PT Cengkeh Indonesia Global</title><meta name="robots" content="noindex,nofollow"><link rel="icon" href="../assets/images/logo-pt-cengkeh.png"><link rel="stylesheet" href="../assets/css/admin.css"></head><body><main class="admin-login"><section class="login-brand"><img src="../assets/images/logo-pt-cengkeh.png" alt="Logo PT Cengkeh Indonesia Global"><h1>CMS Prototype</h1><p>Prototype panel pengelolaan produk, artikel, supplier, pesan, dan pengaturan. Data hanya tersimpan pada localStorage browser.</p></section><section class="login-panel"><form class="login-card" id="login-form"><h2>Masuk ke CMS</h2><p class="small">Gunakan akun demonstrasi di bawah.</p><div class="notice"><strong>Peringatan:</strong> autentikasi ini hanya simulasi antarmuka dan tidak aman untuk produksi.</div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="username"></div><div class="field"><label for="password">Kata sandi</label><input id="password" name="password" type="password" required autocomplete="current-password"></div><p class="error" id="login-error" role="alert"></p><button class="btn btn-primary w-full" type="submit">Masuk</button><div class="demo-accounts"><strong>Akun Administrator</strong><code>admin@cig.demo / DemoAdmin2026!</code><strong>Akun Editor</strong><code>editor@cig.demo / DemoEditor2026!</code></div><p style="margin-bottom:0"><a href="../index.html">← Kembali ke website</a></p></form></section></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../assets/js/supabase-config.js"></script>
-<script src="../assets/js/supabase-client.js"></script>
-<script src="../assets/js/admin.js"></script></body></html>
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Login CMS | PT Cengkeh Indonesia Global</title>
+
+  <meta name="robots" content="noindex,nofollow">
+
+  <link
+    rel="icon"
+    href="../assets/images/logo-pt-cengkeh.png"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/admin.css"
+  >
+</head>
+
+<body>
+  <main class="admin-login">
+
+    <section class="login-brand">
+      <img
+        src="../assets/images/logo-pt-cengkeh.png"
+        alt="Logo PT Cengkeh Indonesia Global"
+      >
+
+      <h1>CMS PT Cengkeh Indonesia Global</h1>
+
+      <p>
+        Panel administrasi untuk pengelolaan konten website.
+        Akses hanya diperbolehkan untuk akun yang telah terotorisasi.
+      </p>
+    </section>
+
+    <section class="login-panel">
+
+      <!-- LOGIN PASSWORD -->
+      <form class="login-card" id="login-form">
+
+        <h2>Masuk ke CMS</h2>
+
+        <p class="small">
+          Masukkan email dan kata sandi akun CMS Anda.
+        </p>
+
+        <div class="field">
+          <label for="email">Email</label>
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autocomplete="username"
+          >
+        </div>
+
+        <div class="field">
+          <label for="password">Kata sandi</label>
+
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autocomplete="current-password"
+          >
+        </div>
+
+        <p
+          class="error"
+          id="login-error"
+          role="alert"
+        ></p>
+
+        <button
+          class="btn btn-primary w-full"
+          type="submit"
+        >
+          Masuk
+        </button>
+
+        <p style="margin-bottom:0">
+          <a href="../index.html">
+            ← Kembali ke website
+          </a>
+        </p>
+
+      </form>
+
+
+      <!-- MFA -->
+      <form
+        class="login-card"
+        id="mfa-form"
+        hidden
+      >
+
+        <h2 id="mfa-title">
+          Verifikasi Keamanan
+        </h2>
+
+        <p
+          class="small"
+          id="mfa-description"
+        >
+          Masukkan kode dari aplikasi authenticator Anda.
+        </p>
+
+
+        <!-- Hanya muncul saat enrollment pertama -->
+        <div
+          id="mfa-enrollment"
+          hidden
+        >
+
+          <div class="notice">
+            <strong>
+              Aktifkan Multi-Factor Authentication
+            </strong>
+
+            <br><br>
+
+            Scan QR Code berikut menggunakan
+            Google Authenticator, Microsoft Authenticator,
+            Authy, 1Password, atau aplikasi TOTP lainnya.
+          </div>
+
+          <div
+            style="
+              text-align:center;
+              margin:20px 0;
+            "
+          >
+            <img
+              id="mfa-qr"
+              alt="QR Code MFA"
+              style="
+                width:220px;
+                max-width:100%;
+                background:#fff;
+                padding:10px;
+                border-radius:8px;
+              "
+            >
+          </div>
+
+          <div class="field">
+
+            <label>
+              Kunci manual
+            </label>
+
+            <code
+              id="mfa-secret"
+              style="
+                display:block;
+                overflow-wrap:anywhere;
+                padding:10px;
+              "
+            ></code>
+
+          </div>
+
+          <p class="small">
+            Simpan akses authenticator dengan aman.
+            Setelah QR dipindai, masukkan kode 6 digit
+            yang muncul pada aplikasi.
+          </p>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="mfa-code">
+            Kode authenticator
+          </label>
+
+          <input
+            id="mfa-code"
+            name="code"
+            type="text"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            maxlength="6"
+            pattern="[0-9]{6}"
+            placeholder="123456"
+            required
+          >
+
+        </div>
+
+        <p
+          class="error"
+          id="mfa-error"
+          role="alert"
+        ></p>
+
+        <button
+          class="btn btn-primary w-full"
+          id="mfa-submit"
+          type="submit"
+        >
+          Verifikasi
+        </button>
+
+        <button
+          class="btn btn-light w-full"
+          id="mfa-cancel"
+          type="button"
+          style="margin-top:10px"
+        >
+          Keluar
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
+
+  <script
+    src="../assets/js/supabase-config.js"
+  ></script>
+
+  <script
+    src="../assets/js/supabase-client.js"
+  ></script>
+
+  <script
+    src="../assets/js/admin.js"
+  ></script>
+
+</body>
+</html>
