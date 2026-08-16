@@ -28,7 +28,7 @@ window.CIG_DATA = {
     },
     {
       id: 'prd-003', slug: 'tangkai-cengkeh', name: 'Tangkai Cengkeh',
-      category: 'Tangkai Cengkeh', image: 'assets/images/clove-stem.svg',
+      category: 'Tangkai Cengkeh', image: 'assets/images/cengkeh-di-meja-kayu.webp',
       summary: 'Tangkai cengkeh yang dipersiapkan untuk pemanfaatan lanjutan dan kebutuhan mitra industri.',
       description: 'Tangkai cengkeh yang dipersiapkan untuk kebutuhan mitra dan pemanfaatan lanjutan. Informasi mengenai mutu, sortasi, kemasan, kapasitas pasokan, dan penggunaan dapat dikonfirmasi melalui tim PT Cengkeh Indonesia Global.',
       specs: [['Asal', 'Indonesia'], ['Sortasi', 'Berdasarkan kebutuhan'], ['Kemasan', 'Karung atau kemasan B2B'], ['Status', 'Hubungi kami untuk spesifikasi terkini']],
