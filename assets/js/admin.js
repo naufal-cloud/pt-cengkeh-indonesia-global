@@ -128,101 +128,449 @@
   };
 }
   
-  async function getAuthContext() {
-  const {
-    data: { session },
-    error: sessionError
-  } = await supabase.auth.getSession();
+  async function getAuthContext({
+    enforceAdminMfa = true
+  } = {}) {
+    const {
+      data: { session },
+      error: sessionError
+    } = await supabase.auth.getSession();
 
-  if (sessionError) {
-    throw sessionError;
-  }
-
-  if (!session?.user) {
-    return null;
-  }
-
-  const { data: profile, error: profileError } = await supabase
-    .from('user_profiles')
-    .select('full_name, role')
-    .eq('id', session.user.id)
-    .single();
-
-  if (profileError) {
-    throw profileError;
-  }
-
-  if (!['admin', 'editor'].includes(profile.role)) {
-    await supabase.auth.signOut();
-    throw new Error('Akun ini tidak memiliki akses ke CMS.');
-  }
-
-  return {
-    email: session.user.email,
-    fullName: profile.full_name || session.user.email,
-    role: profile.role
-  };
-}
-  function toast(message){ const n=document.createElement('div'); n.className='toast'; n.textContent=message; document.body.appendChild(n); setTimeout(()=>n.remove(),2800); }
-  async function loginPage() {
-  const form = document.getElementById('login-form');
-
-  if (!form) {
-    return false;
-  }
-
-  const error = document.getElementById('login-error');
-  const submitButton =
-    form.querySelector('button[type="submit"]');
-
-  try {
-    const authContext = await getAuthContext();
-
-    if (authContext) {
-      location.href = 'dashboard.html';
-      return true;
+    if (sessionError) {
+      throw sessionError;
     }
-  } catch (loginCheckError) {
-    console.error(loginCheckError);
+
+    if (!session?.user) {
+      return null;
+    }
+
+    const { data: profile, error: profileError } =
+      await supabase
+        .from('user_profiles')
+        .select('full_name, role')
+        .eq('id', session.user.id)
+        .single();
+
+    if (profileError) {
+      throw profileError;
+    }
+
+    if (!['admin', 'editor'].includes(profile.role)) {
+      await supabase.auth.signOut();
+      throw new Error(
+        'Akun ini tidak memiliki akses ke CMS.'
+      );
+    }
+
+    if (
+      enforceAdminMfa &&
+      profile.role === 'admin'
+    ) {
+      const {
+        data: aal,
+        error: aalError
+      } =
+        await supabase.auth.mfa
+          .getAuthenticatorAssuranceLevel();
+
+      if (aalError) {
+        throw aalError;
+      }
+
+      if (aal.currentLevel !== 'aal2') {
+        throw new Error(
+          'Administrator wajib menyelesaikan MFA.'
+        );
+      }
+    }
+
+    return {
+      email: session.user.email,
+      fullName:
+        profile.full_name ||
+        session.user.email,
+      role: profile.role
+    };
   }
 
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
 
-    error.textContent = '';
-    submitButton.disabled = true;
-    submitButton.textContent = 'Memproses...';
+  let mfaFactorId = null;
 
-    const email =
-      form.email.value.trim().toLowerCase();
-    const password = form.password.value;
+  function showLoginForm() {
+    const loginForm =
+      document.getElementById('login-form');
 
-    const { error: signInError } =
-      await supabase.auth.signInWithPassword({
-        email,
-        password
-      });
+    const mfaForm =
+      document.getElementById('mfa-form');
 
-    if (signInError) {
-      error.textContent =
-        'Email atau kata sandi tidak sesuai.';
-      submitButton.disabled = false;
-      submitButton.textContent = 'Masuk';
+    if (loginForm) {
+      loginForm.hidden = false;
+    }
+
+    if (mfaForm) {
+      mfaForm.hidden = true;
+    }
+  }
+
+
+  function showMfaForm({
+    enrollment = false,
+    qrCode = '',
+    secret = ''
+  } = {}) {
+    const loginForm =
+      document.getElementById('login-form');
+
+    const mfaForm =
+      document.getElementById('mfa-form');
+
+    const enrollmentBox =
+      document.getElementById('mfa-enrollment');
+
+    const title =
+      document.getElementById('mfa-title');
+
+    const description =
+      document.getElementById('mfa-description');
+
+    const qr =
+      document.getElementById('mfa-qr');
+
+    const secretElement =
+      document.getElementById('mfa-secret');
+
+    if (loginForm) {
+      loginForm.hidden = true;
+    }
+
+    if (mfaForm) {
+      mfaForm.hidden = false;
+    }
+
+    if (enrollmentBox) {
+      enrollmentBox.hidden = !enrollment;
+    }
+
+    if (title) {
+      title.textContent = enrollment
+        ? 'Aktifkan MFA Administrator'
+        : 'Verifikasi MFA';
+    }
+
+    if (description) {
+      description.textContent = enrollment
+        ? 'Scan QR Code lalu masukkan kode 6 digit dari aplikasi authenticator.'
+        : 'Masukkan kode 6 digit dari aplikasi authenticator Anda.';
+    }
+
+    if (enrollment && qr) {
+      qr.src = qrCode;
+    }
+
+    if (enrollment && secretElement) {
+      secretElement.textContent = secret;
+    }
+
+    document
+      .getElementById('mfa-code')
+      ?.focus();
+  }
+
+
+  async function prepareAdminMfa() {
+    const {
+      data: aal,
+      error: aalError
+    } =
+      await supabase.auth.mfa
+        .getAuthenticatorAssuranceLevel();
+
+    if (aalError) {
+      throw aalError;
+    }
+
+    if (aal.currentLevel === 'aal2') {
+      location.href = 'dashboard.html';
       return;
     }
 
-    try {
-      await getAuthContext();
-      location.href = 'dashboard.html';
-    } catch (accessError) {
-      error.textContent = accessError.message;
-      submitButton.disabled = false;
-      submitButton.textContent = 'Masuk';
-    }
-  });
+    const {
+      data: factors,
+      error: factorsError
+    } =
+      await supabase.auth.mfa.listFactors();
 
-  return true;
-}
+    if (factorsError) {
+      throw factorsError;
+    }
+
+    const verifiedTotp =
+      (factors?.totp || []).find(
+        factor =>
+          factor.status === 'verified'
+      );
+
+    if (verifiedTotp) {
+      mfaFactorId = verifiedTotp.id;
+
+      showMfaForm({
+        enrollment: false
+      });
+
+      return;
+    }
+
+    const {
+      data: enrollment,
+      error: enrollmentError
+    } =
+      await supabase.auth.mfa.enroll({
+        factorType: 'totp',
+        friendlyName:
+          'CMS PT Cengkeh Indonesia Global'
+      });
+
+    if (enrollmentError) {
+      throw enrollmentError;
+    }
+
+    mfaFactorId = enrollment.id;
+
+    showMfaForm({
+      enrollment: true,
+      qrCode: enrollment.totp.qr_code,
+      secret: enrollment.totp.secret
+    });
+  }
+
+
+  async function continueAuthenticatedLogin() {
+    const authContext =
+      await getAuthContext({
+        enforceAdminMfa: false
+      });
+
+    if (!authContext) {
+      return;
+    }
+
+    if (authContext.role === 'editor') {
+      location.href = 'dashboard.html';
+      return;
+    }
+
+    await prepareAdminMfa();
+  }
+
+
+  async function loginPage() {
+    const form =
+      document.getElementById('login-form');
+
+    if (!form) {
+      return false;
+    }
+
+    const error =
+      document.getElementById('login-error');
+
+    const submitButton =
+      form.querySelector(
+        'button[type="submit"]'
+      );
+
+    const mfaForm =
+      document.getElementById('mfa-form');
+
+    const mfaError =
+      document.getElementById('mfa-error');
+
+    const mfaSubmit =
+      document.getElementById('mfa-submit');
+
+    const mfaCancel =
+      document.getElementById('mfa-cancel');
+
+    try {
+      const authContext =
+        await getAuthContext({
+          enforceAdminMfa: false
+        });
+
+      if (authContext) {
+        await continueAuthenticatedLogin();
+      }
+    } catch (loginCheckError) {
+      console.error(loginCheckError);
+    }
+
+    form.addEventListener(
+      'submit',
+      async event => {
+        event.preventDefault();
+
+        error.textContent = '';
+
+        submitButton.disabled = true;
+        submitButton.textContent =
+          'Memproses...';
+
+        const email =
+          form.email.value
+            .trim()
+            .toLowerCase();
+
+        const password =
+          form.password.value;
+
+        try {
+          const { error: signInError } =
+            await supabase.auth
+              .signInWithPassword({
+                email,
+                password
+              });
+
+          if (signInError) {
+            throw signInError;
+          }
+
+          await continueAuthenticatedLogin();
+
+        } catch (signInError) {
+          console.error(signInError);
+
+          error.textContent =
+            signInError.message ===
+            'Akun ini tidak memiliki akses ke CMS.'
+              ? signInError.message
+              : 'Email atau kata sandi tidak sesuai.';
+
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent =
+            'Masuk';
+        }
+      }
+    );
+
+
+    mfaForm?.addEventListener(
+      'submit',
+      async event => {
+        event.preventDefault();
+
+        mfaError.textContent = '';
+
+        const code =
+          document
+            .getElementById('mfa-code')
+            .value
+            .trim()
+            .replace(/\s+/g, '');
+
+        if (!/^\d{6}$/.test(code)) {
+          mfaError.textContent =
+            'Masukkan kode authenticator 6 digit.';
+          return;
+        }
+
+        if (!mfaFactorId) {
+          mfaError.textContent =
+            'Faktor MFA tidak ditemukan. Silakan login ulang.';
+          return;
+        }
+
+        mfaSubmit.disabled = true;
+        mfaSubmit.textContent =
+          'Memverifikasi...';
+
+        try {
+          const {
+            data: challenge,
+            error: challengeError
+          } =
+            await supabase.auth.mfa
+              .challenge({
+                factorId: mfaFactorId
+              });
+
+          if (challengeError) {
+            throw challengeError;
+          }
+
+          const {
+            error: verifyError
+          } =
+            await supabase.auth.mfa
+              .verify({
+                factorId: mfaFactorId,
+                challengeId:
+                  challenge.id,
+                code
+              });
+
+          if (verifyError) {
+            throw verifyError;
+          }
+
+          const {
+            data: aal,
+            error: aalError
+          } =
+            await supabase.auth.mfa
+              .getAuthenticatorAssuranceLevel();
+
+          if (aalError) {
+            throw aalError;
+          }
+
+          if (aal.currentLevel !== 'aal2') {
+            throw new Error(
+              'Verifikasi MFA belum selesai.'
+            );
+          }
+
+          location.href =
+            'dashboard.html';
+
+        } catch (verifyError) {
+          console.error(verifyError);
+
+          mfaError.textContent =
+            'Kode authenticator tidak valid atau sudah kedaluwarsa. Coba kode terbaru.';
+
+        } finally {
+          mfaSubmit.disabled = false;
+          mfaSubmit.textContent =
+            'Verifikasi';
+        }
+      }
+    );
+
+
+    mfaCancel?.addEventListener(
+      'click',
+      async () => {
+        await supabase.auth.signOut();
+
+        mfaFactorId = null;
+
+        const mfaCode =
+          document.getElementById(
+            'mfa-code'
+          );
+
+        if (mfaCode) {
+          mfaCode.value = '';
+        }
+
+        showLoginForm();
+      }
+    );
+
+    return true;
+  }
 
 if (await loginPage()) {
   return;
