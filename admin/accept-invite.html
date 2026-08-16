@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Aktivasi Akun CMS | PT Cengkeh Indonesia Global</title>
+
+  <meta name="robots" content="noindex,nofollow">
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/admin.css"
+  >
+</head>
+
+<body>
+
+  <main class="admin-login">
+
+    <section class="login-brand">
+      <h1>Aktivasi Akun CMS</h1>
+
+      <p>
+        Buat kata sandi untuk menyelesaikan aktivasi akun
+        PT Cengkeh Indonesia Global.
+      </p>
+    </section>
+
+
+    <section class="login-panel">
+
+      <form
+        class="login-card"
+        id="invite-form"
+      >
+
+        <h2>Buat Kata Sandi</h2>
+
+        <p
+          class="small"
+          id="invite-status"
+        >
+          Memeriksa link undangan...
+        </p>
+
+
+        <div
+          id="password-fields"
+          hidden
+        >
+
+          <div class="field">
+
+            <label for="password">
+              Kata sandi baru
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              minlength="10"
+              autocomplete="new-password"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="password-confirm">
+              Ulangi kata sandi
+            </label>
+
+            <input
+              id="password-confirm"
+              type="password"
+              minlength="10"
+              autocomplete="new-password"
+              required
+            >
+
+          </div>
+
+
+          <p class="small">
+            Gunakan minimal 10 karakter.
+          </p>
+
+
+          <p
+            class="error"
+            id="invite-error"
+            role="alert"
+          ></p>
+
+
+          <button
+            class="btn btn-primary w-full"
+            id="invite-submit"
+            type="submit"
+          >
+            Aktifkan Akun
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
+
+  <script
+    src="../assets/js/supabase-config.js"
+  ></script>
+
+  <script
+    src="../assets/js/supabase-client.js"
+  ></script>
+
+
+  <script>
+    (async () => {
+      'use strict';
+
+      const supabase =
+        window.CIG_SUPABASE;
+
+      const form =
+        document.getElementById(
+          'invite-form'
+        );
+
+      const status =
+        document.getElementById(
+          'invite-status'
+        );
+
+      const fields =
+        document.getElementById(
+          'password-fields'
+        );
+
+      const error =
+        document.getElementById(
+          'invite-error'
+        );
+
+      const submit =
+        document.getElementById(
+          'invite-submit'
+        );
+
+
+      async function prepareSession() {
+
+        const url =
+          new URL(window.location.href);
+
+        const code =
+          url.searchParams.get('code');
+
+
+        if (code) {
+
+          const {
+            error: exchangeError
+          } =
+            await supabase.auth
+              .exchangeCodeForSession(
+                code
+              );
+
+          if (exchangeError) {
+            throw exchangeError;
+          }
+
+        }
+
+
+        const {
+          data: { session },
+          error: sessionError
+        } =
+          await supabase.auth
+            .getSession();
+
+
+        if (sessionError) {
+          throw sessionError;
+        }
+
+
+        if (!session?.user) {
+          throw new Error(
+            'Link undangan tidak valid atau sudah kedaluwarsa.'
+          );
+        }
+
+
+        return session;
+      }
+
+
+      try {
+
+        const session =
+          await prepareSession();
+
+        status.textContent =
+          `Undangan diterima untuk ${session.user.email}. Silakan buat kata sandi.`;
+
+        fields.hidden =
+          false;
+
+      } catch (sessionError) {
+
+        console.error(
+          sessionError
+        );
+
+        status.textContent =
+          'Link undangan tidak dapat digunakan.';
+
+        error.textContent =
+          sessionError.message;
+
+      }
+
+
+      form.addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+          error.textContent =
+            '';
+
+          const password =
+            document
+              .getElementById(
+                'password'
+              )
+              .value;
+
+          const confirmation =
+            document
+              .getElementById(
+                'password-confirm'
+              )
+              .value;
+
+
+          if (password.length < 10) {
+
+            error.textContent =
+              'Kata sandi minimal 10 karakter.';
+
+            return;
+          }
+
+
+          if (
+            password !==
+            confirmation
+          ) {
+
+            error.textContent =
+              'Konfirmasi kata sandi tidak sama.';
+
+            return;
+          }
+
+
+          submit.disabled =
+            true;
+
+          submit.textContent =
+            'Mengaktifkan...';
+
+
+          try {
+
+            const {
+              error: updateError
+            } =
+              await supabase.auth
+                .updateUser({
+                  password
+                });
+
+
+            if (updateError) {
+              throw updateError;
+            }
+
+
+            await supabase.auth
+              .signOut();
+
+
+            window.location.href =
+              'index.html?account=activated';
+
+          } catch (updateError) {
+
+            console.error(
+              updateError
+            );
+
+            error.textContent =
+              'Akun belum berhasil diaktifkan. ' +
+              updateError.message;
+
+            submit.disabled =
+              false;
+
+            submit.textContent =
+              'Aktifkan Akun';
+          }
+
+        }
+      );
+
+    })();
+  </script>
+
+</body>
+</html>
