@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Manajemen Pengguna CMS | PT Cengkeh Indonesia Global</title>
+  <meta name="robots" content="noindex,nofollow">
+
+  <link rel="stylesheet" href="../assets/css/admin.css">
+
+  <style>
+    .users-wrap {
+      width: min(1100px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    .users-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .users-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .users-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 180px auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .users-table-wrap {
+      overflow-x: auto;
+    }
+
+    .users-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .users-table th,
+    .users-table td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: middle;
+    }
+
+    .users-table select {
+      min-width: 120px;
+    }
+
+    .users-status {
+      margin: 12px 0;
+    }
+
+    @media (max-width: 820px) {
+      .users-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="users-wrap">
+
+    <header class="users-header">
+      <div>
+        <h1>Manajemen Pengguna</h1>
+        <p>
+          Kelola Administrator dan Editor CMS
+          PT Cengkeh Indonesia Global.
+        </p>
+      </div>
+
+      <a
+        class="btn btn-light"
+        href="dashboard.html"
+      >
+        ← Dashboard
+      </a>
+    </header>
+
+
+    <section
+      class="users-card"
+      id="invite-section"
+      hidden
+    >
+      <h2>Tambah Pengguna</h2>
+
+      <form id="invite-user-form">
+
+        <div class="users-form-grid">
+
+          <div class="field">
+            <label for="invite-name">
+              Nama Lengkap
+            </label>
+
+            <input
+              id="invite-name"
+              type="text"
+              required
+              autocomplete="name"
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="invite-email">
+              Email
+            </label>
+
+            <input
+              id="invite-email"
+              type="email"
+              required
+              autocomplete="email"
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="invite-role">
+              Role
+            </label>
+
+            <select
+              id="invite-role"
+              required
+            >
+              <option value="editor">
+                Editor
+              </option>
+
+              <option value="admin">
+                Administrator
+              </option>
+            </select>
+          </div>
+
+
+          <button
+            class="btn btn-primary"
+            id="invite-submit"
+            type="submit"
+          >
+            Kirim Undangan
+          </button>
+
+        </div>
+
+
+        <p
+          class="error users-status"
+          id="invite-error"
+          role="alert"
+        ></p>
+
+        <p
+          class="users-status"
+          id="invite-success"
+        ></p>
+
+      </form>
+    </section>
+
+
+    <section class="users-card">
+
+      <div class="users-header">
+        <div>
+          <h2>Daftar Pengguna</h2>
+
+          <p class="small">
+            Hanya Administrator dengan MFA aktif
+            yang dapat mengelola pengguna.
+          </p>
+        </div>
+
+        <button
+          class="btn btn-light"
+          id="refresh-users"
+          type="button"
+        >
+          Muat Ulang
+        </button>
+      </div>
+
+
+      <p id="users-loading">
+        Memuat pengguna...
+      </p>
+
+      <p
+        class="error"
+        id="users-error"
+        role="alert"
+      ></p>
+
+
+      <div
+        class="users-table-wrap"
+        id="users-table-wrap"
+        hidden
+      >
+
+        <table class="users-table">
+
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status Email</th>
+              <th>Login Terakhir</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody id="users-body"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
+
+  <script src="../assets/js/supabase-config.js"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+
+
+  <script>
+    (async () => {
+      'use strict';
+
+      const supabase =
+        window.CIG_SUPABASE;
+
+      const inviteSection =
+        document.getElementById(
+          'invite-section'
+        );
+
+      const inviteForm =
+        document.getElementById(
+          'invite-user-form'
+        );
+
+      const inviteSubmit =
+        document.getElementById(
+          'invite-submit'
+        );
+
+      const inviteError =
+        document.getElementById(
+          'invite-error'
+        );
+
+      const inviteSuccess =
+        document.getElementById(
+          'invite-success'
+        );
+
+      const usersLoading =
+        document.getElementById(
+          'users-loading'
+        );
+
+      const usersError =
+        document.getElementById(
+          'users-error'
+        );
+
+      const usersTableWrap =
+        document.getElementById(
+          'users-table-wrap'
+        );
+
+      const usersBody =
+        document.getElementById(
+          'users-body'
+        );
+
+      const refreshButton =
+        document.getElementById(
+          'refresh-users'
+        );
+
+
+      function escapeHtml(value) {
+        return String(value ?? '')
+          .replaceAll('&', '&amp;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#039;');
+      }
+
+
+      function formatDate(value) {
+        if (!value) {
+          return 'Belum pernah';
+        }
+
+        const date =
+          new Date(value);
+
+        if (
+          Number.isNaN(
+            date.getTime()
+          )
+        ) {
+          return '-';
+        }
+
+        return new Intl.DateTimeFormat(
+          'id-ID',
+          {
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          }
+        ).format(date);
+      }
+
+
+      async function requireAdmin() {
+
+        const {
+          data: { session },
+          error: sessionError
+        } =
+          await supabase.auth
+            .getSession();
+
+        if (
+          sessionError ||
+          !session?.user
+        ) {
+          location.href =
+            'index.html';
+          return null;
+        }
+
+
+        const {
+          data: profile,
+          error: profileError
+        } =
+          await supabase
+            .from('user_profiles')
+            .select('role')
+            .eq(
+              'id',
+              session.user.id
+            )
+            .single();
+
+
+        if (
+          profileError ||
+          profile?.role !== 'admin'
+        ) {
+          location.href =
+            'dashboard.html';
+          return null;
+        }
+
+
+        const {
+          data: aal,
+          error: aalError
+        } =
+          await supabase.auth.mfa
+            .getAuthenticatorAssuranceLevel();
+
+
+        if (
+          aalError ||
+          aal.currentLevel !== 'aal2'
+        ) {
+          location.href =
+            'index.html?mfa=required';
+          return null;
+        }
+
+
+        return session;
+      }
+
+
+      async function callUserManagement(
+        body
+      ) {
+
+        const {
+          data,
+          error
+        } =
+          await supabase.functions.invoke(
+            'admin-user-management',
+            {
+              body
+            }
+          );
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        if (data?.error) {
+          throw new Error(
+            data.error
+          );
+        }
+
+
+        return data;
+      }
+
+
+      function renderUsers(users) {
+
+        usersBody.innerHTML =
+          '';
+
+
+        if (!users.length) {
+
+          usersBody.innerHTML = `
+            <tr>
+              <td colspan="6">
+                Belum ada pengguna.
+              </td>
+            </tr>
+          `;
+
+          return;
+        }
+
+
+        for (const user of users) {
+
+          const row =
+            document.createElement(
+              'tr'
+            );
+
+
+          row.innerHTML = `
+            <td>
+              ${escapeHtml(
+                user.full_name || '-'
+              )}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                user.email || '-'
+              )}
+            </td>
+
+            <td>
+              <select
+                data-role-user="${escapeHtml(
+                  user.id
+                )}"
+              >
+                <option
+                  value="admin"
+                  ${
+                    user.role === 'admin'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  Admin
+                </option>
+
+                <option
+                  value="editor"
+                  ${
+                    user.role === 'editor'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  Editor
+                </option>
+
+                <option
+                  value="viewer"
+                  ${
+                    user.role === 'viewer'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  Viewer
+                </option>
+              </select>
+            </td>
+
+            <td>
+              ${
+                user.email_confirmed_at
+                  ? 'Terverifikasi'
+                  : 'Menunggu aktivasi'
+              }
+            </td>
+
+            <td>
+              ${escapeHtml(
+                formatDate(
+                  user.last_sign_in_at
+                )
+              )}
+            </td>
+
+            <td>
+              <button
+                class="btn btn-light"
+                type="button"
+                data-save-role="${escapeHtml(
+                  user.id
+                )}"
+              >
+                Simpan Role
+              </button>
+            </td>
+          `;
+
+
+          usersBody.appendChild(
+            row
+          );
+        }
+      }
+
+
+      async function loadUsers() {
+
+        usersLoading.hidden =
+          false;
+
+        usersTableWrap.hidden =
+          true;
+
+        usersError.textContent =
+          '';
+
+
+        try {
+
+          const data =
+            await callUserManagement({
+              action: 'list'
+            });
+
+
+          renderUsers(
+            data.users || []
+          );
+
+
+          usersTableWrap.hidden =
+            false;
+
+        } catch (error) {
+
+          console.error(error);
+
+          usersError.textContent =
+            'Gagal memuat pengguna: ' +
+            error.message;
+
+        } finally {
+
+          usersLoading.hidden =
+            true;
+        }
+      }
+
+
+      inviteForm.addEventListener(
+        'submit',
+        async event => {
+
+          event.preventDefault();
+
+          inviteError.textContent =
+            '';
+
+          inviteSuccess.textContent =
+            '';
+
+          inviteSubmit.disabled =
+            true;
+
+          inviteSubmit.textContent =
+            'Mengirim...';
+
+
+          const fullName =
+            document
+              .getElementById(
+                'invite-name'
+              )
+              .value
+              .trim();
+
+          const email =
+            document
+              .getElementById(
+                'invite-email'
+              )
+              .value
+              .trim()
+              .toLowerCase();
+
+          const role =
+            document
+              .getElementById(
+                'invite-role'
+              )
+              .value;
+
+
+          try {
+
+            await callUserManagement({
+              action: 'invite',
+              full_name: fullName,
+              email,
+              role
+            });
+
+
+            inviteSuccess.textContent =
+              'Undangan berhasil dikirim.';
+
+            inviteForm.reset();
+
+            await loadUsers();
+
+          } catch (error) {
+
+            console.error(error);
+
+            inviteError.textContent =
+              'Gagal mengirim undangan: ' +
+              error.message;
+
+          } finally {
+
+            inviteSubmit.disabled =
+              false;
+
+            inviteSubmit.textContent =
+              'Kirim Undangan';
+          }
+
+        }
+      );
+
+
+      usersBody.addEventListener(
+        'click',
+        async event => {
+
+          const button =
+            event.target.closest(
+              '[data-save-role]'
+            );
+
+          if (!button) {
+            return;
+          }
+
+
+          const userId =
+            button.dataset.saveRole;
+
+          const select =
+            document.querySelector(
+              `[data-role-user="${CSS.escape(
+                userId
+              )}"]`
+            );
+
+
+          if (!select) {
+            return;
+          }
+
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            'Menyimpan...';
+
+
+          try {
+
+            await callUserManagement({
+              action:
+                'update_role',
+
+              user_id:
+                userId,
+
+              role:
+                select.value
+            });
+
+
+            button.textContent =
+              'Tersimpan';
+
+
+            setTimeout(
+              () => {
+                button.textContent =
+                  'Simpan Role';
+
+                button.disabled =
+                  false;
+              },
+              1200
+            );
+
+          } catch (error) {
+
+            console.error(error);
+
+            alert(
+              'Role gagal diubah: ' +
+              error.message
+            );
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              'Simpan Role';
+          }
+
+        }
+      );
+
+
+      refreshButton.addEventListener(
+        'click',
+        loadUsers
+      );
+
+
+      const session =
+        await requireAdmin();
+
+
+      if (!session) {
+        return;
+      }
+
+
+      inviteSection.hidden =
+        false;
+
+
+      await loadUsers();
+
+    })();
+  </script>
+
+</body>
+</html>
