@@ -48,6 +48,7 @@
       'nav.suppliers': 'Jaringan Supplier',
       'nav.shipping': 'Pengiriman',
       'nav.contact': 'Kontak',
+      'nav.privacy': 'Kebijakan Privasi',
 
       'shipping.eyebrow': 'Pilihan Logistik',
       'shipping.options': 'Opsi Pengiriman',
@@ -107,6 +108,7 @@
       'nav.suppliers': 'Supplier Network',
       'nav.shipping': 'Shipping',
       'nav.contact': 'Contact',
+      'nav.privacy': 'Privacy Policy',
 
       'shipping.eyebrow': 'Logistics Options',
       'shipping.options': 'Shipping Options',
@@ -164,6 +166,7 @@
       'nav.suppliers': 'आपूर्तिकर्ता नेटवर्क',
       'nav.shipping': 'शिपिंग',
       'nav.contact': 'संपर्क',
+      'nav.privacy': 'गोपनीयता नीति',
 
       'shipping.eyebrow': 'लॉजिस्टिक्स विकल्प',
       'shipping.options': 'शिपिंग विकल्प',
@@ -221,6 +224,7 @@
       'nav.suppliers': '供应商网络',
       'nav.shipping': '运输',
       'nav.contact': '联系我们',
+      'nav.privacy': '隐私政策',
 
       'shipping.eyebrow': '物流选择',
       'shipping.options': '运输选项',
@@ -278,6 +282,7 @@
       'nav.suppliers': 'شبكة الموردين',
       'nav.shipping': 'الشحن',
       'nav.contact': 'اتصل بنا',
+      'nav.privacy': 'سياسة الخصوصية',
 
       'shipping.eyebrow': 'خيارات الخدمات اللوجستية',
       'shipping.options': 'خيارات الشحن',
