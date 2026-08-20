@@ -53,6 +53,7 @@
       'shipping.options': 'Opsi Pengiriman',
 'shipping.title': 'Pilihan Jasa Pengiriman',
 'shipping.description': 'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
+'footer.description': 'Perusahaan komoditas cengkeh Indonesia yang membangun kemitraan untuk pasar nasional dan global.',
       
 
 
@@ -108,6 +109,7 @@
       'shipping.options': 'Shipping Options',
 'shipping.title': 'Shipping Service Options',
 'shipping.description': 'Product delivery can be carried out through various shipping providers according to destination, product type, and transaction agreement.',
+'footer.description': 'An Indonesian clove commodity company building partnerships for national and global markets.',
 
       'common.viewDetail': 'View details',
       'common.readArticle': 'Read article',
@@ -161,6 +163,7 @@
       'shipping.options': 'शिपिंग विकल्प',
 'shipping.title': 'शिपिंग सेवा विकल्प',
 'shipping.description': 'उत्पादों की डिलीवरी गंतव्य, उत्पाद के प्रकार और लेनदेन समझौते के अनुसार विभिन्न शिपिंग प्रदाताओं के माध्यम से की जा सकती है।',
+'footer.description': 'एक इंडोनेशियाई लौंग कमोडिटी कंपनी जो राष्ट्रीय और वैश्विक बाजारों के लिए साझेदारी विकसित करती है।',
 
       'common.viewDetail': 'विवरण देखें',
       'common.readArticle': 'लेख पढ़ें',
@@ -214,6 +217,7 @@
       'shipping.options': '运输选项',
 'shipping.title': '运输服务选择',
 'shipping.description': '产品可根据目的地、商品类型以及交易协议，通过不同的运输服务商进行配送。',
+'footer.description': '一家印度尼西亚丁香商品公司，致力于建立面向国内和全球市场的合作伙伴关系。',
 
       'common.viewDetail': '查看详情',
       'common.readArticle': '阅读文章',
@@ -267,6 +271,7 @@
       'shipping.options': 'خيارات الشحن',
 'shipping.title': 'خيارات خدمات الشحن',
 'shipping.description': 'يمكن إرسال المنتجات من خلال مختلف مزودي خدمات الشحن وفقًا للوجهة ونوع المنتج واتفاقية المعاملة.',
+'footer.description': 'شركة إندونيسية للسلع الأساسية من القرنفل تبني شراكات للأسواق المحلية والعالمية.',
 
       'common.viewDetail': 'عرض التفاصيل',
       'common.readArticle': 'قراءة المقال',
