@@ -52,6 +52,10 @@
 'shipping.title': 'Pilihan Jasa Pengiriman',
 'shipping.description': 'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
 
+      'shipping.eyebrow': 'Pilihan Logistik',
+'shipping.title': 'Pilihan Jasa Pengiriman',
+'shipping.description': 'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
+
       'common.viewDetail': 'Lihat detail',
       'common.readArticle': 'Baca artikel',
       'common.allProducts': 'Lihat semua produk',
@@ -98,6 +102,10 @@
       'nav.articles': 'Articles',
       'nav.suppliers': 'Supplier Network',
       'nav.contact': 'Contact',
+
+      'shipping.eyebrow': 'Logistics Options',
+'shipping.title': 'Shipping Service Options',
+'shipping.description': 'Product delivery can be carried out through various shipping providers according to destination, product type, and transaction agreement.',
 
       'common.viewDetail': 'View details',
       'common.readArticle': 'Read article',
@@ -146,6 +154,10 @@
       'nav.suppliers': 'आपूर्तिकर्ता नेटवर्क',
       'nav.contact': 'संपर्क',
 
+      'shipping.eyebrow': 'लॉजिस्टिक्स विकल्प',
+'shipping.title': 'शिपिंग सेवा विकल्प',
+'shipping.description': 'उत्पादों की डिलीवरी गंतव्य, उत्पाद के प्रकार और लेनदेन समझौते के अनुसार विभिन्न शिपिंग प्रदाताओं के माध्यम से की जा सकती है।',
+
       'common.viewDetail': 'विवरण देखें',
       'common.readArticle': 'लेख पढ़ें',
       'common.allProducts': 'सभी उत्पाद देखें',
@@ -193,6 +205,10 @@
       'nav.suppliers': '供应商网络',
       'nav.contact': '联系我们',
 
+      'shipping.eyebrow': '物流选择',
+'shipping.title': '运输服务选择',
+'shipping.description': '产品可根据目的地、商品类型以及交易协议，通过不同的运输服务商进行配送。',
+
       'common.viewDetail': '查看详情',
       'common.readArticle': '阅读文章',
       'common.allProducts': '查看所有产品',
@@ -239,6 +255,10 @@
       'nav.articles': 'المقالات',
       'nav.suppliers': 'شبكة الموردين',
       'nav.contact': 'اتصل بنا',
+
+      'shipping.eyebrow': 'خيارات الخدمات اللوجستية',
+'shipping.title': 'خيارات خدمات الشحن',
+'shipping.description': 'يمكن إرسال المنتجات من خلال مختلف مزودي خدمات الشحن وفقًا للوجهة ونوع المنتج واتفاقية المعاملة.',
 
       'common.viewDetail': 'عرض التفاصيل',
       'common.readArticle': 'قراءة المقال',
