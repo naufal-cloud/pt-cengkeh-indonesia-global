@@ -48,6 +48,10 @@
       'nav.suppliers': 'Jaringan Supplier',
       'nav.contact': 'Kontak',
 
+      'shipping.eyebrow': 'Pilihan Logistik',
+'shipping.title': 'Pilihan Jasa Pengiriman',
+'shipping.description': 'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
+
       'common.viewDetail': 'Lihat detail',
       'common.readArticle': 'Baca artikel',
       'common.allProducts': 'Lihat semua produk',
