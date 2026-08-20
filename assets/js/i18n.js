@@ -46,15 +46,13 @@
       'nav.products': 'Produk',
       'nav.articles': 'Artikel',
       'nav.suppliers': 'Jaringan Supplier',
+      'nav.shipping': 'Pengiriman',
       'nav.contact': 'Kontak',
 
       'shipping.eyebrow': 'Pilihan Logistik',
 'shipping.title': 'Pilihan Jasa Pengiriman',
 'shipping.description': 'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
 
-      'shipping.eyebrow': 'Pilihan Logistik',
-'shipping.title': 'Pilihan Jasa Pengiriman',
-'shipping.description': 'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
 
       'common.viewDetail': 'Lihat detail',
       'common.readArticle': 'Baca artikel',
@@ -101,6 +99,7 @@
       'nav.products': 'Products',
       'nav.articles': 'Articles',
       'nav.suppliers': 'Supplier Network',
+      'nav.shipping': 'Shipping',
       'nav.contact': 'Contact',
 
       'shipping.eyebrow': 'Logistics Options',
@@ -152,6 +151,7 @@
       'nav.products': 'उत्पाद',
       'nav.articles': 'लेख',
       'nav.suppliers': 'आपूर्तिकर्ता नेटवर्क',
+      'nav.shipping': 'शिपिंग',
       'nav.contact': 'संपर्क',
 
       'shipping.eyebrow': 'लॉजिस्टिक्स विकल्प',
@@ -203,6 +203,7 @@
       'nav.products': '产品',
       'nav.articles': '文章',
       'nav.suppliers': '供应商网络',
+      'nav.shipping': '运输',
       'nav.contact': '联系我们',
 
       'shipping.eyebrow': '物流选择',
@@ -254,6 +255,7 @@
       'nav.products': 'المنتجات',
       'nav.articles': 'المقالات',
       'nav.suppliers': 'شبكة الموردين',
+      'nav.shipping': 'الشحن',
       'nav.contact': 'اتصل بنا',
 
       'shipping.eyebrow': 'خيارات الخدمات اللوجستية',
