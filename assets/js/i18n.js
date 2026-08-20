@@ -62,6 +62,7 @@
       'common.exploreProducts': 'Jelajahi Produk',
       'common.contactWhatsApp': 'Hubungi via WhatsApp',
       'common.contactUs': 'Hubungi Kami',
+      'common.contactEmail': 'Hubungi via Gmail',
 
       'search.productPlaceholder': 'Cari produk...',
       'search.articlePlaceholder': 'Cari artikel...',
@@ -108,6 +109,7 @@
       'common.exploreProducts': 'Explore Products',
       'common.contactWhatsApp': 'Contact via WhatsApp',
       'common.contactUs': 'Contact Us',
+      'common.contactEmail': 'Contact via Email',
 
       'search.productPlaceholder': 'Search products...',
       'search.articlePlaceholder': 'Search articles...',
@@ -154,6 +156,7 @@
       'common.exploreProducts': 'उत्पाद देखें',
       'common.contactWhatsApp': 'व्हाट्सऐप से संपर्क करें',
       'common.contactUs': 'हमसे संपर्क करें',
+      'common.contactEmail': 'ईमेल द्वारा संपर्क करें',
 
       'search.productPlaceholder': 'उत्पाद खोजें...',
       'search.articlePlaceholder': 'लेख खोजें...',
@@ -200,6 +203,7 @@
       'common.exploreProducts': '浏览产品',
       'common.contactWhatsApp': '通过 WhatsApp 联系',
       'common.contactUs': '联系我们',
+      'common.contactEmail': '通过邮件联系',
 
       'search.productPlaceholder': '搜索产品...',
       'search.articlePlaceholder': '搜索文章...',
@@ -246,6 +250,7 @@
       'common.exploreProducts': 'استكشف المنتجات',
       'common.contactWhatsApp': 'تواصل عبر واتساب',
       'common.contactUs': 'اتصل بنا',
+      'common.contactEmail': 'تواصل عبر البريد الإلكتروني',
 
       'search.productPlaceholder': 'ابحث عن منتج...',
       'search.articlePlaceholder': 'ابحث عن مقال...',
