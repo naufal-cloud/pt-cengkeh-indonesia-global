@@ -4,6 +4,10 @@
   function toast(message) {
   alert(message);
 }
+
+  function toast(message){
+  alert(message);
+}
   
   const supabase = window.CIG_SUPABASE;
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
