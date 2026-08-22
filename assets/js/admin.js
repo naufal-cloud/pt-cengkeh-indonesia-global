@@ -1,5 +1,10 @@
 (async () => {
   'use strict';
+
+  function toast(message) {
+  alert(message);
+}
+  
   const supabase = window.CIG_SUPABASE;
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const slugify = (s='') => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
