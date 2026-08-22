@@ -1629,8 +1629,12 @@ if (entity === 'supplier') {
 }
 
     if (entity === 'portfolio') {
-  formData.image_url =
+  const uploadedImage =
     await uploadPortfolioImage(form);
+
+  if (uploadedImage) {
+    formData.image_url = uploadedImage;
+  }
 
   delete formData.image_file;
 }
