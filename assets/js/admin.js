@@ -106,6 +106,7 @@
       ...article,
       date: article.published_at,
       image: article.image_url,
+      image_url: article.image_url,
       tags: article.tags || []
     })),
 
