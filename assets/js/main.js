@@ -60,8 +60,7 @@ if (premiumProduct) {
   teamResult,
   legalitiesResult,
   portfoliosResult,
-  contactResult,
-  aboutCompanyResult
+  contactResult
 ] = await Promise.all([
     client
       .from('products')
@@ -116,12 +115,6 @@ if (premiumProduct) {
       .select('*')
       .eq('id', 1)
       .maybeSingle(),
-
-    client
-  .from('about_company')
-  .select('*')
-  .limit(1)
-    
   ]);
 
   const firstError = [
@@ -133,8 +126,7 @@ if (premiumProduct) {
     teamResult.error,
     legalitiesResult.error,
     portfoliosResult.error,
-    contactResult.error,
-    aboutCompanyResult.error
+    contactResult.error
   ].find(Boolean);
 
   if (firstError) {
@@ -173,8 +165,6 @@ if (premiumProduct) {
         tags: article.tags || []
       })
     ),
-
-    aboutCompany: aboutCompanyResult.data || null,
 
     suppliers: (suppliersResult.data || []).map(
       supplier => ({
@@ -1160,7 +1150,6 @@ document.addEventListener(
     initProductDetail();
     initArticles();
     initArticleDetail();
-    initAboutCompany();
     initWhatsApp();
     initGmail();
     initContactForm();
