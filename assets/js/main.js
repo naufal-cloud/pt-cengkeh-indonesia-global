@@ -718,7 +718,7 @@ document.addEventListener(
 
   function initAboutCompany() {
 
-  const about = window.CIG_DATA.aboutCompany;
+  const about = window.CIG.aboutCompany;
 
   if (!about) return;
 
