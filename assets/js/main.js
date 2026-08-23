@@ -60,7 +60,8 @@ if (premiumProduct) {
   teamResult,
   legalitiesResult,
   portfoliosResult,
-  contactResult
+  contactResult,
+  aboutCompanyResult
 ] = await Promise.all([
     client
       .from('products')
