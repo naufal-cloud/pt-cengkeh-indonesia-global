@@ -671,7 +671,17 @@ const item = id
   portfolio: 'Portofolio'
 };
     modalTitle.textContent=`${item?'Edit':'Tambah'} ${names[entity]}`;
-    if(entity==='product') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Cengkeh Kering')}"></div><div class="field full"><label>Ringkasan *</label><textarea name="summary" required maxlength="400">${esc(item?.summary||'')}</textarea></div><div class="field"><label>Ilustrasi</label><select name="image">
+    if(entity==='product') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Cengkeh Kering')}"></div><div class="field full"><label>Ringkasan *</label><textarea name="summary" required maxlength="400">${esc(item?.summary||'')}</textarea></div><div class="field"><label>Ilustrasi</label><input
+ name="image_file"
+ type="file"
+ accept="image/jpeg,image/png,image/webp"
+>
+
+<input
+ name="image_url"
+ type="hidden"
+ value="${esc(item?.image_url || '')}"
+>
   <option value="assets/images/clove-dry.svg">Cengkeh kering</option>
   <option value="assets/images/clove-oil.svg">Minyak cengkeh</option>
   <option value="assets/images/cengkeh-di-meja-kayu.webp">Tangkai cengkeh</option>
@@ -747,7 +757,17 @@ const item = id
     </div>
   `;
 }
-    if(entity==='article') fields.innerHTML=`<div class="form-grid"><div class="field full"><label>Judul *</label><input name="title" required maxlength="180" value="${esc(item?.title||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Edukasi')}"></div><div class="field"><label>Tanggal</label><input name="date" type="date" value="${esc(item?.date||new Date().toISOString().slice(0,10))}"></div><div class="field full"><label>Ringkasan *</label><textarea name="excerpt" required maxlength="500">${esc(item?.excerpt||'')}</textarea></div><div class="field"><label>Ilustrasi</label><select name="image"><option value="assets/images/farm.svg">Kebun</option><option value="assets/images/quality.svg">Kualitas</option><option value="assets/images/partnership.svg">Kemitraan</option></select></div><div class="field"><label>Status</label><select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></div></div>`;
+    if(entity==='article') fields.innerHTML=`<div class="form-grid"><div class="field full"><label>Judul *</label><input name="title" required maxlength="180" value="${esc(item?.title||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Edukasi')}"></div><div class="field"><label>Tanggal</label><input name="date" type="date" value="${esc(item?.date||new Date().toISOString().slice(0,10))}"></div><div class="field full"><label>Ringkasan *</label><textarea name="excerpt" required maxlength="500">${esc(item?.excerpt||'')}</textarea></div><div class="field"><label>Ilustrasi</label><input
+ name="image_file"
+ type="file"
+ accept="image/jpeg,image/png,image/webp"
+>
+
+<input
+ name="image_url"
+ type="hidden"
+ value="${esc(item?.image_url || '')}"
+></div><div class="field"><label>Status</label><select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></div></div>`;
     if(entity==='supplier') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Wilayah *</label><input name="region" required maxlength="80" value="${esc(item?.region||'')}"></div><div class="field"><label>Latitude *</label><input name="lat" type="number" step="any" min="-90" max="90" required value="${item?.lat??''}"></div><div class="field"><label>Longitude *</label><input name="lng" type="number" step="any" min="-180" max="180" required value="${item?.lng??''}"></div><div class="field full"><label>Ringkasan</label><textarea name="summary" maxlength="300">${esc(item?.summary||'Lokasi perkiraan tingkat wilayah untuk keperluan demonstrasi.')}</textarea></div><label class="field"><span>Publik</span><select name="public"><option value="true">Ya</option><option value="false">Tidak</option></select></label></div>`;
     if (entity === 'team') {
   fields.innerHTML = `
@@ -1329,6 +1349,65 @@ const item = id
   return publicUrlData.publicUrl;
 }
 
+  async function uploadArticleImage(formElement) {
+
+  const fileInput =
+    formElement.elements.image_file;
+
+  const currentImage =
+    formElement.elements.image_url?.value || null;
+
+  const file = fileInput?.files?.[0];
+
+  if (!file) {
+    return currentImage;
+  }
+
+  const allowedTypes = [
+    'image/jpeg',
+    'image/png',
+    'image/webp'
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+    throw new Error(
+      'Gambar artikel harus JPG, PNG, atau WebP.'
+    );
+  }
+
+
+  const extension =
+    file.name.split('.').pop()?.toLowerCase() || 'jpg';
+
+
+  const filePath =
+    `articles/${crypto.randomUUID()}.${extension}`;
+
+
+  const { error: uploadError } =
+    await supabase.storage
+      .from('public-assets')
+      .upload(filePath, file, {
+        cacheControl:'3600',
+        upsert:false,
+        contentType:file.type
+      });
+
+
+  if(uploadError){
+    throw uploadError;
+  }
+
+
+  const { data:urlData } =
+    supabase.storage
+      .from('public-assets')
+      .getPublicUrl(filePath);
+
+
+  return urlData.publicUrl;
+}
+
   async function saveEntityOnline(entity, id, formData) {
   let table;
   let payload;
@@ -1388,7 +1467,7 @@ const item = id
       content:
         existing?.content ||
         `<p>${esc(formData.excerpt)}</p>`,
-      image_url: formData.image,
+      image_url: formData.image_url || null,
       tags: existing?.tags || [],
       published_at: formData.date,
       status: formData.status
@@ -1640,6 +1719,18 @@ if (entity === 'supplier') {
     if (entity === 'portfolio') {
   const uploadedImage =
     await uploadPortfolioImage(form);
+
+  if (uploadedImage) {
+    formData.image_url = uploadedImage;
+  }
+
+  delete formData.image_file;
+}
+
+    if (entity === 'article') {
+
+  const uploadedImage =
+    await uploadArticleImage(form);
 
   if (uploadedImage) {
     formData.image_url = uploadedImage;
