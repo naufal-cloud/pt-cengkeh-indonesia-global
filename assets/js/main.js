@@ -713,6 +713,36 @@ document.addEventListener(
   'cig:languagechange',
   updateArticlePageTitle
 );
+
+  }
+
+  function initAboutCompany() {
+
+  const about = window.CIG_DATA.aboutCompany;
+
+  if (!about) return;
+
+  const image = document.querySelector('[data-about-image]');
+  const title = document.querySelector('[data-about-identity]');
+  const description = document.querySelector('[data-about-identity-description]');
+
+
+  if (image && about.identity_image_url) {
+    image.src = about.identity_image_url;
+  }
+
+
+  if (title && about.identity_title) {
+    title.textContent = about.identity_title;
+  }
+
+
+  if (description && about.identity_description) {
+    description.textContent = about.identity_description;
+  }
+
+}
+    
     const date = window.CIG_I18N.formatDate(
   `${a.date}T00:00:00`
 );
@@ -1013,6 +1043,7 @@ document.addEventListener(
     initProductDetail();
     initArticles();
     initArticleDetail();
+    initAboutCompany();
     initWhatsApp();
     initGmail();
     initContactForm();
