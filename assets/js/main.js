@@ -36,9 +36,9 @@ if (premiumProduct) {
 };
 
 (window.CIG.portfolios || []).forEach(portfolio => {
-  if (portfolioImageUpdates[portfolio.id]) {
-    portfolio.image = portfolioImageUpdates[portfolio.id];
-  }
+    if (portfolioImageUpdates[portfolio.id]) {
+        portfolio.image_url = portfolioImageUpdates[portfolio.id];
+    }
 });
 
   const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -270,7 +270,7 @@ settings: {
   function productCard(p) {
     return `<article class="card product-card">
       <a class="card__media" href="${prefix}produk-detail.html?slug=${encodeURIComponent(p.slug)}" aria-label="Lihat ${esc(p.name)}">
-        <img src="${prefix}${esc(p.image)}" alt="Ilustrasi ${esc(p.name)}" loading="lazy" width="800" height="560">
+        <img src="${prefix}${esc(p.image_url)}" alt="Ilustrasi ${esc(p.name)}" loading="lazy" width="800" height="560">
       </a>
       <div class="card__body"><span class="eyebrow">${esc(p.category)}</span><h3><a href="${prefix}produk-detail.html?slug=${encodeURIComponent(p.slug)}">${esc(p.name)}</a></h3><p>${esc(p.summary)}</p><a class="text-link" href="${prefix}produk-detail.html?slug=${encodeURIComponent(p.slug)}">Lihat detail <span aria-hidden="true">→</span></a></div>
     </article>`;
@@ -292,7 +292,7 @@ settings: {
     const articleTarget = document.querySelector('[data-latest-articles]');
     if (articleTarget) articleTarget.innerHTML = (window.CIG.articles || []).filter(x => x.status === 'published').sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3).map(articleCard).join('');
     const portfolioTarget = document.querySelector('[data-portfolios]');
-    if (portfolioTarget) portfolioTarget.innerHTML = (window.CIG.portfolios || []).map(p => `<article class="portfolio-card"><img src="${prefix}${esc(p.image)}" alt="Ilustrasi ${esc(p.title)}" loading="lazy" width="800" height="520"><div><span class="eyebrow">${esc(p.category)} · ${esc(p.year)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p></div></article>`).join('');
+    if (portfolioTarget) portfolioTarget.innerHTML = (window.CIG.portfolios || []).map(p => `<article class="portfolio-card"><img src="${prefix}${esc(p.image_url)}" alt="Ilustrasi ${esc(p.title)}" loading="lazy" width="800" height="520"><div><span class="eyebrow">${esc(p.category)} · ${esc(p.year)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p></div></article>`).join('');
   }
 
   function renderShippingPartners() {
