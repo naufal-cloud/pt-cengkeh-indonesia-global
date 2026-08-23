@@ -694,60 +694,177 @@ document.addEventListener(
   }
 
   function initArticleDetail() {
-    const target = document.querySelector('[data-article-detail]');
-    if (!target) return;
-    const slug = new URLSearchParams(location.search).get('slug');
-    const a = (window.CIG.articles || []).find(x => x.slug === slug && x.status === 'published');
-    if (!a) { target.innerHTML = '<div class="empty-state"><h1>Artikel tidak ditemukan</h1><a class="btn btn--primary" href="artikel.html">Kembali ke artikel</a></div>'; return; }
-    const updateArticlePageTitle = () => {
-  const articleTitle =
-    target.querySelector('h1')?.textContent?.trim() || a.title;
+  const target = document.querySelector('[data-article-detail]');
 
-  document.title =
-    `${articleTitle} | PT Cengkeh Indonesia Global`;
-};
+  if (!target) return;
 
-setTimeout(updateArticlePageTitle, 0);
+  const slug =
+    new URLSearchParams(location.search).get('slug');
 
-document.addEventListener(
-  'cig:languagechange',
-  updateArticlePageTitle
-);
+  const a =
+    (window.CIG.articles || [])
+      .find(
+        x =>
+          x.slug === slug &&
+          x.status === 'published'
+      );
 
+  if (!a) {
+    target.innerHTML =
+      '<div class="empty-state"><h1>Artikel tidak ditemukan</h1><a class="btn btn--primary" href="artikel.html">Kembali ke artikel</a></div>';
+
+    return;
   }
 
-  function initAboutCompany() {
 
-  const about = window.CIG.aboutCompany;
+  const updateArticlePageTitle = () => {
+    const articleTitle =
+      target.querySelector('h1')?.textContent?.trim() ||
+      a.title;
+
+    document.title =
+      `${articleTitle} | PT Cengkeh Indonesia Global`;
+  };
+
+
+  setTimeout(
+    updateArticlePageTitle,
+    0
+  );
+
+
+  document.addEventListener(
+    'cig:languagechange',
+    updateArticlePageTitle
+  );
+
+
+  const date =
+    window.CIG_I18N.formatDate(
+      `${a.date}T00:00:00`
+    );
+
+
+  target.innerHTML =
+    `<article class="article-detail">
+      <header>
+        <span class="eyebrow">
+          ${esc(a.category)}
+        </span>
+
+        <h1>
+          ${esc(a.title)}
+        </h1>
+
+        <p class="lead">
+          ${esc(a.excerpt)}
+        </p>
+
+        <time datetime="${esc(a.date)}">
+          ${date}
+        </time>
+      </header>
+
+      <img
+        class="article-hero"
+        src="${esc(a.image)}"
+        alt="Ilustrasi ${esc(a.title)}"
+        width="800"
+        height="520"
+      >
+
+      <div class="prose">
+        ${a.content}
+      </div>
+
+      <div class="tag-row">
+        ${(a.tags || [])
+          .map(
+            t =>
+              `<span class="tag">#${esc(t)}</span>`
+          )
+          .join('')
+        }
+      </div>
+
+      <div class="share-row">
+        <strong>Bagikan:</strong>
+
+        <button class="chip" data-share="linkedin">
+          LinkedIn
+        </button>
+
+        <button class="chip" data-share="facebook">
+          Facebook
+        </button>
+
+        <button class="chip" data-share="whatsapp">
+          WhatsApp
+        </button>
+      </div>
+
+    </article>`;
+}
+
+
+
+function initAboutCompany() {
+
+  const about =
+    window.CIG.aboutCompany;
+
 
   if (!about) return;
 
-  const image = document.querySelector('[data-about-image]');
-  const title = document.querySelector('[data-about-identity]');
-  const description = document.querySelector('[data-about-identity-description]');
+
+  const image =
+    document.querySelector(
+      '[data-about-image]'
+    );
 
 
-  if (image && about.identity_image_url) {
-    image.src = about.identity_image_url;
+  const title =
+    document.querySelector(
+      '[data-about-identity]'
+    );
+
+
+  const description =
+    document.querySelector(
+      '[data-about-identity-description]'
+    );
+
+
+
+  if (
+    image &&
+    about.identity_image_url
+  ) {
+    image.src =
+      about.identity_image_url;
   }
 
 
-  if (title && about.identity_title) {
-    title.textContent = about.identity_title;
+
+  if (
+    title &&
+    about.identity_title
+  ) {
+    title.textContent =
+      about.identity_title;
   }
 
 
-  if (description && about.identity_description) {
-    description.textContent = about.identity_description;
+
+  if (
+    description &&
+    about.identity_description
+  ) {
+    description.textContent =
+      about.identity_description;
   }
 
 }
-    
-    const date = window.CIG_I18N.formatDate(
-  `${a.date}T00:00:00`
-);
-    target.innerHTML = `<article class="article-detail"><header><span class="eyebrow">${esc(a.category)}</span><h1>${esc(a.title)}</h1><p class="lead">${esc(a.excerpt)}</p><time datetime="${esc(a.date)}">${date}</time></header><img class="article-hero" src="${esc(a.image)}" alt="Ilustrasi ${esc(a.title)}" width="800" height="520"><div class="prose">${a.content}</div><div class="tag-row">${(a.tags||[]).map(t=>`<span class="tag">#${esc(t)}</span>`).join('')}</div><div class="share-row"><strong>Bagikan:</strong><button class="chip" data-share="linkedin">LinkedIn</button><button class="chip" data-share="facebook">Facebook</button><button class="chip" data-share="whatsapp">WhatsApp</button></div></article>`;
-  }
 
   function initWhatsApp() {
     document.addEventListener('click', e => {
