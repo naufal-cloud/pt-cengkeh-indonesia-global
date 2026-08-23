@@ -115,7 +115,13 @@ if (premiumProduct) {
       .from('site_contact')
       .select('*')
       .eq('id', 1)
-      .maybeSingle()
+      .maybeSingle(),
+
+    client
+  .from('about_company')
+  .select('*')
+  .limit(1)
+    
   ]);
 
   const firstError = [
@@ -127,7 +133,8 @@ if (premiumProduct) {
     teamResult.error,
     legalitiesResult.error,
     portfoliosResult.error,
-    contactResult.error
+    contactResult.error,
+    aboutCompanyResult.error
   ].find(Boolean);
 
   if (firstError) {
@@ -166,6 +173,8 @@ if (premiumProduct) {
         tags: article.tags || []
       })
     ),
+
+    aboutCompany: aboutCompanyResult.data || null,
 
     suppliers: (suppliersResult.data || []).map(
       supplier => ({
