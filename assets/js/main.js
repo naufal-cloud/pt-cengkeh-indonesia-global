@@ -796,6 +796,50 @@ document.addEventListener(
     </article>`;
 }
 
+  async function loadAboutCompany() {
+
+  const client = window.CIG_SUPABASE;
+
+  if (!client) {
+    return;
+  }
+
+  try {
+
+    const { data, error } =
+      await client
+        .from('about_company')
+        .select('*')
+        .limit(1)
+        .maybeSingle();
+
+
+    if (error) {
+      console.error(
+        'About Company gagal dimuat:',
+        error
+      );
+
+      return;
+    }
+
+
+    window.CIG.aboutCompany = data;
+
+
+    initAboutCompany();
+
+
+  } catch (error) {
+
+    console.error(
+      'About Company error:',
+      error
+    );
+
+  }
+
+}
 
 
 function initAboutCompany() {
@@ -1146,6 +1190,9 @@ document.addEventListener(
     renderTeamMembers();
     renderLegalities();
     renderPortfolios();
+
+    await loadAboutCompany();
+    
     initProducts();
     initProductDetail();
     initArticles();
