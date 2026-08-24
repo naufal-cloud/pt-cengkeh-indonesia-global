@@ -3580,7 +3580,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     initLanguageSelector();
     applyTranslations();
-    initAutomaticTranslation();
   });
 
   window.CIG_I18N = {
