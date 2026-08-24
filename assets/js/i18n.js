@@ -1011,6 +1011,9 @@
     const aboutPageTranslations = {
     id: {
 
+      'about.companyDescription':
+  'Membawa cita rasa dan kekayaan rempah Indonesia ke dunia, PT Cengkeh Indonesia Global hadir sebagai mitra terpercaya dalam menyediakan cengkeh berkualitas dengan standar internasional. Dengan mengutamakan kualitas, ketepatan, dan keberlanjutan, kami membangun rantai pasok yang kuat untuk memastikan setiap produk terbaik sampai ke tangan pelanggan.',
+
       'about.visionTitle': 'Visi',
 'about.visionText':
 'Menghadirkan Cengkeh Terbaik Indonesia ke Dunia dengan Keandalan, Profesionalisme, dan Keberlanjutan.',
@@ -1071,6 +1074,9 @@
 
     en: {
 
+      'about.companyDescription':
+  'Bringing the taste and richness of Indonesian spices to the world, PT Cengkeh Indonesia Global is a trusted partner providing quality cloves with international standards. By prioritizing quality, reliability, and sustainability, we build a strong supply chain to ensure the best products reach our customers.',
+
       'about.visionTitle': 'Vision',
 'about.visionText': 'Delivering the finest Indonesian cloves to the world with reliability, professionalism, and sustainability.',
 
@@ -1127,6 +1133,9 @@
     },
 
     hi: {
+
+      'about.companyDescription':
+  'इंडोनेशियाई मसालों की समृद्धि और स्वाद को दुनिया तक पहुँचाते हुए, PT Cengkeh Indonesia Global अंतरराष्ट्रीय मानकों के साथ उच्च गुणवत्ता वाली लौंग उपलब्ध कराने वाला विश्वसनीय भागीदार है।',
 
       'about.visionTitle': 'दृष्टि',
 'about.visionText': 'विश्व बाजार में विश्वसनीयता, व्यावसायिकता और स्थिरता के साथ सर्वोत्तम इंडोनेशियाई लौंग प्रस्तुत करना।',
@@ -1185,6 +1194,9 @@
 
     zh: {
 
+      'about.companyDescription':
+  'PT Cengkeh Indonesia Global 将印度尼西亚香料的风味与价值带向世界，作为值得信赖的合作伙伴，提供符合国际标准的优质丁香产品。',
+
       'about.visionTitle': '愿景',
 'about.visionText': '以可靠性、专业性和可持续发展理念，将优质印尼丁香带向全球市场。',
 
@@ -1241,6 +1253,9 @@
     },
 
     ar: {
+
+      'about.companyDescription':
+  'تنقل PT Cengkeh Indonesia Global نكهة وثروة التوابل الإندونيسية إلى العالم، باعتبارها شريكًا موثوقًا في توفير القرنفل عالي الجودة وفق المعايير الدولية.',
 
       'about.visionTitle': 'الرؤية',
 'about.visionText': 'تقديم أفضل أنواع القرنفل الإندونيسي إلى العالم من خلال الموثوقية والاحترافية والاستدامة.',
