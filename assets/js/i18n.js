@@ -37,8 +37,11 @@
     }
   };
 
+
   const translations = {
+
     id: {
+
       'language.label': 'Pilih bahasa',
 
       'nav.home': 'Beranda',
@@ -50,96 +53,229 @@
       'nav.contact': 'Kontak',
       'nav.privacy': 'Kebijakan Privasi',
 
-      'shipping.eyebrow': 'Pilihan Logistik',
-      'shipping.options': 'Opsi Pengiriman',
-'shipping.title': 'Pilihan Jasa Pengiriman',
-'shipping.description': 'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
-'shipping.options': 'Opsi Pengiriman',
-'shipping.available': 'Jasa pengiriman yang tersedia',
-'shipping.availableDescription': 'Pilihan jasa pengiriman disesuaikan dengan tujuan, jenis barang, kebutuhan logistik, serta kesepakatan transaksi dengan pelanggan.',
-'footer.description': 'Perusahaan komoditas cengkeh Indonesia yang membangun kemitraan untuk pasar nasional dan global.',
-'footer.navigation': 'Navigasi',
-'footer.information': 'Informasi',
-'footer.contact': 'Kontak',
-      
+
+      'shipping.eyebrow':
+        'Pilihan Logistik',
+
+      'shipping.title':
+        'Pilihan Jasa Pengiriman',
+
+      'shipping.description':
+        'Pengiriman produk dapat dilakukan melalui berbagai penyedia jasa pengiriman sesuai tujuan, jenis barang, dan kesepakatan transaksi.',
+
+      'shipping.options':
+        'Opsi Pengiriman',
+
+      'shipping.available':
+        'Jasa pengiriman yang tersedia',
+
+      'shipping.availableDescription':
+        'Pilihan jasa pengiriman disesuaikan dengan tujuan, jenis barang, kebutuhan logistik, serta kesepakatan transaksi dengan pelanggan.',
 
 
-      'common.viewDetail': 'Lihat detail',
-      'common.readArticle': 'Baca artikel',
-      'common.allProducts': 'Lihat semua produk',
-      'common.allArticles': 'Semua artikel',
-      'common.allCategories': 'Semua kategori',
-      'common.specifications': 'Spesifikasi',
-      'common.share': 'Bagikan',
-      'common.backToCatalog': 'Kembali ke katalog',
-      'common.backToArticles': 'Kembali ke artikel',
-      'common.askWhatsApp': 'Tanyakan via WhatsApp',
-      'common.downloadBrochure': 'Unduh brosur',
-      'common.exploreProducts': 'Jelajahi Produk',
-      'common.contactWhatsApp': 'Hubungi via WhatsApp',
-      'common.contactUs': 'Hubungi Kami',
-      'common.contactEmail': 'Hubungi via Gmail',
+      'footer.description':
+        'Perusahaan komoditas cengkeh Indonesia yang membangun kemitraan untuk pasar nasional dan global.',
 
-      'search.productPlaceholder': 'Cari produk...',
-      'search.articlePlaceholder': 'Cari artikel...',
+      'footer.navigation':
+        'Navigasi',
 
-      'empty.productTitle': 'Produk tidak ditemukan',
-      'empty.productText': 'Ubah kata kunci atau kategori pencarian.',
-      'empty.articleTitle': 'Artikel tidak ditemukan',
-      'empty.articleText': 'Coba kata kunci atau kategori lain.',
+      'footer.information':
+        'Informasi',
+
+      'footer.contact':
+        'Kontak',
+
+
+      'common.viewDetail':
+        'Lihat detail',
+
+      'common.readArticle':
+        'Baca artikel',
+
+      'common.allProducts':
+        'Lihat semua produk',
+
+      'common.allArticles':
+        'Semua artikel',
+
+      'common.allCategories':
+        'Semua kategori',
+
+      'common.specifications':
+        'Spesifikasi',
+
+      'common.share':
+        'Bagikan',
+
+      'common.backToCatalog':
+        'Kembali ke katalog',
+
+      'common.backToArticles':
+        'Kembali ke artikel',
+
+      'common.askWhatsApp':
+        'Tanyakan via WhatsApp',
+
+      'common.downloadBrochure':
+        'Unduh brosur',
+
+      'common.exploreProducts':
+        'Jelajahi Produk',
+
+      'common.contactWhatsApp':
+        'Hubungi via WhatsApp',
+
+      'common.contactUs':
+        'Hubungi Kami',
+
+      'common.contactEmail':
+        'Hubungi via Email',
+
+
+      'search.productPlaceholder':
+        'Cari produk...',
+
+      'search.articlePlaceholder':
+        'Cari artikel...',
+
+
+      'empty.productTitle':
+        'Produk tidak ditemukan',
+
+      'empty.productText':
+        'Ubah kata kunci atau kategori pencarian.',
+
+      'empty.articleTitle':
+        'Artikel tidak ditemukan',
+
+      'empty.articleText':
+        'Coba kata kunci atau kategori lain.',
+
 
       'toast.whatsappUnavailable':
         'Nomor WhatsApp resmi belum dikonfigurasi pada situs demo.',
+
       'toast.brochureUnavailable':
         'Brosur PDF demo belum tersedia.',
+
       'toast.messageSaved':
         'Pesan demo tersimpan di browser dan dapat dilihat pada CMS prototype.',
 
+
       'whatsapp.productMessage':
-  'Halo PT Cengkeh Indonesia Global, saya ingin menanyakan produk {product}. {url}',
-'whatsapp.generalMessage':
-  'Halo PT Cengkeh Indonesia Global, saya ingin memperoleh informasi lebih lanjut.'
+        'Halo PT Cengkeh Indonesia Global, saya ingin menanyakan produk {product}. {url}',
+
+      'whatsapp.generalMessage':
+        'Halo PT Cengkeh Indonesia Global, saya ingin memperoleh informasi lebih lanjut.'
     },
 
+
     en: {
-      'language.label': 'Select language',
 
-      'nav.home': 'Home',
-      'nav.about': 'About Us',
-      'nav.products': 'Products',
-      'nav.articles': 'Articles',
-      'nav.suppliers': 'Supplier Network',
-      'nav.shipping': 'Shipping',
-      'nav.contact': 'Contact',
-      'nav.privacy': 'Privacy Policy',
+      'language.label':
+        'Select language',
 
-      'shipping.eyebrow': 'Logistics Options',
-      'shipping.options': 'Shipping Options',
-'shipping.title': 'Shipping Service Options',
-'shipping.description': 'Product delivery can be carried out through various shipping providers according to destination, product type, and transaction agreement.',
-'shipping.options': 'Shipping Options',
-'shipping.available': 'Available Shipping Services',
-'shipping.availableDescription': 'Shipping services are selected based on destination, product type, logistics requirements, and transaction agreements with customers.',
-'footer.description': 'An Indonesian clove commodity company building partnerships for national and global markets.',
-'footer.navigation': 'Navigation',
-'footer.information': 'Information',
-'footer.contact': 'Contact',
+      'nav.home':
+        'Home',
 
-      'common.viewDetail': 'View details',
-      'common.readArticle': 'Read article',
-      'common.allProducts': 'View all products',
-      'common.allArticles': 'All articles',
-      'common.allCategories': 'All categories',
-      'common.specifications': 'Specifications',
-      'common.share': 'Share',
-      'common.backToCatalog': 'Back to catalogue',
-      'common.backToArticles': 'Back to articles',
-      'common.askWhatsApp': 'Ask via WhatsApp',
-      'common.downloadBrochure': 'Download brochure',
-      'common.exploreProducts': 'Explore Products',
-      'common.contactWhatsApp': 'Contact via WhatsApp',
-      'common.contactUs': 'Contact Us',
-      'common.contactEmail': 'Contact via Email',
+      'nav.about':
+        'About Us',
+
+      'nav.products':
+        'Products',
+
+      'nav.articles':
+        'Articles',
+
+      'nav.suppliers':
+        'Supplier Network',
+
+      'nav.shipping':
+        'Shipping',
+
+      'nav.contact':
+        'Contact',
+
+      'nav.privacy':
+        'Privacy Policy',
+
+
+      'shipping.eyebrow':
+        'Logistics Options',
+
+      'shipping.title':
+        'Shipping Service Options',
+
+      'shipping.description':
+        'Product delivery can be carried out through various shipping providers according to destination, product type, and transaction agreement.',
+
+      'shipping.options':
+        'Shipping Options',
+
+      'shipping.available':
+        'Available Shipping Services',
+
+      'shipping.availableDescription':
+        'Shipping services are selected based on destination, product type, logistics requirements, and transaction agreements with customers.',
+
+
+      'footer.description':
+        'An Indonesian clove commodity company building partnerships for national and global markets.',
+
+      'footer.navigation':
+        'Navigation',
+
+      'footer.information':
+        'Information',
+
+      'footer.contact':
+        'Contact',
+
+
+      'common.viewDetail':
+        'View details',
+
+      'common.readArticle':
+        'Read article',
+
+      'common.allProducts':
+        'View all products',
+
+      'common.allArticles':
+        'All articles',
+
+      'common.allCategories':
+        'All categories',
+
+      'common.specifications':
+        'Specifications',
+
+      'common.share':
+        'Share',
+
+      'common.backToCatalog':
+        'Back to catalogue',
+
+      'common.backToArticles':
+        'Back to articles',
+
+      'common.askWhatsApp':
+        'Ask via WhatsApp',
+
+      'common.downloadBrochure':
+        'Download brochure',
+
+      'common.exploreProducts':
+        'Explore Products',
+
+      'common.contactWhatsApp':
+        'Contact via WhatsApp',
+
+      'common.contactUs':
+        'Contact Us',
+
+      'common.contactEmail':
+        'Contact via Email',
 
       'search.productPlaceholder': 'Search products...',
       'search.articlePlaceholder': 'Search articles...',
@@ -163,15 +299,84 @@
     },
 
     hi: {
-      'language.label': 'भाषा चुनें',
+        'language.label':
+        'भाषा चुनें',
 
-      'nav.home': 'मुखपृष्ठ',
-      'nav.about': 'हमारे बारे में',
-      'nav.products': 'उत्पाद',
-      'nav.articles': 'लेख',
-      'nav.suppliers': 'आपूर्तिकर्ता नेटवर्क',
-      'nav.shipping': 'शिपिंग',
-      'nav.contact': 'संपर्क',
+      'nav.home':
+        'होम',
+
+      'nav.about':
+        'हमारे बारे में',
+
+      'nav.products':
+        'उत्पाद',
+
+      'nav.articles':
+        'लेख',
+
+      'nav.suppliers':
+        'सप्लायर नेटवर्क',
+
+      'nav.shipping':
+        'शिपिंग',
+
+      'nav.contact':
+        'संपर्क',
+
+       'about.heroLabel':
+        'कंपनी प्रोफ़ाइल',
+
+      'about.heroTitle':
+        'PT Cengkeh Indonesia Global के बारे में',
+
+      'about.heroDescription':
+        'कंपनी प्रोफ़ाइल, विज़न, मिशन, मूल्य, कानूनी जानकारी, संगठन संरचना और पोर्टफोलियो के बारे में अधिक जानें।',
+
+
+      'about.companyProfile':
+        'कंपनी प्रोफ़ाइल',
+
+      'about.companyName':
+        'PT Cengkeh Indonesia Global',
+
+      'about.companyDescription':
+        'इंडोनेशियाई मसालों के स्वाद और समृद्धि को दुनिया तक पहुंचाते हुए, PT Cengkeh Indonesia Global अंतरराष्ट्रीय मानकों के साथ उच्च गुणवत्ता वाली लौंग उपलब्ध कराने वाला एक विश्वसनीय भागीदार है। गुणवत्ता, विश्वसनीयता और स्थिरता को प्राथमिकता देते हुए हम एक मजबूत आपूर्ति श्रृंखला विकसित करते हैं।',
+
+      'about.companyDetail':
+        'PT Cengkeh Indonesia Global ने इंडोनेशिया के प्रमुख क्षेत्रों में मजबूत और विश्वसनीय लौंग आपूर्ति नेटवर्क विकसित किया है, जिसकी क्षमता प्रति माह 100 टन से अधिक है। किसानों, प्रमाणन प्रदाताओं और अनुभवी लॉजिस्टिक भागीदारों के साथ रणनीतिक सहयोग के माध्यम से हम खरीद से लेकर वितरण तक प्रत्येक प्रक्रिया को सुरक्षित और समय पर सुनिश्चित करते हैं।',
+
+      'about.check1':
+        'उत्पाद जानकारी स्पष्ट और व्यवस्थित रूप से प्रस्तुत की जाती है।',
+
+      'about.check2':
+        'कानूनी जानकारी प्रबंधन द्वारा प्रकाशित आधिकारिक डेटा के आधार पर प्रस्तुत की जाती है।',
+
+      'about.check3':
+        'संवेदनशील भागीदार और लेनदेन डेटा सार्वजनिक रूप से प्रदर्शित नहीं किया जाता।',
+
+
+      'about.directionLabel':
+        'कंपनी दिशा',
+
+      'about.directionTitle':
+        'कंपनी का विज़न, मिशन और मूल्य',
+
+      'about.directionDescription':
+        'गुणवत्ता, विश्वास और व्यावसायिक संबंधों के निर्माण में कंपनी के विकास का मार्गदर्शन करने वाले सिद्धांत।',
+
+
+      'about.visionTitle':
+        'विज़न',
+
+      'about.visionText':
+        'विश्वसनीयता, व्यावसायिकता और स्थिरता के साथ बेहतरीन इंडोनेशियाई लौंग को दुनिया तक पहुंचाना।',
+
+      'about.missionTitle':
+        'मिशन',
+
+      'about.missionText':
+        'विश्वसनीय और लगातार गुणवत्ता मानकों के साथ अंतरराष्ट्रीय बाजार में उच्च गुणवत्ता वाली इंडोनेशियाई लौंग उपलब्ध कराना।',
+      
       'nav.privacy': 'गोपनीयता नीति',
 
       'shipping.eyebrow': 'लॉजिस्टिक्स विकल्प',
@@ -224,15 +429,85 @@
     },
 
     zh: {
-      'language.label': '选择语言',
+      'language.label':
+        '选择语言',
 
-      'nav.home': '首页',
-      'nav.about': '关于我们',
-      'nav.products': '产品',
-      'nav.articles': '文章',
-      'nav.suppliers': '供应商网络',
-      'nav.shipping': '运输',
-      'nav.contact': '联系我们',
+      'nav.home':
+        '首页',
+
+      'nav.about':
+        '关于我们',
+
+      'nav.products':
+        '产品',
+
+      'nav.articles':
+        '文章',
+
+      'nav.suppliers':
+        '供应商网络',
+
+      'nav.shipping':
+        '运输',
+
+      'nav.contact':
+        '联系我们',
+
+      'about.heroLabel':
+        '公司简介',
+
+      'about.heroTitle':
+        '关于 PT Cengkeh Indonesia Global',
+
+      'about.heroDescription':
+        '了解公司的简介、愿景、使命、价值观、法律信息、组织结构以及企业作品集。',
+
+
+      'about.companyProfile':
+        '公司简介',
+
+      'about.companyName':
+        'PT Cengkeh Indonesia Global',
+
+      'about.companyDescription':
+        'PT Cengkeh Indonesia Global 致力于将印度尼西亚香料的丰富价值带向世界，作为一家按照国际标准提供高品质丁香的可信赖合作伙伴。我们重视品质、可靠性和可持续发展，建立稳定的供应链体系，确保优质产品能够交付给客户。',
+
+      'about.companyDetail':
+        'PT Cengkeh Indonesia Global 已在印度尼西亚主要地区建立稳定可靠的丁香供应网络，每月供应能力超过100吨。通过与农民、认证机构以及经验丰富的物流伙伴合作，我们确保从采购到运输的每个环节都专业、安全并准时完成。',
+
+
+      'about.check1':
+        '产品信息以清晰和系统化方式展示。',
+
+      'about.check2':
+        '法律信息根据公司管理方发布的数据展示。',
+
+      'about.check3':
+        '合作伙伴和交易敏感数据不会公开展示。',
+
+
+      'about.directionLabel':
+        '企业方向',
+
+      'about.directionTitle':
+        '公司愿景、使命与价值观',
+
+      'about.directionDescription':
+        '指导企业发展、建立质量、信任和商业关系的重要原则。',
+
+
+      'about.visionTitle':
+        '愿景',
+
+      'about.visionText':
+        '以可靠、专业和可持续的方式，将优质印度尼西亚丁香带向全球。',
+
+      'about.missionTitle':
+        '使命',
+
+      'about.missionText':
+        '以稳定可靠的质量标准，为国际市场提供高品质印度尼西亚丁香。',
+      
       'nav.privacy': '隐私政策',
 
       'shipping.eyebrow': '物流选择',
@@ -285,15 +560,121 @@
     },
 
     ar: {
-      'language.label': 'اختر اللغة',
+       'language.label':
+    'اختر اللغة',
 
-      'nav.home': 'الرئيسية',
-      'nav.about': 'من نحن',
-      'nav.products': 'المنتجات',
-      'nav.articles': 'المقالات',
-      'nav.suppliers': 'شبكة الموردين',
-      'nav.shipping': 'الشحن',
-      'nav.contact': 'اتصل بنا',
+  'nav.home':
+    'الرئيسية',
+
+  'nav.about':
+    'من نحن',
+
+  'nav.products':
+    'المنتجات',
+
+  'nav.articles':
+    'المقالات',
+
+  'nav.suppliers':
+    'شبكة الموردين',
+
+  'nav.shipping':
+    'الشحن',
+
+  'nav.contact':
+    'اتصل بنا',
+
+'about.title': '...',
+'about.vision': '...',
+'about.mission': '...',
+
+        'about.heroLabel':
+    'ملف الشركة',
+
+  'about.heroTitle':
+    'عن PT Cengkeh Indonesia Global',
+
+  'about.heroDescription':
+    'تعرف على ملف الشركة والرؤية والرسالة والقيم والمعلومات القانونية والهيكل التنظيمي ومحفظة الأعمال الخاصة بـ PT Cengkeh Indonesia Global.',
+
+
+  'about.companyProfile':
+    'ملف الشركة',
+
+  'about.companyName':
+    'PT Cengkeh Indonesia Global',
+
+  'about.companyDescription':
+    'من خلال نقل نكهة وثروة التوابل الإندونيسية إلى العالم، تقدم PT Cengkeh Indonesia Global نفسها كشريك موثوق في توفير القرنفل عالي الجودة وفق المعايير الدولية. نحن نركز على الجودة والدقة والاستدامة من خلال بناء سلسلة توريد قوية لضمان وصول أفضل المنتجات إلى العملاء.',
+
+
+  'about.companyDetail':
+    'قامت PT Cengkeh Indonesia Global ببناء شبكة توريد قوية وموثوقة للقرنفل في المناطق الرئيسية بإندونيسيا، بطاقة توريد تتجاوز 100 طن شهريًا. ومن خلال التعاون الاستراتيجي مع المزارعين ومزودي الشهادات وشركاء الخدمات اللوجستية ذوي الخبرة، نضمن تنفيذ كل مرحلة من مراحل الشراء حتى الشحن بطريقة احترافية وآمنة وفي الوقت المحدد.',
+
+
+  'about.check1':
+    'يتم تقديم معلومات المنتجات بشكل واضح ومنظم.',
+
+  'about.check2':
+    'يتم عرض المعلومات القانونية بناءً على البيانات المنشورة من قبل إدارة الشركة.',
+
+  'about.check3':
+    'لا يتم عرض بيانات الشركاء والمعاملات الحساسة للعامة.',
+
+
+  'about.directionLabel':
+    'اتجاه الشركة',
+
+  'about.directionTitle':
+    'رؤية ورسالة وقيم الشركة',
+
+  'about.directionDescription':
+    'المبادئ التي توجه تطوير الشركة في بناء الجودة والثقة والعلاقات التجارية.',
+
+
+  'about.visionTitle':
+    'الرؤية',
+
+  'about.visionText':
+    'تقديم أفضل قرنفل إندونيسي إلى العالم من خلال الموثوقية والاحترافية والاستدامة.',
+
+
+  'about.missionTitle':
+    'الرسالة',
+
+  'about.missionText':
+    'توفير القرنفل الإندونيسي عالي الجودة للسوق العالمي بمعايير جودة موثوقة ومتسقة.',
+
+
+  'about.managementLabel':
+    'إدارة الشركة',
+
+  'about.structureTitle':
+    'الهيكل التنظيمي',
+
+  'about.structureDescription':
+    'يتم عرض هيكل الإدارة والتنظيم بناءً على البيانات الرسمية التي تتم إدارتها من خلال النظام الإداري.',
+
+
+  'about.legalityLabel':
+    'القانونية',
+
+  'about.legalityTitle':
+    'القانونية والجهات المصدرة',
+
+  'about.legalityDescription':
+    'يتم عرض معلومات قانونية الشركة بناءً على البيانات التي تتم إدارتها من خلال النظام الإداري.',
+
+
+  'about.portfolioLabel':
+    'محفظة الأعمال',
+
+  'about.portfolioTitle':
+    'محفظة أعمال الشركة',
+
+  'about.portfolioDescription':
+    'سيتم عرض توثيق أنشطة وإنجازات الشركة بناءً على البيانات التي تتم إدارتها من خلال النظام الإداري.',
+      
       'nav.privacy': 'سياسة الخصوصية',
 
       'shipping.eyebrow': 'خيارات الخدمات اللوجستية',
