@@ -1010,6 +1010,19 @@
 
     const aboutPageTranslations = {
     id: {
+
+      'about.visionTitle': 'Visi',
+'about.visionText':
+'Menghadirkan Cengkeh Terbaik Indonesia ke Dunia dengan Keandalan, Profesionalisme, dan Keberlanjutan.',
+
+'about.missionTitle': 'Misi',
+'about.missionText':
+'Menghadirkan cengkeh Indonesia berkualitas tinggi ke pasar internasional dengan standar kualitas yang andal dan konsisten.',
+
+'about.valuesTitle': 'Nilai',
+'about.valuesText':
+'Integritas, kualitas informasi, kemitraan, kehati-hatian, dan perbaikan berkelanjutan.',
+      
       'about.companyProfile': 'Profil Perusahaan',
       'about.pageTitle':
         'Tentang PT Cengkeh Indonesia Global',
@@ -1057,6 +1070,16 @@
     },
 
     en: {
+
+      'about.visionTitle': 'Vision',
+'about.visionText': 'Delivering the finest Indonesian cloves to the world with reliability, professionalism, and sustainability.',
+
+'about.missionTitle': 'Mission',
+'about.missionText': 'Providing high-quality Indonesian cloves to international markets with reliable and consistent quality standards.',
+
+'about.valuesTitle': 'Values',
+'about.valuesText': 'Integrity, information quality, partnership, prudence, and continuous improvement.',
+      
       'about.companyProfile': 'Company Profile',
       'about.pageTitle':
         'About PT Cengkeh Indonesia Global',
@@ -1104,6 +1127,16 @@
     },
 
     hi: {
+
+      'about.visionTitle': 'दृष्टि',
+'about.visionText': 'विश्व बाजार में विश्वसनीयता, व्यावसायिकता और स्थिरता के साथ सर्वोत्तम इंडोनेशियाई लौंग प्रस्तुत करना।',
+
+'about.missionTitle': 'मिशन',
+'about.missionText': 'विश्वसनीय और निरंतर गुणवत्ता मानकों के साथ अंतरराष्ट्रीय बाजार में उच्च गुणवत्ता वाली इंडोनेशियाई लौंग उपलब्ध कराना।',
+
+'about.valuesTitle': 'मूल्य',
+'about.valuesText': 'ईमानदारी, सूचना की गुणवत्ता, साझेदारी, सावधानी और निरंतर सुधार।',
+      
       'about.companyProfile': 'कंपनी प्रोफ़ाइल',
       'about.pageTitle':
         'PT Cengkeh Indonesia Global के बारे में',
@@ -1151,6 +1184,16 @@
     },
 
     zh: {
+
+      'about.visionTitle': '愿景',
+'about.visionText': '以可靠性、专业性和可持续发展理念，将优质印尼丁香带向全球市场。',
+
+'about.missionTitle': '使命',
+'about.missionText': '以可靠且稳定的质量标准，为国际市场提供高品质的印尼丁香产品。',
+
+'about.valuesTitle': '价值观',
+'about.valuesText': '诚信、信息质量、合作伙伴关系、谨慎管理以及持续改进。',
+      
       'about.companyProfile': '公司简介',
       'about.pageTitle':
         '关于 PT Cengkeh Indonesia Global',
@@ -1198,6 +1241,16 @@
     },
 
     ar: {
+
+      'about.visionTitle': 'الرؤية',
+'about.visionText': 'تقديم أفضل أنواع القرنفل الإندونيسي إلى العالم من خلال الموثوقية والاحترافية والاستدامة.',
+
+'about.missionTitle': 'الرسالة',
+'about.missionText': 'توفير القرنفل الإندونيسي عالي الجودة للأسواق الدولية وفق معايير جودة موثوقة ومتسقة.',
+
+'about.valuesTitle': 'القيم',
+'about.valuesText': 'النزاهة، جودة المعلومات، الشراكة، الحذر، والتحسين المستمر.',
+      
       'about.companyProfile': 'الملف التعريفي للشركة',
       'about.pageTitle':
         'عن PT Cengkeh Indonesia Global',
