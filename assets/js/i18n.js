@@ -1011,6 +1011,66 @@
     const aboutPageTranslations = {
     id: {
 
+      'about.portfolioDescription':
+      'Dokumentasi kegiatan dan pencapaian perusahaan akan ditampilkan berdasarkan data yang dikelola melalui sistem administrasi.',
+
+      'about.portfolioTitle':
+      'Portofolio Perusahaan',
+
+      'about.portfolioLabel':
+      'Portofolio',
+
+      'about.legalTitle':
+      'Legalitas dan lembaga penerbit',
+
+      'about.legalLabel':
+      id: 'Legalitas Perusahaan',
+
+      'about.structureTitle':
+      'Struktur Organisasi',
+
+      'about.managementLabel':
+      'Manajemen Perusahaan',
+
+      'about.directionDescription':
+      'Prinsip yang menjadi arah pengembangan perusahaan dalam membangun kualitas, kepercayaan, dan hubungan bisnis.',
+
+      'about.directionTitle':
+      'Visi, misi, dan nilai perusahaan',
+
+      'about.directionLabel':
+      'Arah Perusahaan',
+
+      'about.check3':
+      'Data mitra dan transaksi yang bersifat sensitif tidak ditampilkan secara publik.',
+
+      'about.check2':
+      'Informasi legalitas ditampilkan berdasarkan data yang dipublikasikan oleh pengelola perusahaan.',
+
+      'about.check1':
+      'Informasi produk disajikan secara jelas dan terstruktur.',
+
+      'about.companyDetail':
+      'PT. Cengkeh Indonesia Global telah membangun jaringan pasokan cengkeh yang kuat dan andal di berbagai wilayah utama Indonesia, dengan kapasitas pasokan lebih dari 100 ton per bulan. Didukung oleh kemitraan strategis dengan para petani, penyedia sertifikasi dan kepatuhan profesional, serta mitra logistik yang berpengalaman, kami memastikan setiap tahapan dari pengadaan hingga pengiriman dilakukan secara profesional, aman, dan tepat waktu.',
+
+      'about.companyDescription':
+      'Membawa cita rasa dan kekayaan rempah Indonesia ke dunia, PT Cengkeh Indonesia Global hadir sebagai mitra terpercaya dalam menyediakan cengkeh berkualitas dengan standar internasional. Dengan mengutamakan kualitas, ketepatan, dan keberlanjutan, kami membangun rantai pasok yang kuat untuk memastikan setiap produk terbaik sampai ke tangan pelanggan.',
+
+      'about.companyName':
+      'PT Cengkeh Indonesia Global',
+
+      'about.companyProfile':
+      'Profil Perusahaan',
+
+      'about.heroDescription':
+      'Mengenal lebih dekat profil perusahaan, visi, misi, nilai, legalitas, struktur organisasi, serta portofolio PT Cengkeh Indonesia Global.',
+
+      'about.heroTitle':
+      'Tentang PT Cengkeh Indonesia Global',
+
+      'about.heroLabel': 
+      'Profil Perusahaan',
+
       'about.companyDescription':
   'Membawa cita rasa dan kekayaan rempah Indonesia ke dunia, PT Cengkeh Indonesia Global hadir sebagai mitra terpercaya dalam menyediakan cengkeh berkualitas dengan standar internasional. Dengan mengutamakan kualitas, ketepatan, dan keberlanjutan, kami membangun rantai pasok yang kuat untuk memastikan setiap produk terbaik sampai ke tangan pelanggan.',
 
@@ -1074,6 +1134,66 @@
 
     en: {
 
+      'about.portfolioDescription':
+      'Company activities and achievements will be displayed based on data managed through the administration system.',
+
+      'about.portfolioTitle':
+      'Company Portfolio',
+
+      'about.portfolioLabel':
+      'Portfolio',
+
+      'about.legalTitle':
+      'Legality and Issuing Institutions',
+
+      'about.legalLabel':
+      'Company Legality',
+
+      'about.structureTitle':
+      'Organizational Structure',
+
+      'about.managementLabel':
+      'Company Management',
+
+      'about.directionDescription':
+      'Principles that guide company development in building quality, trust, and business relationships.',
+
+      'about.directionTitle':
+      'Company Vision, Mission, and Values',
+
+      'about.directionLabel':
+      'Company Direction',
+
+      'about.check3':
+      'Sensitive partner and transaction data are not publicly displayed.',
+
+      'about.check2':
+      'Legal information is displayed based on data published by company management.',
+
+      'about.check1':
+      'Product information is presented clearly and systematically.',
+
+      'about.companyDetail':
+      'PT. Cengkeh Indonesia Global has established a strong and reliable clove supply network across major regions of Indonesia, with a supply capacity of more than 100 tons per month. Supported by strategic partnerships with farmers, professional certification providers, and experienced logistics partners, we ensure every stage from procurement to delivery is carried out professionally, safely, and on time.',
+
+      'about.companyDescription':
+      'Bringing the taste and richness of Indonesian spices to the world, PT Cengkeh Indonesia Global is a trusted partner providing quality cloves with international standards. By prioritizing quality, reliability, and sustainability, we build a strong supply chain to ensure the best products reach our customers.',
+
+      'about.companyName':
+      'PT Cengkeh Indonesia Global',
+
+      'about.companyProfile':
+      'Company Profile',
+
+      'about.heroDescription':
+      'Learn more about the company profile, vision, mission, values, legality, organizational structure, and portfolio of PT Cengkeh Indonesia Global.',
+
+      'about.heroTitle':
+      'About PT Cengkeh Indonesia Global',
+
+      'about.heroLabel':
+      'Corporate Profile',
+
       'about.companyDescription':
   'Bringing the taste and richness of Indonesian spices to the world, PT Cengkeh Indonesia Global is a trusted partner providing quality cloves with international standards. By prioritizing quality, reliability, and sustainability, we build a strong supply chain to ensure the best products reach our customers.',
 
@@ -1133,6 +1253,66 @@
     },
 
     hi: {
+
+      'about.portfolioDescription':
+      'कंपनी की गतिविधियों और उपलब्धियों को प्रशासनिक प्रणाली के माध्यम से प्रबंधित डेटा के आधार पर प्रदर्शित किया जाएगा।',
+
+      'about.portfolioTitle':
+      'कंपनी पोर्टफोलियो',
+
+      'about.portfolioLabel':
+      'पोर्टफोलियो',
+
+      'about.legalTitle':
+      'कानूनी जानकारी और जारी करने वाली संस्थाएं',
+
+      'about.legalLabel':
+      'कंपनी की कानूनी जानकारी',
+
+      'about.structureTitle':
+      'संगठनात्मक संरचना',
+
+      'about.managementLabel':
+      'कंपनी प्रबंधन',
+
+      'about.directionDescription':
+      'गुणवत्ता, विश्वास और व्यावसायिक संबंधों के निर्माण में कंपनी के विकास का मार्गदर्शन करने वाले सिद्धांत।',
+
+      'about.directionTitle':
+      'कंपनी की दृष्टि, मिशन और मूल्य',
+
+      'about.directionLabel':
+      'कंपनी की दिशा',
+
+      'about.check3':
+      'संवेदनशील साझेदार और लेनदेन डेटा सार्वजनिक रूप से प्रदर्शित नहीं किया जाता।',
+
+      'about.check2':
+      'कानूनी जानकारी कंपनी प्रबंधन द्वारा प्रकाशित आंकड़ों के आधार पर प्रदर्शित की जाती है।',
+
+      'about.check1':
+      'उत्पाद जानकारी स्पष्ट और व्यवस्थित रूप से प्रस्तुत की जाती है।',
+
+      'about.companyDetail': {
+      'PT. Cengkeh Indonesia Global ने इंडोनेशिया के प्रमुख क्षेत्रों में एक मजबूत और विश्वसनीय लौंग आपूर्ति नेटवर्क बनाया है, जिसकी क्षमता प्रति माह 100 टन से अधिक है। किसानों, प्रमाणन प्रदाताओं और अनुभवी लॉजिस्टिक भागीदारों के साथ रणनीतिक साझेदारी के माध्यम से हम खरीद से लेकर वितरण तक हर चरण को सुरक्षित और समय पर पूरा करते हैं।',
+
+      'about.companyDescription':
+      'इंडोनेशियाई मसालों के स्वाद और समृद्धि को दुनिया तक पहुंचाते हुए, PT Cengkeh Indonesia Global अंतरराष्ट्रीय मानकों के साथ उच्च गुणवत्ता वाली लौंग उपलब्ध कराने वाला एक विश्वसनीय भागीदार है। गुणवत्ता, विश्वसनीयता और स्थिरता को प्राथमिकता देते हुए हम एक मजबूत आपूर्ति श्रृंखला का निर्माण करते हैं।',
+
+      'about.companyName':
+      'PT Cengkeh Indonesia Global',
+
+      'about.companyProfile':
+      'कंपनी प्रोफ़ाइल',
+
+      'about.heroDescription':
+      'PT Cengkeh Indonesia Global की कंपनी प्रोफ़ाइल, दृष्टि, मिशन, मूल्य, कानूनी जानकारी, संगठनात्मक संरचना और पोर्टफोलियो के बारे में अधिक जानें।',
+
+      'about.heroTitle':
+      'PT Cengkeh Indonesia Global के बारे में',
+
+      'about.heroLabel':
+      'कंपनी प्रोफ़ाइल',
 
       'about.companyDescription':
   'इंडोनेशियाई मसालों की समृद्धि और स्वाद को दुनिया तक पहुँचाते हुए, PT Cengkeh Indonesia Global अंतरराष्ट्रीय मानकों के साथ उच्च गुणवत्ता वाली लौंग उपलब्ध कराने वाला विश्वसनीय भागीदार है।',
@@ -1194,6 +1374,66 @@
 
     zh: {
 
+      'about.portfolioDescription':
+      '公司活动和成就将根据管理系统中的数据进行展示。',
+
+      'about.portfolioTitle':
+      '公司作品集',
+
+      'about.portfolioLabel':
+      '企业作品集',
+
+      'about.legalTitle':
+      '法律信息及发布机构',
+
+      'about.legalLabel':
+      '公司法律信息',
+
+      'about.structureTitle':
+      '组织结构',
+
+      'about.managementLabel':
+      '公司管理',
+
+      'about.directionDescription':
+      '指导公司发展并建立质量、信任和商业关系的原则。',
+
+      'about.directionTitle':
+      '公司的愿景、使命与价值观',
+
+      'about.directionLabel':
+      '公司方向',
+
+      'about.check3':
+      '敏感的合作伙伴和交易数据不会公开展示。',
+
+      'about.check2':
+      '法律信息根据公司管理方发布的数据进行展示。',
+
+      'about.check1':
+      '产品信息以清晰和系统化的方式呈现。',
+
+      'about.companyDetail':
+      'PT. Cengkeh Indonesia Global 已在印度尼西亚主要地区建立稳定可靠的丁香供应网络，每月供应能力超过100吨。通过与农户、专业认证机构以及经验丰富的物流伙伴建立战略合作，我们确保从采购到运输的每个环节都以专业、安全和准时的方式完成。',
+
+      'about.companyDescription':
+      'PT Cengkeh Indonesia Global 将印度尼西亚香料的风味与价值带向世界，作为值得信赖的合作伙伴，我们提供符合国际标准的优质丁香。我们注重质量、可靠性和可持续发展，建立强大的供应链体系，确保优质产品能够送达客户手中。',
+
+      'about.companyName':
+      'PT Cengkeh Indonesia Global',
+
+      'about.companyProfile':
+      '公司简介',
+
+      'about.heroDescription':
+      '深入了解 PT Cengkeh Indonesia Global 的公司简介、愿景、使命、价值观、法律信息、组织结构以及企业作品集。',
+
+      'about.heroTitle':
+      '关于 PT Cengkeh Indonesia Global',
+
+      'about.heroLabel':
+      '公司简介',
+
       'about.companyDescription':
   'PT Cengkeh Indonesia Global 将印度尼西亚香料的风味与价值带向世界，作为值得信赖的合作伙伴，提供符合国际标准的优质丁香产品。',
 
@@ -1254,6 +1494,66 @@
 
     ar: {
 
+      'about.portfolioDescription':
+      'سيتم عرض أنشطة الشركة وإنجازاتها بناءً على البيانات التي تتم إدارتها من خلال النظام الإداري.',
+
+      'about.portfolioTitle':
+      'محفظة الشركة',
+
+      'about.portfolioLabel':
+      'المحفظة',
+
+      'about.legalTitle':
+      'البيانات القانونية والجهات المصدرة',
+
+      'about.legalLabel':
+      'البيانات القانونية للشركة',
+
+      'about.structureTitle':
+      'الهيكل التنظيمي',
+
+      'about.managementLabel':
+      'إدارة الشركة',
+
+      'about.directionDescription':
+      'المبادئ التي توجه تطوير الشركة في بناء الجودة والثقة والعلاقات التجارية.',
+
+      'about.directionTitle':
+      'رؤية ورسالة وقيم الشركة',
+
+      'about.directionLabel':
+      'اتجاه الشركة',
+
+      'about.check3':
+      'لا يتم عرض بيانات الشركاء والمعاملات الحساسة بشكل علني.',
+
+      'about.check2':
+      'يتم عرض المعلومات القانونية بناءً على البيانات المنشورة من إدارة الشركة.',
+
+      'about.check1':
+      'يتم عرض معلومات المنتجات بشكل واضح ومنظم.',
+
+      'about.companyDetail':
+      'قامت PT. Cengkeh Indonesia Global ببناء شبكة توريد قوية وموثوقة للقرنفل في مختلف المناطق الرئيسية بإندونيسيا، بطاقة توريد تتجاوز 100 طن شهريًا. ومن خلال الشراكات الاستراتيجية مع المزارعين وجهات الاعتماد وشركاء الخدمات اللوجستية ذوي الخبرة، نضمن تنفيذ كل مرحلة من التوريد حتى الشحن بشكل احترافي وآمن وفي الوقت المحدد.',
+
+      'about.companyDescription':
+      'تنقل PT Cengkeh Indonesia Global نكهة وثروة التوابل الإندونيسية إلى العالم، حيث تعمل كشريك موثوق في توفير القرنفل عالي الجودة وفق المعايير الدولية. ومن خلال التركيز على الجودة والموثوقية والاستدامة، نبني سلسلة توريد قوية لضمان وصول أفضل المنتجات إلى العملاء.',
+
+      'about.companyName':
+      'PT Cengkeh Indonesia Global',
+
+      'about.companyProfile':
+      'ملف الشركة',
+
+      'about.heroDescription':
+      'تعرف بشكل أعمق على ملف الشركة، والرؤية، والرسالة، والقيم، والجوانب القانونية، والهيكل التنظيمي، ومحفظة PT Cengkeh Indonesia Global.',
+
+      'about.heroTitle':
+      'حول PT Cengkeh Indonesia Global',
+
+      'about.heroLabel':
+      'الملف التعريفي للشركة',
+      
       'about.companyDescription':
   'تنقل PT Cengkeh Indonesia Global نكهة وثروة التوابل الإندونيسية إلى العالم، باعتبارها شريكًا موثوقًا في توفير القرنفل عالي الجودة وفق المعايير الدولية.',
 
