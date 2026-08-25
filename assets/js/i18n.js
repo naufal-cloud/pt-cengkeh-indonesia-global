@@ -475,6 +475,9 @@
       'about.companyDetail':
         'PT Cengkeh Indonesia Global 已在印度尼西亚主要地区建立稳定可靠的丁香供应网络，每月供应能力超过100吨。通过与农民、认证机构以及经验丰富的物流伙伴合作，我们确保从采购到运输的每个环节都专业、安全并准时完成。',
 
+      'about.identityTitle': '企业标识',
+
+'about.identityDescription': 'PT Cengkeh Indonesia Global 的标志融合了丁香花、地球、叶子以及金绿色元素，象征着我们作为优质印尼丁香供应商的身份、可持续发展的产品理念，以及连接全球市场的贸易愿景。',
 
       'about.check1':
         '产品信息以清晰和系统化方式展示。',
