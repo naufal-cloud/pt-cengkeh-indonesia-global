@@ -7,7 +7,7 @@
   const languages = {
     id: {
       name: 'Bahasa Indonesia',
-      shortName: 'ID',f
+      shortName: 'ID',
       locale: 'id-ID',
       direction: 'ltr'
     },
