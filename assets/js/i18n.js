@@ -1560,6 +1560,10 @@
       'about.companyName':
       'PT Cengkeh Indonesia Global',
 
+      'about.identityTitle': 'Corporate Identity',
+
+'about.identityDescription': 'The logo of PT Cengkeh Indonesia Global combines clove flowers, globe, leaves, and gold-green colors that represent our identity as a trusted Indonesian clove supplier with sustainable products and global market connections.',
+
       'about.companyProfile':
       'Company Profile',
 
