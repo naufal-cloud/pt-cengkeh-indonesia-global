@@ -1437,6 +1437,10 @@
       'about.companyName':
       'PT Cengkeh Indonesia Global',
 
+      'about.identityTitle': 'Identitas Korporat',
+
+'about.identityDescription': 'Logo PT Cengkeh Indonesia Global menggabungkan elemen bunga cengkeh, globe, daun, dan warna emas-hijau yang melambangkan identitas sebagai pemasok cengkeh Indonesia berkualitas, produk alami berkelanjutan, serta visi perdagangan dan koneksi pasar global.',
+
       'about.companyProfile':
       'Profil Perusahaan',
 
