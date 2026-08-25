@@ -7,7 +7,7 @@
   const languages = {
     id: {
       name: 'Bahasa Indonesia',
-      shortName: 'ID',
+      shortName: 'ID',f
       locale: 'id-ID',
       direction: 'ltr'
     },
@@ -345,6 +345,12 @@
       'about.companyDetail':
         'PT Cengkeh Indonesia Global ने इंडोनेशिया के प्रमुख क्षेत्रों में मजबूत और विश्वसनीय लौंग आपूर्ति नेटवर्क विकसित किया है, जिसकी क्षमता प्रति माह 100 टन से अधिक है। किसानों, प्रमाणन प्रदाताओं और अनुभवी लॉजिस्टिक भागीदारों के साथ रणनीतिक सहयोग के माध्यम से हम खरीद से लेकर वितरण तक प्रत्येक प्रक्रिया को सुरक्षित और समय पर सुनिश्चित करते हैं।',
 
+      'about.identityTitle':
+      'कॉर्पोरेट पहचान',
+
+      'about.identityDescription':
+      'हरा, सुनहरा और कांस्य रंग आधिकारिक लोगो से लिया गया है।',
+
       'about.check1':
         'उत्पाद जानकारी स्पष्ट और व्यवस्थित रूप से प्रस्तुत की जाती है।',
 
@@ -475,6 +481,11 @@
       'about.companyDetail':
         'PT Cengkeh Indonesia Global 已在印度尼西亚主要地区建立稳定可靠的丁香供应网络，每月供应能力超过100吨。通过与农民、认证机构以及经验丰富的物流伙伴合作，我们确保从采购到运输的每个环节都专业、安全并准时完成。',
 
+      'identityTitle':
+        '企业标识',
+
+      'identityDescription':
+      '绿色、金色和青铜色调源自官方标志。',
 
       'about.check1':
         '产品信息以清晰和系统化方式展示。',
@@ -610,6 +621,12 @@
 
   'about.companyDetail':
     'قامت PT Cengkeh Indonesia Global ببناء شبكة توريد قوية وموثوقة للقرنفل في المناطق الرئيسية بإندونيسيا، بطاقة توريد تتجاوز 100 طن شهريًا. ومن خلال التعاون الاستراتيجي مع المزارعين ومزودي الشهادات وشركاء الخدمات اللوجستية ذوي الخبرة، نضمن تنفيذ كل مرحلة من مراحل الشراء حتى الشحن بطريقة احترافية وآمنة وفي الوقت المحدد.',
+
+      'identityTitle':
+      'الهوية المؤسسية',
+
+      'identityDescription':
+      'تم اشتقاق لوحة الألوان الخضراء والذهبية والبرونزية من الشعار الرسمي.',
 
 
   'about.check1':
@@ -1432,6 +1449,12 @@
       'about.companyDetail':
       'PT. Cengkeh Indonesia Global telah membangun jaringan pasokan cengkeh yang kuat dan andal di berbagai wilayah utama Indonesia, dengan kapasitas pasokan lebih dari 100 ton per bulan. Didukung oleh kemitraan strategis dengan para petani, penyedia sertifikasi dan kepatuhan profesional, serta mitra logistik yang berpengalaman, kami memastikan setiap tahapan dari pengadaan hingga pengiriman dilakukan secara profesional, aman, dan tepat waktu.',
 
+      'identityTitle':
+      'Identitas Korporat',
+
+      'identityDescription':
+      'Palet hijau, emas, dan bronze diturunkan dari logo resmi.',
+      
       'about.companyDescription':
       'Membawa cita rasa dan kekayaan rempah Indonesia ke dunia, PT Cengkeh Indonesia Global hadir sebagai mitra terpercaya dalam menyediakan cengkeh berkualitas dengan standar internasional. Dengan mengutamakan kualitas, ketepatan, dan keberlanjutan, kami membangun rantai pasok yang kuat untuk memastikan setiap produk terbaik sampai ke tangan pelanggan.',
 
