@@ -1404,11 +1404,9 @@
       'about.legalTitle':
       'Legalitas dan lembaga penerbit',
 
-      'about.legalLabel':
-      id: 'Legalitas Perusahaan',
+      'about.legalLabel': 'Legalitas Perusahaan',
 
-      'about.structureTitle':
-      'Struktur Organisasi',
+      'about.structureTitle': 'Struktur Organisasi',
 
       'about.managementLabel':
       'Manajemen Perusahaan',
