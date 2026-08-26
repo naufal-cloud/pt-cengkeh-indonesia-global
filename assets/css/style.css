@@ -250,6 +250,23 @@ html[dir="rtl"] .language-switcher select {
   font-size: 1.35rem;
 }
 
+.legality-card__logo {
+    min-height: 180px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green-50);
+    border-bottom: 1px solid var(--line);
+}
+
+.legality-card__logo img {
+    width: 100%;
+    max-width: 180px;
+    height: 120px;
+    object-fit: contain;
+}
+
 .shipping-card .card__body {
   flex: 1;
 }
