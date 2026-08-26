@@ -282,3 +282,17 @@ html[dir="rtl"] .language-switcher select {
   }
 }
 
+/* ===== SUBTLE SCROLL REVEAL ===== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
