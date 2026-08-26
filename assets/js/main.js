@@ -1204,5 +1204,5 @@ document.addEventListener(
     setFooterYear();
     setFooterYear();
 
-
+  });
 })();
