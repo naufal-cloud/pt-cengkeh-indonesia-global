@@ -1256,14 +1256,4 @@ if (heroVisual) {
   });
 }
 
-    /* =========================================
-   STAGGER CARD ANIMATION
-   ========================================= */
-
-document.querySelectorAll(
-  '.card, .stat, .shipping-card, .legality-card'
-).forEach((card, index) => {
-  card.style.transitionDelay = `${(index % 3) * 0.08}s`;
-});
-
 })();
