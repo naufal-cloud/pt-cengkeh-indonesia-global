@@ -1428,8 +1428,7 @@
 
       'about.legalLabel': 'Legalitas Perusahaan',
 
-      'about.legalDescription': 'Legalitas dan perizinan perusahaan terdaftar pada instansi pemerintah yang berwenang sesuai dengan ketentuan peraturan perundang-undangan yang berlaku.
-',
+      'about.legalDescription': 'Legalitas dan perizinan perusahaan terdaftar pada instansi pemerintah yang berwenang sesuai dengan ketentuan peraturan perundang-undangan yang berlaku.',
 
       'about.structureTitle': 'Struktur Organisasi',
 
