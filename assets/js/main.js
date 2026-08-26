@@ -1228,6 +1228,42 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
-  }
-);
+
+    /* =========================================
+   PREMIUM HERO PARALLAX
+   ========================================= */
+
+const heroVisual = document.querySelector('.hero-visual');
+
+if (heroVisual) {
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+
+        if (scrollY < 900) {
+          heroVisual.style.transform =
+            `translateY(${scrollY * 0.08}px)`;
+        }
+
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+}
+
+    /* =========================================
+   STAGGER CARD ANIMATION
+   ========================================= */
+
+document.querySelectorAll(
+  '.card, .stat, .shipping-card, .legality-card'
+).forEach((card, index) => {
+  card.style.transitionDelay = `${(index % 3) * 0.08}s`;
+});
+
 })();
