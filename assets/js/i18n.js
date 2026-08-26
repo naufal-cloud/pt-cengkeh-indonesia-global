@@ -347,6 +347,10 @@
 
       'about.identityTitle': 'कॉर्पोरेट पहचान',
 
+      'about.valueTitle': 'कंपनी के मूल्य',
+
+'about.valueText': 'उत्कृष्ट सेवा और अंतरराष्ट्रीय मानकों के प्रति प्रतिबद्धता के माध्यम से गुणवत्ता, विश्वास, स्थिरता और दीर्घकालिक संबंधों को बनाए रखना।',
+
 'about.identityDescription': 'PT Cengkeh Indonesia Global का लोगो लौंग के फूल, ग्लोब, पत्तियों और सुनहरे-हरे रंगों को जोड़ता है, जो एक गुणवत्तापूर्ण इंडोनेशियाई लौंग आपूर्तिकर्ता के रूप में हमारी पहचान, टिकाऊ उत्पादों और वैश्विक बाजार से जुड़ाव को दर्शाता है।',
       
       'about.check1':
@@ -480,6 +484,10 @@
         'PT Cengkeh Indonesia Global 已在印度尼西亚主要地区建立稳定可靠的丁香供应网络，每月供应能力超过100吨。通过与农民、认证机构以及经验丰富的物流伙伴合作，我们确保从采购到运输的每个环节都专业、安全并准时完成。',
 
       'about.identityTitle': '企业标识',
+
+      'about.valueTitle': '企业价值',
+
+'about.valueText': '通过优质服务以及对国际标准的承诺，维护质量、信任、可持续发展和长期合作关系。',
 
 'about.identityDescription': 'PT Cengkeh Indonesia Global 的标志融合了丁香花、地球、叶子以及金绿色元素，象征着我们作为优质印尼丁香供应商的身份、可持续发展的产品理念，以及连接全球市场的贸易愿景。',
 
@@ -619,6 +627,10 @@
     'قامت PT Cengkeh Indonesia Global ببناء شبكة توريد قوية وموثوقة للقرنفل في المناطق الرئيسية بإندونيسيا، بطاقة توريد تتجاوز 100 طن شهريًا. ومن خلال التعاون الاستراتيجي مع المزارعين ومزودي الشهادات وشركاء الخدمات اللوجستية ذوي الخبرة، نضمن تنفيذ كل مرحلة من مراحل الشراء حتى الشحن بطريقة احترافية وآمنة وفي الوقت المحدد.',
 
       'about.identityTitle': 'الهوية المؤسسية',
+
+      'about.valueTitle': 'قيم الشركة',
+
+'about.valueText': 'الحفاظ على الجودة والثقة والاستدامة والعلاقات طويلة الأمد من خلال أفضل الخدمات والالتزام بالمعايير الدولية.',
 
 'about.identityDescription': 'يجمع شعار PT Cengkeh Indonesia Global بين عناصر زهرة القرنفل، والكرة الأرضية، والأوراق، والألوان الذهبية والخضراء التي تعكس هويتنا كمورد موثوق للقرنفل الإندونيسي عالي الجودة، ومنتجات مستدامة، ورؤية للتجارة والاتصال بالأسواق العالمية.',
       
@@ -1450,6 +1462,10 @@
 
       'about.identityTitle': 'Identitas Korporat',
 
+      'about.valueTitle': 'Nilai Perusahaan',
+
+'about.valueText': 'Menjaga kualitas, kepercayaan, keberlanjutan, dan hubungan jangka panjang melalui pelayanan terbaik serta komitmen terhadap standar internasional.',
+
 'about.identityDescription': 'Logo PT Cengkeh Indonesia Global menggabungkan elemen bunga cengkeh, globe, daun, dan warna emas-hijau yang melambangkan identitas sebagai pemasok cengkeh Indonesia berkualitas, produk alami berkelanjutan, serta visi perdagangan dan koneksi pasar global.',
 
       'about.companyProfile':
@@ -1576,6 +1592,10 @@
       'PT Cengkeh Indonesia Global',
 
       'about.identityTitle': 'Corporate Identity',
+
+      'about.valueTitle': 'Company Values',
+
+'about.valueText': 'Maintaining quality, trust, sustainability, and long-term relationships through excellent service and commitment to international standards.',
 
 'about.identityDescription': 'The logo of PT Cengkeh Indonesia Global combines clove flowers, globe, leaves, and gold-green colors that represent our identity as a trusted Indonesian clove supplier with sustainable products and global market connections.',
 
