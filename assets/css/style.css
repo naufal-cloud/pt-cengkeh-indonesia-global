@@ -290,8 +290,8 @@ html[dir="rtl"] .language-switcher select {
   opacity: 0;
   transform: translateY(28px);
   transition:
-    opacity 0.75s ease,
-    transform 0.75s cubic-bezier(.22, 1, .36, 1);
+    opacity 1.1s ease,
+    transform 1.1s cubic-bezier(.22, 1, .36, 1);
   will-change: opacity, transform;
 }
 
