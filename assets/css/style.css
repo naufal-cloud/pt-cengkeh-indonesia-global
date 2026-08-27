@@ -282,3 +282,123 @@ html[dir="rtl"] .language-switcher select {
   }
 }
 
+/* =========================================
+   PREMIUM SCROLL & HOVER EFFECTS
+   ========================================= */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(.22, 1, .36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover premium */
+.card,
+.stat,
+.shipping-card,
+.legality-card,
+.portfolio-card {
+  transition:
+    transform 0.45s cubic-bezier(.22, 1, .36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+  will-change: transform;
+}
+
+.card:hover,
+.stat:hover,
+.shipping-card:hover,
+.legality-card:hover,
+.portfolio-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 45px rgba(15, 43, 34, 0.12);
+}
+
+/* Gambar card sedikit zoom ketika hover */
+.card__media,
+.shipping-card__logo,
+.legality-card__logo {
+  overflow: hidden;
+}
+
+.card__media img,
+.shipping-card__logo img,
+.legality-card__logo img {
+  transition: transform 0.6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.card:hover .card__media img,
+.shipping-card:hover .shipping-card__logo img,
+.legality-card:hover .legality-card__logo img {
+  transform: scale(1.045);
+}
+
+/* Hero visual */
+.hero-visual {
+  will-change: transform;
+  transition: transform 0.15s ease-out;
+}
+
+/* Tombol lebih hidup */
+.btn,
+button,
+.nav-cta {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.btn:hover,
+button:hover,
+.nav-cta:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active,
+button:active,
+.nav-cta:active {
+  transform: translateY(0);
+}
+
+/* Link navigasi */
+.site-nav a {
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Image umum */
+img {
+  transition: opacity 0.35s ease;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-visual {
+    transform: none !important;
+  }
+}
