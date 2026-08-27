@@ -1202,7 +1202,34 @@ document.addEventListener(
     initContactForm();
     initShare();
     setFooterYear();
-    setFooterYear();
+    initShare();
+setFooterYear();
 
-  });
+const revealElements = document.querySelectorAll(
+  'section, .card, .stat, .hero-copy, .hero-visual'
+);
+
+revealElements.forEach((element) => {
+  element.classList.add('reveal-on-scroll');
+});
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.12
+  }
+);
+
+revealElements.forEach((element) => {
+  revealObserver.observe(element);
+});
+
+});
 })();
