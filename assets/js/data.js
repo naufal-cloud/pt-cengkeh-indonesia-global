@@ -9,6 +9,7 @@ window.CIG_DATA = {
     instagram: '#',
     linkedin: '#'
   },
+  
   products: [
     {
       id: 'prd-001', slug: 'cengkeh-kering-premium', name: 'Cengkeh Kering Premium',
