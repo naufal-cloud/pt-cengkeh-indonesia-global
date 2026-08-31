@@ -402,3 +402,17 @@ img {
     transform: none !important;
   }
 }
+
+.legalities-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.legalities-scroll .legality-card {
+  flex: 0 0 360px;
+  scroll-snap-align: start;
+}
