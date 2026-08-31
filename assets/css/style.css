@@ -521,10 +521,10 @@ img {
   }
 
   .legalities-arrow {
-    width: 46px;
-    height: 46px;
-    font-size: 1.7rem;
-  }
+  width: 54px;
+  height: 54px;
+  font-size: 2rem;
+}
 
   .legalities-arrow--left {
     left: 8px;
