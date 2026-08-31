@@ -448,10 +448,10 @@ img {
 
 .legalities-arrow {
   position: absolute;
-  top: 50%;
+  top: 52%;
   transform: translateY(-50%);
-  width: 54px;
-  height: 54px;
+  width: 66px;
+  height: 66px;
   border: 1px solid rgba(15, 43, 34, 0.08);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.96);
@@ -460,7 +460,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.4rem;
   line-height: 1;
   cursor: pointer;
   z-index: 5;
@@ -483,11 +483,11 @@ img {
 }
 
 .legalities-arrow--left {
-  left: -72px;
+  left: -64px;
 }
 
 .legalities-arrow--right {
-  right: -72px;
+  right: -64px;
 }
 
 .legalities-arrow:disabled {
