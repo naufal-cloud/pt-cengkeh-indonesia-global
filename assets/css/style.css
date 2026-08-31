@@ -403,15 +403,26 @@ img {
   }
 }
 
+/* =========================================
+   LEGALITIES PREMIUM CAROUSEL
+   ========================================= */
+
+.legalities-slider {
+  position: relative;
+  width: 100%;
+  margin-top: 32px;
+}
+
 .legalities-scroll {
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  padding-bottom: 8px;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  scroll-behavior: smooth;
+  padding: 8px 2px 20px;
 }
 
 .legalities-scroll::-webkit-scrollbar {
@@ -419,6 +430,107 @@ img {
 }
 
 .legalities-scroll .legality-card {
-  flex: 0 0 360px;
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: 0;
   scroll-snap-align: start;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.legalities-scroll .legality-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 43, 34, 0.10);
+}
+
+.legalities-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(15, 43, 34, 0.08);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--green-900);
+  box-shadow: 0 10px 30px rgba(15, 43, 34, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.legalities-arrow:hover {
+  background: var(--green-900);
+  color: #fff;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 14px 32px rgba(15, 43, 34, 0.18);
+}
+
+.legalities-arrow:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.legalities-arrow--left {
+  left: -72px;
+}
+
+.legalities-arrow--right {
+  right: -72px;
+}
+
+.legalities-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .legalities-scroll .legality-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+
+  .legalities-arrow--left {
+    left: 8px;
+  }
+
+  .legalities-arrow--right {
+    right: 8px;
+  }
+}
+
+@media (max-width: 680px) {
+  .legalities-scroll {
+    gap: 16px;
+    padding-inline: 4px;
+  }
+
+  .legalities-scroll .legality-card {
+    flex: 0 0 88%;
+  }
+
+  .legalities-arrow {
+    width: 46px;
+    height: 46px;
+    font-size: 1.7rem;
+  }
+
+  .legalities-arrow--left {
+    left: 8px;
+  }
+
+  .legalities-arrow--right {
+    right: 8px;
+  }
 }
