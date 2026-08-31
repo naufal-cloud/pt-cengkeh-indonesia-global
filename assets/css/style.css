@@ -407,9 +407,15 @@ img {
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  padding-bottom: 14px;
+  padding-bottom: 8px;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.legalities-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .legalities-scroll .legality-card {
