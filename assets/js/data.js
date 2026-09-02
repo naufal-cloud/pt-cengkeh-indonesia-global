@@ -2,7 +2,7 @@ window.CIG_DATA = {
   settings: {
     siteName: 'PT Cengkeh Indonesia Global',
     tagline: 'Dari Indonesia untuk pasar global',
-    email: 'admin@cengkehindonesiaglobal.com',
+    email: 'official@cengkehindonesiaglobal.com',
     phoneDisplay: '+62 831-1116-0777',
     whatsapp: '6283111160777',
     address: 'Indonesia — alamat resmi akan ditambahkan setelah verifikasi',
