@@ -59,6 +59,16 @@
       min-width: 120px;
     }
 
+    .btn-danger {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-danger:hover {
+      background-color: #bb2d3b;
+    }
+
     .users-status {
       margin: 12px 0;
     }
@@ -539,15 +549,30 @@
             </td>
 
             <td>
-              <button
-                class="btn btn-light"
-                type="button"
-                data-save-role="${escapeHtml(
-                  user.id
-                )}"
-              >
-                Simpan Role
-              </button>
+              <div style="display: flex; gap: 8px;">
+                <button
+                  class="btn btn-light"
+                  type="button"
+                  data-save-role="${escapeHtml(
+                    user.id
+                  )}"
+                >
+                  Simpan Role
+                </button>
+
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  data-delete-user="${escapeHtml(
+                    user.id
+                  )}"
+                  data-user-name="${escapeHtml(
+                    user.full_name || user.email
+                  )}"
+                >
+                  Hapus
+                </button>
+              </div>
             </td>
           `;
 
@@ -688,6 +713,38 @@
       usersBody.addEventListener(
         'click',
         async event => {
+
+          const deleteButton =
+            event.target.closest(
+              '[data-delete-user]'
+            );
+
+          if (deleteButton) {
+            const userId = deleteButton.dataset.deleteUser;
+            const userName = deleteButton.dataset.userName || 'pengguna ini';
+
+            const confirmation = confirm(`Apakah Anda yakin ingin menghapus "${userName}"?`);
+            if (!confirmation) return;
+
+            deleteButton.disabled = true;
+            deleteButton.textContent = 'Menghapus...';
+
+            try {
+              await callUserManagement({
+                action: 'delete',
+                user_id: userId
+              });
+
+              alert('Pengguna berhasil dihapus.');
+              await loadUsers();
+            } catch (error) {
+              console.error(error);
+              alert('Gagal menghapus pengguna: ' + error.message);
+              deleteButton.disabled = false;
+              deleteButton.textContent = 'Hapus';
+            }
+            return;
+          }
 
           const button =
             event.target.closest(
