@@ -1424,6 +1424,42 @@ if(entity==='product') fields.innerHTML=`<div class="form-grid">
   return urlData.publicUrl;
 }
 
+  async function uploadProductImage(formElement) {
+  const fileInput = formElement.elements.image_file;
+  const currentImage = formElement.elements.image_url?.value || null;
+  const file = fileInput?.files?.[0];
+
+  if (!file) return currentImage;
+
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+  if (!allowedTypes.includes(file.type)) {
+    throw new Error('Gambar produk harus berformat JPG, PNG, atau WebP.');
+  }
+
+  if (file.size > 10 * 1024 * 1024) {
+    throw new Error('Ukuran gambar produk maksimal 10 MB.');
+  }
+
+  const extension = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+  const filePath = `products/${crypto.randomUUID()}.${extension}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from('public-assets')
+    .upload(filePath, file, {
+      cacheControl: '3600',
+      upsert: false,
+      contentType: file.type
+    });
+
+  if (uploadError) throw uploadError;
+
+  const { data: urlData } = supabase.storage
+    .from('public-assets')
+    .getPublicUrl(filePath);
+
+  return urlData.publicUrl;
+}
+
   async function saveEntityOnline(entity, id, formData) {
   let table;
   let payload;
@@ -1442,7 +1478,7 @@ if(entity==='product') fields.innerHTML=`<div class="form-grid">
       description:
         existing?.description ||
         'Deskripsi produk dapat dilengkapi melalui CMS.',
-      image_url: formData.image,
+      image_url: formData.image_url || null,
       specifications:
         existing?.specs || [['Status', 'Perlu verifikasi']],
       featured: existing?.featured ?? true,
@@ -1752,6 +1788,14 @@ if (entity === 'supplier') {
     formData.image_url = uploadedImage;
   }
 
+  delete formData.image_file;
+}
+
+    if (entity === 'product') {
+  const uploadedImage = await uploadProductImage(form);
+  if (uploadedImage) {
+    formData.image_url = uploadedImage;
+  }
   delete formData.image_file;
 }
     
