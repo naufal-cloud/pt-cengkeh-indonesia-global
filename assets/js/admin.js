@@ -672,21 +672,36 @@ const item = id
   portfolio: 'Portofolio'
 };
     modalTitle.textContent=`${item?'Edit':'Tambah'} ${names[entity]}`;
-    if(entity==='product') fields.innerHTML=`<div class="form-grid"><div class="field"><label>Nama *</label><input name="name" required maxlength="120" value="${esc(item?.name||'')}"></div><div class="field"><label>Kategori *</label><input name="category" required maxlength="80" value="${esc(item?.category||'Cengkeh Kering')}"></div><div class="field full"><label>Ringkasan *</label><textarea name="summary" required maxlength="400">${esc(item?.summary||'')}</textarea></div><div class="field"><label>Ilustrasi</label><input
- name="image_file"
- type="file"
- accept="image/jpeg,image/png,image/webp"
->
-
-<input
- name="image_url"
- type="hidden"
- value="${esc(item?.image_url || '')}"
->
-  <option value="assets/images/clove-dry.svg">Cengkeh kering</option>
-  <option value="assets/images/clove-oil.svg">Minyak cengkeh</option>
-  <option value="assets/images/cengkeh-di-meja-kayu.webp">Tangkai cengkeh</option>
-</select></div><div class="field"><label>Status</label><select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></div></div>`;
+if(entity==='product') fields.innerHTML=`<div class="form-grid">
+  <div class="field">
+    <label>Nama *</label>
+    <input name="name" required maxlength="120" value="${esc(item?.name||'')}">
+  </div>
+  <div class="field">
+    <label>Kategori *</label>
+    <select name="category" required>
+      <option value="Cengkeh Kering" ${item?.category==='Cengkeh Kering'?'selected':''}>Cengkeh Kering</option>
+      <option value="Tangkai Cengkeh" ${item?.category==='Tangkai Cengkeh'?'selected':''}>Tangkai Cengkeh</option>
+      <option value="Minyak Cengkeh" ${item?.category==='Minyak Cengkeh'?'selected':''}>Minyak Cengkeh</option>
+    </select>
+  </div>
+  <div class="field full">
+    <label>Ringkasan *</label>
+    <textarea name="summary" required maxlength="400">${esc(item?.summary||'')}</textarea>
+  </div>
+  <div class="field">
+    <label>Ilustrasi</label>
+    <input name="image_file" type="file" accept="image/jpeg,image/png,image/webp">
+    <input name="image_url" type="hidden" value="${esc(item?.image_url || '')}">
+  </div>
+  <div class="field">
+    <label>Status</label>
+    <select name="status">
+      <option value="published" ${item?.status==='published'?'selected':''}>Published</option>
+      <option value="draft" ${item?.status==='draft'?'selected':''}>Draft</option>
+    </select>
+  </div>
+</div>`;
     if (entity === 'brochure') {
   const productOptions = (data.products || [])
     .map(product => `
