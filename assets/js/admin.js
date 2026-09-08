@@ -1425,7 +1425,7 @@ if(entity==='product') fields.innerHTML=`<div class="form-grid">
 }
 
   async function uploadProductImage(formElement) {
-  const fileInput = formElement.elements.image_file;
+  const fileInput = formElement.elements.image_file || formElement.elements.image || formElement.querySelector('input[type="file"]');
   const currentImage = formElement.elements.image_url?.value || null;
   const file = fileInput?.files?.[0];
 
@@ -1478,7 +1478,7 @@ if(entity==='product') fields.innerHTML=`<div class="form-grid">
       description:
         existing?.description ||
         'Deskripsi produk dapat dilengkapi melalui CMS.',
-      image_url: formData.image_url || null,
+      image_url: formData.image_url || formData.image || null,
       specifications:
         existing?.specs || [['Status', 'Perlu verifikasi']],
       featured: existing?.featured ?? true,
