@@ -5,27 +5,27 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cengkehindonesiaglobal.com/tentang-kami</loc>
+    <loc>https://cengkehindonesiaglobal.com/tentang.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cengkehindonesiaglobal.com/produk</loc>
+    <loc>https://cengkehindonesiaglobal.com/produk.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cengkehindonesiaglobal.com/artikel</loc>
+    <loc>https://cengkehindonesiaglobal.com/supplier.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cengkehindonesiaglobal.com/jaringan-supplier</loc>
+    <loc>https://cengkehindonesiaglobal.com/kontak.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cengkehindonesiaglobal.com/kontak</loc>
+    <loc>https://cengkehindonesiaglobal.com/pengiriman.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cengkehindonesiaglobal.com/pengiriman</loc>
-    <priority>0.8</priority>
+    <loc>https://cengkehindonesiaglobal.com/privasi.html</loc>
+    <priority>0.5</priority>
   </url>
 </urlset>
