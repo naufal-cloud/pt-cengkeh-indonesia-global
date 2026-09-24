@@ -751,387 +751,258 @@
 
     const homepageTranslations = {
     id: {
-      'demo.title': 'Situs demonstrasi.',
-      'demo.text':
-        'Konten, alamat, kontak, sertifikasi, dan data supplier harus diverifikasi sebelum produksi.',
-
+      
       'brand.tagline': 'Dari Indonesia untuk pasar global',
 
-      'home.heroEyebrow':
-        'Komoditas Indonesia · Kemitraan Global',
-      'home.heroTitleOne': 'Cengkeh Indonesia,',
-      'home.heroTitleTwo': 'nilai untuk dunia.',
-      'home.heroDescription':
-        'Website demonstrasi PT Cengkeh Indonesia Global untuk memperkenalkan perusahaan, produk, artikel, portofolio, serta jaringan supplier dengan tampilan profesional dan responsif.',
+      'home.heroEyebrow': 'Komoditas Rempah Indonesia · Kemitraan Global',
+      'home.heroTitleOne': 'Eksportir Cengkeh Premium',
+      'home.heroTitleTwo': '& Supplier B2B Indonesia',
+      'home.heroDescription': 'PT Cengkeh Indonesia Global memasok cengkeh kering kelas atas, Lal Pari, dan AB6 langsung dari perkebunan terbaik Indonesia untuk pembeli B2B global.',
 
       'home.statProfileTitle': 'Profil Korporat',
-      'home.statProfileText':
-        'Informasi perusahaan terstruktur',
+      'home.statProfileText': 'Informasi perusahaan terstruktur',
       'home.statCatalogTitle': 'Katalog Dinamis',
-      'home.statCatalogText':
-        'Produk dan spesifikasi terkelola',
+      'home.statCatalogText': 'Produk dan spesifikasi terkelola',
       'home.statSupplierTitle': 'Supplier Map',
-      'home.statSupplierText':
-        'Lokasi perkiraan yang menjaga privasi',
+      'home.statSupplierText': 'Lokasi perkiraan yang menjaga privasi',
 
       'home.valueEyebrow': 'Nilai Utama',
-      'home.valueTitle':
-        'Fondasi layanan yang jelas dan bertanggung jawab',
-      'home.valueDescription':
-        'Contoh pesan korporat yang dapat diperbarui melalui CMS produksi setelah mendapat persetujuan perusahaan.',
+      'home.valueTitle': 'Mengapa Memilih PT Cengkeh Indonesia Global',
+      'home.valueDescription': 'Kami memberikan kepastian pasokan rempah, spesifikasi produk yang transparan, dan komunikasi B2B internasional secara profesional.',
 
-      'home.featureOneTitle': 'Informasi Produk Jelas',
-      'home.featureOneText':
-        'Katalog mendukung deskripsi, spesifikasi, galeri, brosur, dan konteks pertanyaan WhatsApp.',
+     'home.featureOneTitle': 'Kualitas Standar Ekspor',
+      'home.featureOneText': 'Spesifikasi produk detail mencakup kadar air, benda asing, dan rasio tangkai untuk pembeli global.',
 
-      'home.featureTwoTitle': 'Kemitraan Terjaga',
-      'home.featureTwoText':
-        'Data supplier dapat ditampilkan sebagai lokasi perkiraan untuk melindungi privasi dan keamanan.',
+      'home.featureTwoTitle': 'Jaringan Perkebunan Terpercaya',
+      'home.featureTwoText': 'Pasokan langsung dari perkebunan utama di Maluku, Sulawesi, dan Jawa untuk menjamin volume pasokan yang stabil.',
 
-      'home.featureThreeTitle': 'Komunikasi Cepat',
-      'home.featureThreeText':
-        'Form kontak dan kanal WhatsApp membantu calon mitra menghubungi perusahaan dengan konteks yang tepat.',
+      'home.featureThreeTitle': 'Pengiriman Global Cepat',
+      'home.featureThreeText': 'Dukungan penuh dokumen ekspor (Phytosanitary, COO, B/L) dan skema pengiriman (FOB & CIF).',
 
       'home.catalogEyebrow': 'Katalog Produk',
-      'home.catalogTitle': 'Produk pilihan',
-      'home.catalogDescription':
-        'Semua data berikut adalah contoh untuk mendemonstrasikan struktur katalog.',
+      'home.catalogTitle': 'Produk Cengkeh Pilihan Ekspor',
+      'home.catalogDescription': 'Produk cengkeh kering pilihan yang siap dikirim dalam jumlah besar untuk kebutuhan industri global.',
       'home.allProducts': 'Lihat semua produk →',
 
       'home.portfolioEyebrow': 'Portofolio',
-      'home.portfolioTitle':
-        'Contoh fokus pengembangan',
+      'home.portfolioTitle': 'Portofolio & Pengiriman Perusahaan',
 
       'home.articleEyebrow': 'Artikel',
-      'home.articleTitle': 'Informasi dan edukasi',
-      'home.articleDescription':
-        'Artikel mendukung pencarian, kategori, tag, metadata, dan halaman detail.',
+      'home.articleTitle': 'Informasi Industri & Edukasi Pasar',
+      'home.articleDescription': 'Wawasan mendalam mengenai tingkatan mutu cengkeh, spesifikasi ekspor, dan pembaruan perdagangan rempah global.',
       'home.allArticles': 'Semua artikel →',
 
       'home.ctaEyebrow': 'Mulai Percakapan',
-      'home.ctaTitle':
-        'Diskusikan kebutuhan produk dan kemitraan.',
-      'home.ctaDescription':
-        'Formulir demo dapat menyimpan pesan ke CMS prototype pada browser yang sama. Pada Netlify, formulir dapat diaktifkan sebagai Netlify Forms.',
+      'home.ctaTitle': 'Diskusikan Kebutuhan Produk dan Kemitraan',
+      'home.ctaDescription': 'Hubungi tim PT Cengkeh Indonesia Global untuk mendapatkan sampel produk, harga FOB/CIF terbaru, dan syarat pengiriman.',
 
-      'footer.description':
-        'Prototype website profil perusahaan, katalog, artikel, jaringan supplier, kontak, dan CMS sesuai baseline SRS versi 1.2.',
+     'footer.description': 'Perusahaan komoditas cengkeh Indonesia yang membangun kemitraan untuk pasar nasional dan global.',
       'footer.navigation': 'Navigasi',
       'footer.information': 'Informasi',
-      'footer.contactDemo': 'Kontak Demo',
+      'footer.contactDemo': 'Kontak Tim',
       'footer.supplier': 'Supplier',
       'footer.privacy': 'Kebijakan Privasi',
-      'footer.cms': 'CMS Prototype',
+      'footer.cms': 'Sistem CMS',
       'footer.notFound': 'Halaman 404',
-      'footer.rights': 'Seluruh hak cipta.',
-      'footer.version': 'Demo SRS-CIG-WEB-001 · Versi 1.2'
+      'footer.rights': 'Seluruh hak cipta dilindungi.',
+      'footer.version': 'PT Cengkeh Indonesia Global'
     },
 
     en: {
-      'demo.title': 'Demonstration website.',
-      'demo.text':
-        'Content, addresses, contacts, certifications, and supplier data must be verified before production.',
-
       'brand.tagline': 'From Indonesia to the global market',
 
-      'home.heroEyebrow':
-        'Indonesian Commodities · Global Partnerships',
-      'home.heroTitleOne': 'Indonesian cloves,',
-      'home.heroTitleTwo': 'value for the world.',
-      'home.heroDescription':
-        'A demonstration website for PT Cengkeh Indonesia Global introducing the company, products, articles, portfolio, and supplier network through a professional and responsive interface.',
+      'home.heroEyebrow': 'Indonesian Spice Commodity · Global Partner',
+      'home.heroTitleOne': 'Premium Indonesian Clove Exporter',
+      'home.heroTitleTwo': '& B2B Supplier',
+      'home.heroDescription': 'PT Cengkeh Indonesia Global supplies high-grade Lal Pari, AB6, and dried cloves directly from Indonesia\'s top plantations for global B2B buyers.',
 
       'home.statProfileTitle': 'Corporate Profile',
-      'home.statProfileText':
-        'Structured company information',
+      'home.statProfileText': 'Structured company information',
       'home.statCatalogTitle': 'Dynamic Catalogue',
-      'home.statCatalogText':
-        'Managed products and specifications',
+      'home.statCatalogText': 'Managed products and specifications',
       'home.statSupplierTitle': 'Supplier Map',
-      'home.statSupplierText':
-        'Approximate locations that protect privacy',
+      'home.statSupplierText': 'Approximate locations that protect privacy',
 
       'home.valueEyebrow': 'Core Values',
-      'home.valueTitle':
-        'A clear and responsible service foundation',
-      'home.valueDescription':
-        'Examples of corporate messages that can be updated through the production CMS after company approval.',
+      'home.valueTitle': 'Why Choose PT Cengkeh Indonesia Global',
+      'home.valueDescription': 'We deliver reliable spice supply, transparent product specifications, and professional international B2B communication.',
 
-      'home.featureOneTitle': 'Clear Product Information',
-      'home.featureOneText':
-        'The catalogue supports descriptions, specifications, galleries, brochures, and contextual WhatsApp enquiries.',
+      'home.featureOneTitle': 'Export-Grade Quality',
+      'home.featureOneText': 'Detailed product specifications covering moisture level, foreign matter, and stem ratio for global buyers.',
 
-      'home.featureTwoTitle': 'Responsible Partnerships',
-      'home.featureTwoText':
-        'Supplier data can be displayed as approximate locations to protect privacy and security.',
+      'home.featureTwoTitle': 'Trusted Plantation Network',
+      'home.featureTwoText': 'Direct sourcing from top plantations in Maluku, Sulawesi, and Java to ensure steady supply volume.',
 
-      'home.featureThreeTitle': 'Fast Communication',
-      'home.featureThreeText':
-        'The contact form and WhatsApp channel help prospective partners contact the company with the right context.',
+      'home.featureThreeTitle': 'Fast Global Shipping',
+      'home.featureThreeText': 'Full support for export documents (Phytosanitary, COO, B/L) and shipping terms (FOB & CIF).',
 
       'home.catalogEyebrow': 'Product Catalogue',
-      'home.catalogTitle': 'Featured products',
-      'home.catalogDescription':
-        'The following information is sample data demonstrating the catalogue structure.',
+      'home.catalogTitle': 'Featured Export Cloves',
+      'home.catalogDescription': 'Premium Indonesian dried cloves, Lal Pari, AB6, and clove stems ready for bulk shipment.',
       'home.allProducts': 'View all products →',
 
-      'home.portfolioEyebrow': 'Portfolio',
-      'home.portfolioTitle':
-        'Examples of development priorities',
+      'home.portfolioEyebrow': 'Export Track Record',
+      'home.portfolioTitle': 'Company Portfolios & Shipments',
 
-      'home.articleEyebrow': 'Articles',
-      'home.articleTitle': 'Information and education',
-      'home.articleDescription':
-        'Articles support search, categories, tags, metadata, and detailed pages.',
+      'home.articleEyebrow': 'Trade Insights',
+      'home.articleTitle': 'Industry Articles & Market Education',
+      'home.articleDescription': 'In-depth insights on clove grading, export specifications, and global spice trade updates.',
       'home.allArticles': 'All articles →',
 
       'home.ctaEyebrow': 'Start a Conversation',
-      'home.ctaTitle':
-        'Discuss product and partnership requirements.',
-      'home.ctaDescription':
-        'The demonstration form can store messages in the prototype CMS on the same browser. On Netlify, it can be enabled as a Netlify Form.',
+      'home.ctaTitle': 'Discuss Your Bulk Clove Requirements',
+      'home.ctaDescription': 'Get in touch with PT Cengkeh Indonesia Global for product samples, updated FOB/CIF pricing, and customized shipping terms.',
 
-      'footer.description':
-        'A prototype company-profile website featuring a catalogue, articles, supplier network, contact page, and CMS based on SRS version 1.2.',
+      'footer.description': 'An Indonesian clove commodity company building partnerships for national and global markets.',
       'footer.navigation': 'Navigation',
       'footer.information': 'Information',
-      'footer.contactDemo': 'Demo Contact',
+      'footer.contactDemo': 'Export Team',
       'footer.supplier': 'Suppliers',
       'footer.privacy': 'Privacy Policy',
-      'footer.cms': 'CMS Prototype',
+      'footer.cms': 'CMS Portal',
       'footer.notFound': '404 Page',
       'footer.rights': 'All rights reserved.',
-      'footer.version': 'Demo SRS-CIG-WEB-001 · Version 1.2'
+      'footer.version': 'PT Cengkeh Indonesia Global'
     },
 
     hi: {
-      'demo.title': 'प्रदर्शन वेबसाइट।',
-      'demo.text':
-        'सामग्री, पता, संपर्क, प्रमाणन और आपूर्तिकर्ता डेटा को उत्पादन से पहले सत्यापित किया जाना चाहिए।',
-
-      'brand.tagline':
-        'इंडोनेशिया से वैश्विक बाज़ार के लिए',
-
-      'home.heroEyebrow':
-        'इंडोनेशियाई कमोडिटी · वैश्विक साझेदारी',
-      'home.heroTitleOne': 'इंडोनेशियाई लौंग,',
-      'home.heroTitleTwo': 'दुनिया के लिए मूल्य।',
-      'home.heroDescription':
-        'PT Cengkeh Indonesia Global की यह प्रदर्शन वेबसाइट कंपनी, उत्पादों, लेखों, पोर्टफोलियो और आपूर्तिकर्ता नेटवर्क को पेशेवर और उत्तरदायी रूप में प्रस्तुत करती है।',
-
+      
+     'brand.tagline': 'इंडोनेशिया से वैश्विक बाज़ार के लिए',
+      'home.heroEyebrow': 'इंडोनेशियाई कमोडिटी · वैश्विक साझेदारी',
+      'home.heroTitleOne': 'प्रीमियम इंडोनेशियाई लौंग निर्यातक',
+      'home.heroTitleTwo': 'और B2B आपूर्तिकर्ता',
+      'home.heroDescription': 'PT Cengkeh Indonesia Global वैश्विक B2B खरीदारों के लिए उच्च गुणवत्ता वाले लाल परी, AB6 और सूखी लौंग की आपूर्ति करता है।',
       'home.statProfileTitle': 'कॉर्पोरेट प्रोफ़ाइल',
-      'home.statProfileText':
-        'व्यवस्थित कंपनी जानकारी',
-      'home.statCatalogTitle': 'गतिशील उत्पाद सूची',
-      'home.statCatalogText':
-        'प्रबंधित उत्पाद और विशेष विवरण',
+      'home.statProfileText': 'व्यवस्थित कंपनी जानकारी',
+      'home.statCatalogTitle': 'उत्पाद सूची',
+      'home.statCatalogText': 'प्रबंधित उत्पाद और विवरण',
       'home.statSupplierTitle': 'आपूर्तिकर्ता मानचित्र',
-      'home.statSupplierText':
-        'गोपनीयता सुरक्षित रखने वाले अनुमानित स्थान',
-
+      'home.statSupplierText': 'गोपनीयता सुरक्षित स्थान',
       'home.valueEyebrow': 'मुख्य मूल्य',
-      'home.valueTitle':
-        'स्पष्ट और जिम्मेदार सेवा की नींव',
-      'home.valueDescription':
-        'कंपनी की स्वीकृति के बाद उत्पादन CMS के माध्यम से कॉर्पोरेट संदेशों को अपडेट किया जा सकता है।',
-
-      'home.featureOneTitle': 'स्पष्ट उत्पाद जानकारी',
-      'home.featureOneText':
-        'उत्पाद सूची विवरण, विशेषताएँ, गैलरी, ब्रोशर और WhatsApp पूछताछ का समर्थन करती है।',
-
-      'home.featureTwoTitle': 'जिम्मेदार साझेदारी',
-      'home.featureTwoText':
-        'गोपनीयता और सुरक्षा की रक्षा के लिए आपूर्तिकर्ता डेटा को अनुमानित स्थान के रूप में प्रदर्शित किया जा सकता है।',
-
-      'home.featureThreeTitle': 'तेज़ संचार',
-      'home.featureThreeText':
-        'संपर्क फ़ॉर्म और WhatsApp संभावित भागीदारों को सही जानकारी के साथ कंपनी से संपर्क करने में सहायता करते हैं।',
-
+      'home.valueTitle': 'PT Cengkeh Indonesia Global क्यों चुनें',
+      'home.valueDescription': 'हम विश्वसनीय मसाला आपूर्ति और पारदर्शी उत्पाद विनिर्देश प्रदान करते हैं।',
+      'home.featureOneTitle': 'निर्यात-ग्रेड गुणवत्ता',
+      'home.featureOneText': 'वैश्विक खरीदारों के लिए विस्तृत उत्पाद विनिर्देश।',
+      'home.featureTwoTitle': 'विश्वसनीय नेटवर्क',
+      'home.featureTwoText': 'स्थिर आपूर्ति सुनिश्चित करने के लिए प्रत्यक्ष स्रोत।',
+      'home.featureThreeTitle': 'तेज़ शिपिंग',
+      'home.featureThreeText': 'निर्यात दस्तावेजों का पूर्ण समर्थन।',
       'home.catalogEyebrow': 'उत्पाद सूची',
-      'home.catalogTitle': 'चुनिंदा उत्पाद',
-      'home.catalogDescription':
-        'निम्न जानकारी उत्पाद सूची की संरचना दिखाने के लिए नमूना डेटा है।',
+      'home.catalogTitle': 'विशेष रुप से प्रदर्शित लौंग',
+      'home.catalogDescription': 'थोक शिपमेंट के लिए तैयार प्रीमियम इंडोनेशियाई लौंग।',
       'home.allProducts': 'सभी उत्पाद देखें →',
-
-      'home.portfolioEyebrow': 'पोर्टफोलियो',
-      'home.portfolioTitle':
-        'विकास प्राथमिकताओं के उदाहरण',
-
-      'home.articleEyebrow': 'लेख',
-      'home.articleTitle': 'जानकारी और शिक्षा',
-      'home.articleDescription':
-        'लेख खोज, श्रेणी, टैग, मेटाडेटा और विस्तृत पृष्ठों का समर्थन करते हैं।',
+      'home.portfolioEyebrow': 'निर्यात रिकॉर्ड',
+      'home.portfolioTitle': 'कंपनी पोर्टफोलियो और शिपमेंट',
+      'home.articleEyebrow': 'व्यापार अंतर्दृष्टि',
+      'home.articleTitle': 'उद्योग लेख और शिक्षा',
+      'home.articleDescription': 'लौंग ग्रेडिंग और निर्यात विनिर्देशों पर अंतर्दृष्टि।',
       'home.allArticles': 'सभी लेख →',
-
       'home.ctaEyebrow': 'बातचीत शुरू करें',
-      'home.ctaTitle':
-        'उत्पाद और साझेदारी आवश्यकताओं पर चर्चा करें।',
-      'home.ctaDescription':
-        'प्रदर्शन फ़ॉर्म उसी ब्राउज़र में prototype CMS पर संदेश सहेज सकता है। Netlify पर इसे Netlify Forms के रूप में सक्रिय किया जा सकता है।',
-
-      'footer.description':
-        'SRS संस्करण 1.2 के आधार पर कंपनी प्रोफ़ाइल, उत्पाद सूची, लेख, आपूर्तिकर्ता नेटवर्क, संपर्क और CMS वेबसाइट का प्रोटोटाइप।',
+      'home.ctaTitle': 'अपनी लौंग की आवश्यकताओं पर चर्चा करें',
+      'home.ctaDescription': 'उत्पाद नमूनों और कीमतों के लिए संपर्क करें।',
+      'footer.description': 'एक इंडोनेशियाई लौंग कमोडिटी कंपनी।',
       'footer.navigation': 'नेविगेशन',
       'footer.information': 'जानकारी',
-      'footer.contactDemo': 'डेमो संपर्क',
+      'footer.contactDemo': 'संपर्क',
       'footer.supplier': 'आपूर्तिकर्ता',
       'footer.privacy': 'गोपनीयता नीति',
-      'footer.cms': 'CMS प्रोटोटाइप',
+      'footer.cms': 'CMS',
       'footer.notFound': '404 पृष्ठ',
       'footer.rights': 'सर्वाधिकार सुरक्षित।',
-      'footer.version': 'डेमो SRS-CIG-WEB-001 · संस्करण 1.2'
+      'footer.version': 'PT Cengkeh Indonesia Global'
     },
 
     zh: {
-      'demo.title': '演示网站。',
-      'demo.text':
-        '网站内容、地址、联系方式、认证信息和供应商数据在正式上线前必须经过验证。',
-
-      'brand.tagline': '从印度尼西亚走向全球市场',
-
-      'home.heroEyebrow':
-        '印度尼西亚商品 · 全球合作伙伴关系',
-      'home.heroTitleOne': '印度尼西亚丁香，',
-      'home.heroTitleTwo': '为世界创造价值。',
-      'home.heroDescription':
-        'PT Cengkeh Indonesia Global 演示网站以专业、响应式的方式介绍公司、产品、文章、项目组合以及供应商网络。',
-
+     'brand.tagline': '从印度尼西亚走向全球市场',
+      'home.heroEyebrow': '印度尼西亚香料 · 全球合作伙伴',
+      'home.heroTitleOne': '优质印尼丁香出口商',
+      'home.heroTitleTwo': '& B2B 供应商',
+      'home.heroDescription': 'PT Cengkeh Indonesia Global 直接从印尼优质种植园为全球 B2B 买家提供高品质的 Lal Pari、AB6 和干丁香。',
       'home.statProfileTitle': '公司简介',
       'home.statProfileText': '结构化的公司信息',
       'home.statCatalogTitle': '动态产品目录',
       'home.statCatalogText': '可管理的产品和规格',
       'home.statSupplierTitle': '供应商地图',
-      'home.statSupplierText':
-        '保护隐私的大致位置',
-
+      'home.statSupplierText': '保护隐私的大致位置',
       'home.valueEyebrow': '核心价值',
-      'home.valueTitle':
-        '清晰且负责任的服务基础',
-      'home.valueDescription':
-        '获得公司批准后，可通过正式 CMS 更新企业信息。',
-
-      'home.featureOneTitle': '清晰的产品信息',
-      'home.featureOneText':
-        '产品目录支持描述、规格、图片、宣传册以及 WhatsApp 咨询。',
-
-      'home.featureTwoTitle': '负责任的合作伙伴关系',
-      'home.featureTwoText':
-        '供应商数据可显示为大致位置，以保护隐私和安全。',
-
-      'home.featureThreeTitle': '快速沟通',
-      'home.featureThreeText':
-        '联系表单和 WhatsApp 渠道帮助潜在合作伙伴准确联系公司。',
-
+      'home.valueTitle': '为什么选择 PT Cengkeh Indonesia Global',
+      'home.valueDescription': '我们提供可靠的香料供应、透明的产品规格和专业的国际 B2B 沟通。',
+      'home.featureOneTitle': '出口级品质',
+      'home.featureOneText': '涵盖水分含量、杂质和花梗比例的详细规格。',
+      'home.featureTwoTitle': '值得信赖的种植园网络',
+      'home.featureTwoText': '从主要种植园直接采购，确保稳定的供应量。',
+      'home.featureThreeTitle': '快速全球运输',
+      'home.featureThreeText': '全面支持出口文件（植物检疫、原产地证、提单）及 FOB/CIF 条款。',
       'home.catalogEyebrow': '产品目录',
-      'home.catalogTitle': '精选产品',
-      'home.catalogDescription':
-        '以下信息为用于展示产品目录结构的示例数据。',
+      'home.catalogTitle': '精选出口丁香',
+      'home.catalogDescription': '优质印尼干丁香、Lal Pari、AB6 和丁香梗，随时可大批量发货。',
       'home.allProducts': '查看所有产品 →',
-
-      'home.portfolioEyebrow': '项目组合',
-      'home.portfolioTitle': '发展重点示例',
-
-      'home.articleEyebrow': '文章',
-      'home.articleTitle': '信息与教育',
-      'home.articleDescription':
-        '文章支持搜索、分类、标签、元数据和详情页面。',
+      'home.portfolioEyebrow': '出口业绩',
+      'home.portfolioTitle': '公司业绩与运输记录',
+      'home.articleEyebrow': '行业洞察',
+      'home.articleTitle': '行业文章与市场教育',
+      'home.articleDescription': '深入了解丁香分级、出口规格和全球香料贸易动态。',
       'home.allArticles': '所有文章 →',
-
-      'home.ctaEyebrow': '开始沟通',
-      'home.ctaTitle':
-        '讨论产品和合作需求。',
-      'home.ctaDescription':
-        '演示表单可将信息保存在同一浏览器的 prototype CMS 中。在 Netlify 上可启用 Netlify Forms。',
-
-      'footer.description':
-        '基于 SRS 1.2 版本制作的公司简介、产品目录、文章、供应商网络、联系页面和 CMS 原型网站。',
+      'home.ctaEyebrow': '开始对话',
+      'home.ctaTitle': '讨论您的批量丁香需求',
+      'home.ctaDescription': '联系我们获取产品样品、最新 FOB/CIF 报价及定制运输条款。',
+      'footer.description': '一家印度尼西亚丁香商品公司。',
       'footer.navigation': '导航',
       'footer.information': '信息',
-      'footer.contactDemo': '演示联系方式',
+      'footer.contactDemo': '联系方式',
       'footer.supplier': '供应商',
       'footer.privacy': '隐私政策',
-      'footer.cms': 'CMS 原型',
-      'footer.notFound': '404 页面',
-      'footer.rights': '版权所有。',
-      'footer.version': '演示 SRS-CIG-WEB-001 · 版本 1.2'
+      'footer.cms': 'CMS',
+      'footer.notFound': '404 页',
+      'footer.rights': '保留所有权利。',
+      'footer.version': 'PT Cengkeh Indonesia Global'
     },
 
     ar: {
-      'demo.title': 'موقع تجريبي.',
-      'demo.text':
-        'يجب التحقق من المحتوى والعنوان وبيانات الاتصال والشهادات وبيانات الموردين قبل الإطلاق الرسمي.',
-
-      'brand.tagline':
-        'من إندونيسيا إلى السوق العالمية',
-
-      'home.heroEyebrow':
-        'سلع إندونيسية · شراكات عالمية',
-      'home.heroTitleOne': 'القرنفل الإندونيسي،',
-      'home.heroTitleTwo': 'قيمة للعالم.',
-      'home.heroDescription':
-        'موقع تجريبي لشركة PT Cengkeh Indonesia Global يعرض الشركة والمنتجات والمقالات والأعمال وشبكة الموردين بتصميم احترافي ومتجاوب.',
-
-      'home.statProfileTitle': 'الملف التعريفي للشركة',
-      'home.statProfileText':
-        'معلومات منظمة عن الشركة',
+      
+     'brand.tagline': 'من إندونيسيا إلى السوق العالمية',
+      'home.heroEyebrow': 'توابل إندونيسية · شريك عالمي',
+      'home.heroTitleOne': 'مصدر قرنفل إندونيسي ممتاز',
+      'home.heroTitleTwo': 'ومورد B2B',
+      'home.heroDescription': 'تقدم PT Cengkeh Indonesia Global قرنفل جاف عالي الجودة من طراز Lal Pari و AB6 مباشرة من إندونيسيا.',
+      'home.statProfileTitle': 'الملف المؤسسي',
+      'home.statProfileText': 'نظرة عامة عن الشركة',
       'home.statCatalogTitle': 'كتالوج ديناميكي',
-      'home.statCatalogText':
-        'منتجات ومواصفات قابلة للإدارة',
+      'home.statCatalogText': 'منتجات ومواصفات مُدارة',
       'home.statSupplierTitle': 'خريطة الموردين',
-      'home.statSupplierText':
-        'مواقع تقريبية تحمي الخصوصية',
-
-      'home.valueEyebrow': 'القيم الأساسية',
-      'home.valueTitle':
-        'أساس واضح ومسؤول للخدمات',
-      'home.valueDescription':
-        'يمكن تحديث الرسائل المؤسسية من خلال نظام إدارة المحتوى بعد اعتمادها من الشركة.',
-
-      'home.featureOneTitle': 'معلومات واضحة عن المنتجات',
-      'home.featureOneText':
-        'يدعم الكتالوج الأوصاف والمواصفات والصور والكتيبات والاستفسارات عبر واتساب.',
-
-      'home.featureTwoTitle': 'شراكات مسؤولة',
-      'home.featureTwoText':
-        'يمكن عرض بيانات الموردين كمواقع تقريبية لحماية الخصوصية والأمان.',
-
-      'home.featureThreeTitle': 'تواصل سريع',
-      'home.featureThreeText':
-        'يساعد نموذج الاتصال وقناة واتساب الشركاء المحتملين على التواصل مع الشركة بالسياق المناسب.',
-
+      'home.statSupplierText': 'مواقع محمية الخصوصية',
+      'home.valueEyebrow': 'قيمنا الأساسية',
+      'home.valueTitle': 'لماذا تختار PT Cengkeh Indonesia Global',
+      'home.valueDescription': 'نقدم إمدادات توابل موثوقة ومواصفات شفافة وتواصل تجاري محترف.',
+      'home.featureOneTitle': 'جودة مخصصة للتصدير',
+      'home.featureOneText': 'مواصفات تفصيلية تشمل نسبة الرطوبة والمواد الغريبة.',
+      'home.featureTwoTitle': 'شبكة مزارع موثوقة',
+      'home.featureTwoText': 'توريد مباشر لضمان حجم إمدادات ثابت.',
+      'home.featureThreeTitle': 'شحن عالمي سريع',
+      'home.featureThreeText': 'دعم كامل لوثائق التصدير وشروط الشحن (FOB & CIF).',
       'home.catalogEyebrow': 'كتالوج المنتجات',
-      'home.catalogTitle': 'منتجات مختارة',
-      'home.catalogDescription':
-        'المعلومات التالية بيانات تجريبية لعرض بنية كتالوج المنتجات.',
+      'home.catalogTitle': 'قرنفل للتصدير',
+      'home.catalogDescription': 'قرنفل إندونيسي ممتاز جاهز للشحن بكميات كبيرة.',
       'home.allProducts': 'عرض جميع المنتجات ←',
-
-      'home.portfolioEyebrow': 'الأعمال',
-      'home.portfolioTitle':
-        'أمثلة على أولويات التطوير',
-
-      'home.articleEyebrow': 'المقالات',
-      'home.articleTitle': 'المعلومات والتوعية',
-      'home.articleDescription':
-        'تدعم المقالات البحث والفئات والوسوم والبيانات الوصفية وصفحات التفاصيل.',
+      'home.portfolioEyebrow': 'سجل التصدير',
+      'home.portfolioTitle': 'معرض الأعمال والشحنات',
+      'home.articleEyebrow': 'رؤى تجارية',
+      'home.articleTitle': 'مقالات الصناعة والتثقيف',
+      'home.articleDescription': 'رؤى عميقة حول تصنيف القرنفل ومواصفات التصدير.',
       'home.allArticles': 'جميع المقالات ←',
-
       'home.ctaEyebrow': 'ابدأ المحادثة',
-      'home.ctaTitle':
-        'ناقش متطلبات المنتجات والشراكات.',
-      'home.ctaDescription':
-        'يمكن للنموذج التجريبي حفظ الرسائل في نظام CMS على المتصفح نفسه. ويمكن تفعيله كنموذج Netlify Forms عند استخدام Netlify.',
-
-      'footer.description':
-        'نموذج أولي لموقع تعريفي بالشركة يتضمن الكتالوج والمقالات وشبكة الموردين والتواصل ونظام CMS وفق الإصدار 1.2 من وثيقة SRS.',
+      'home.ctaTitle': 'ناقش متطلبات القرنفل بالجملة',
+      'home.ctaDescription': 'تواصل معنا للحصول على عينات وأسعار FOB/CIF تحديثة.',
+      'footer.description': 'شركة إندونيسية للسلع الأساسية من القرنفل.',
       'footer.navigation': 'التنقل',
       'footer.information': 'المعلومات',
-      'footer.contactDemo': 'بيانات اتصال تجريبية',
-      'footer.supplier': 'الموردون',
+      'footer.contactDemo': 'اتصال',
+      'footer.supplier': 'الموردين',
       'footer.privacy': 'سياسة الخصوصية',
-      'footer.cms': 'نموذج CMS',
+      'footer.cms': 'CMS',
       'footer.notFound': 'صفحة 404',
       'footer.rights': 'جميع الحقوق محفوظة.',
-      'footer.version': 'عرض SRS-CIG-WEB-001 · الإصدار 1.2'
+      'footer.version': 'PT Cengkeh Indonesia Global'
     }
   };
 
